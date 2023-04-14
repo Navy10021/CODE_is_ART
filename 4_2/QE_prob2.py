@@ -32,9 +32,8 @@ def bfs(G, s):
     #visited = [False] * len(G)
     res = []
     queue = []
-    order = 1
     queue.append((s, order))
-    s.distance = order
+    s.distance = 1
     while queue:
         cur_node = queue.pop(0)
         res.append((cur_node[1], cur_node[0].id))
