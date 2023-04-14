@@ -19,10 +19,10 @@ def sub_string(s, t):
 def max_palindrome(s):
     # Find all sub_string palindrome -> to list
     sub_list = []
-
+    
+    # if is palindrome
     for i in range(len(s)):
         for j in range(i, len(s)):
-            # if is palindrome
             if s[i:j+1] == s[i:j+1][::-1]:
                 sub_list.append(s[i:j+1])
     sub_list = list(set(sub_list))
