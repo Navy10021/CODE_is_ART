@@ -1,6 +1,5 @@
+# Minimum cost(paths) it takes for all N-nodes visited(Dijkstra)
 # K에서 시작해서 모든 노드를 방문하는 최소 비용(최단경로) 리턴
-# Return the minimum cost(time) it takes for all N-nodes visited
-# Dijkstra
 import heapq
 def min_cost(graph, num_nodes, start_node):
     # Directed Graph
