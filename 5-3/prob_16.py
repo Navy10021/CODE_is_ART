@@ -1,4 +1,5 @@
 # start Node에서 특정거리(K)에 있는 최단경로 노드 찾기, 동일한 weight
+# Find the shortest path in K-distance
 from collections import deque
 
 def find_node(graph, node_num, K, start_node):
