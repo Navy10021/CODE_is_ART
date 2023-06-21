@@ -1,6 +1,3 @@
-// Authored by : windowdong11
-// Co-authored by : BaaaaaaaaaaarkingDog
-// http://boj.kr/234d6a92de444d5c8d78bfae0286be7d
 #include <bits/stdc++.h>
 using namespace std;
 #define X first
