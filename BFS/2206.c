@@ -12,10 +12,6 @@ int dist[1000][1000][2];
 // dist[x][y][1] : 벽을 하나만 부수고 (x,y)까지 오는데 걸리는 비용, (x,y)가 벽이라서 부수는 경우 포함
 int n, m;
 
-bool OOB(int x, int y){
-  return x < 0 || x >= n || y < 0 || y >= m;
-}
-
 int bfs() {
   for (int i = 0; i < n; i++)
     for (int j = 0; j < m; j++)
@@ -32,7 +28,7 @@ int bfs() {
     for (int dir = 0; dir < 4; dir++) {
       int nx = x + dx[dir];
       int ny = y + dy[dir];
-      if(OOB(nx, ny)) continue;      
+      if(nx < 0 || nx >= n || ny < 0 || ny >= m) continue;      
       if (board[nx][ny] == '0' && dist[nx][ny][broken] == -1) {
         dist[nx][ny][broken] = nextdist;
         q.push({nx, ny, broken});
