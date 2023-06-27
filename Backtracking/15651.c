@@ -1,4 +1,4 @@
-// 1~N 자연수 중 중복 없이 M개를 고르는 수열 
+// 1~N 자연수 중 중복 없이 M개를 고르는 수열 + 오름차순 정렬
 #include <bits/stdc++.h>
 using namespace std;
 
