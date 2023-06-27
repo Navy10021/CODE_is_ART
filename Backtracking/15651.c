@@ -15,7 +15,7 @@ void func(int k){   // 현재 k까지의 수를 선택함.
     }
 
     for(int i=1; i <= N; i++){  // 1~N
-        if (!is_used[i]){       // 아직 i가 미사용되었다면,
+        //if (!is_used[i]){       // 아직 i가 미사용되었다면,
             arr[k] = i;         // k번째 수를 i로 정함.
             //is_used[i] = 1;     // i를 사용했다고 표시
             func(k+1);          // k+1 수를 선택 
