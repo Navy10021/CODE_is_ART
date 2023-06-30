@@ -5,7 +5,7 @@ using namespace std;
 # define Y second
 
 int dx[4] = {1,0,-1,0};
-int dy[4] = {0,1,0,-1};
+int dy[4] = {0,1,0,-1};        // 남 - 동 -북 - 서
 int N, M;            // 서로 x 가로
 int board_1[10][10]; // 최초 입력 받은 board를 저장할 변수
 int board_2[10][10]; // 사각지대 개수를 저장할 변수
@@ -55,23 +55,23 @@ int main(void){
             int x = CCTV[i].X;
             int y = CCTV[i].Y;
             if (board_1[x][y] == 1){
-                move(x, y, dir);    // 우로 이동
+                move(x, y, dir);    // 남 
             }
             else if (board_1[x][y] == 2){
-                move(x, y, dir);    // 우로 이동    
-                move(x, y, dir+2);  // 좌로 이동
+                move(x, y, dir);    // 남 - 북
+                move(x, y, dir+2);  // 
             }
             else if (board_1[x][y] == 3){
-                move(x, y, dir);    // 우
-                move(x, y, dir+1);  // 상
+                move(x, y, dir);    // 남 - 동
+                move(x, y, dir+1);  // 
             }
             else if (board_1[x][y] == 4){
-                move(x, y, dir);    // 우
-                move(x, y, dir+1);  // 상
-                move(x, y, dir+2);  // 좌
+                move(x, y, dir);    // 남 - 동 -북
+                move(x, y, dir+1);   
+                move(x, y, dir+2);  
             }
             else{
-                move(x, y, dir); 
+                move(x, y, dir);     // 남 - 동 - 북 - 서
                 move(x, y, dir+1); 
                 move(x, y, dir+2); 
                 move(x, y, dir+3); 
