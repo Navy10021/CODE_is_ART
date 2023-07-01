@@ -38,19 +38,20 @@ int main(void){
             cin >> board_1[i][j];
             // cctv 좌표 넣기 : 빈칸(0)이 아니고, 벽도(6) 아닌 경우
             if (board_1[i][j] != 0 && board_1[i][j] != 6) CCTV.push_back({i, j});
+            // cctv가 없는 경우 비교를 위해 res 값 채우기
             if (board_1[i][j] == 0) res ++;
         }
     }
     // temp를 4진법(0 1 0 1)으로 두고, 각 자리 수를 cctv 방향으로 생각
-    for (int tmp = 0; tmp < (1<<(2*CCTV.size())); tmp++){
-        for (int i = 0; i < N; i++){
+    for (int tmp = 0; tmp < (1<<(2*CCTV.size())); tmp++){        // 전체 CCTV 개수를 돌면서, k개 cctv -> 1<<2(*CCTV.size())-1 : (4의 k승) - 1 
+        for (int i = 0; i < N; i++){                             // 전체 빈칸을 돌면서,
             for (int j = 0 ; j < M; j++){
                 board_2[i][j] = board_1[i][j];
             }
         }
         int brute = tmp;
         for (int i = 0; i < CCTV.size(); i++){
-            int dir = brute % 4;
+            int dir = brute % 4;                                // 나머지값이 i번째 cctv 방향(direction) 
             brute /= 4;
             int x = CCTV[i].X;
             int y = CCTV[i].Y;
@@ -81,7 +82,7 @@ int main(void){
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
                 val += (board_2[i][j] == 0);
-        res = min(res, val);
+        res = min(res, val);        // cctv가 없는 경우와 비교하여 최소값 
     }
     cout << res;
 }
