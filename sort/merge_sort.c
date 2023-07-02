@@ -26,6 +26,7 @@ void merge(int st, int en){
     for (int i=st; i<en; i++) arr[i] = tmp[i];
 }
 
+// 재귀 : N이 merge sort가 가능하면, N/2 도 merge sort가 가능하다. 
 void merge_sort(int st, int en){
     if (en == st+1) return;     // 배열의 크기가 1인 경우!
     int mid = (st+en) / 2;
