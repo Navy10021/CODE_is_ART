@@ -17,7 +17,7 @@ int main(void){
         return 0;
     }
     
-    // base condition
+    // base condition : DP[i][j] : j개의 계단을 밟고 i-계단을 올라섯을 떄 점수 합의 최대값.
     DP[1][1] = score[1];
     DP[1][2] = 0;
     DP[2][1] = score[2];
