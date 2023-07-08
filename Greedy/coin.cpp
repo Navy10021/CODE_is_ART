@@ -17,8 +17,8 @@ int main()
         cin >> coin[i];
         
     for (int i = n-1; i >= 0; i--){
-        res += k / coin[i];
-        k %= coin[i];
+        res += k / coin[i];          // 몫을 업데이트
+        k %= coin[i];                // 나머지로 k값 업데이트
     }
     cout << res;
 }
