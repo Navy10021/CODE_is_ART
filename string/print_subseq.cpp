@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// print all subsequence of given string 
+// print all subsequence of given string : ABC -> A B C AB BC AC ABC
 
 void sub_seq(string in_str, string out_str){
     // Base case
