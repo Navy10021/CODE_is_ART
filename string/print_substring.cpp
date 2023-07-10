@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// print all substring of given string 
+// print all substring of given string : ABC -> A B C AB CD ABC
 
 void sub_str(string str, int n){
     for (int i = 0; i < n; i++){                    // start position
