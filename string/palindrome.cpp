@@ -4,7 +4,7 @@
 using namespace std;
 
 bool palindrome(char* str){
-    int l;
+    int l = 0;
     int r = strlen(str) - 1;
     
     while(r > l){
@@ -15,7 +15,7 @@ bool palindrome(char* str){
 }
 
 bool palindrome2(string str){
-    int l;
+    int l = 0;
     int r = str.size() - 1;
     while (r > l){
         if (str[l++] != str[r--])
