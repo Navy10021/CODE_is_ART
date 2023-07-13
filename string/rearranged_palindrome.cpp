@@ -1,4 +1,4 @@
-// Rearranged to form a Palindrome
+// Rearranged to form a Palindrome == Check if any anagram of string is palindrome or not.
 #include <bits/stdc++.h>
 using namespace std;
 
