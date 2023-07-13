@@ -15,7 +15,7 @@ void func(int k){   // 현재 k까지의 수를 선택함.
     }
     // k=0일때 시작점 = 1
     int st = 1;
-    // k=!0 일때 시작점 = arr[k-1]+1
+    // k=!0 일때 시작점 = arr[k-1]+1 : 오름차순
     if(k != 0) st = arr[k-1] + 1;
     
     for(int i = st; i <= N; i++){  // start ~ N
