@@ -42,6 +42,6 @@ int main(void){
     cin.tie(0);
     cin >> L >> C;
     for (int i=0; i<C; i++) cin >> s[i];
-    sort(s, s+C);
+    sort(s, s+C);        // 사전순, 오름차순
     func(0, 0);
 }
