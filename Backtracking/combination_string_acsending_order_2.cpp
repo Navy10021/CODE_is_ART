@@ -1,5 +1,5 @@
 // N크기의 string과 자연수 M이 주어졌을 때 길이가 M인 character 수열 + 오름차순으로 증가
-// ABCD 중 3개 -> ABC, ABD, BCD  
+// ABCD 중 3개 -> ABC, ABD, BCD 
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -35,7 +35,7 @@ int main(void){
     M = 3;              // N Combination M
     N = strlen(str);
     sort(str, str+N);   // Sorting
-    func(0, 0);         // k, start index
+    func(0, 0);         // 2개의 파라미터를 받음 -> k, start index
     return 0;
     
 }
