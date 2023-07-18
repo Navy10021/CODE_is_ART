@@ -20,5 +20,5 @@ int main(void){
         }
     }
     
-    cout << m.size();
+    for(auto e : m) cout << e << "\n";
 }
