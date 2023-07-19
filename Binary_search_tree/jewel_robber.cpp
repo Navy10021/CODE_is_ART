@@ -32,7 +32,7 @@ int main(){
         int weight, price;
         tie(price, weight) = jewel[i];
         auto it = bag.lower_bound(weight); // bag의 무게 중 보석의 weight 보다 같거나 큰 숫자 등장하는 인덱스의 이터레이터  
-        if (it == bag.end()) continue;
+        if (it == bag.end()) continue;     // 가장 작은 값이면 continue
         res += price;
         bag.erase(it);
     }
