@@ -6,7 +6,7 @@ int main(){
     cin.tie(0);
     int t;
     cin >> t;
-    multiset<int> ms;
+    multiset<int> ms;    // 이진검색트리 : set, multiset, map
     while(t--){
         char oper;
         int q;
