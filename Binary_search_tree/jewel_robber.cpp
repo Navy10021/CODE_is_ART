@@ -12,7 +12,7 @@ using namespace std;
 
 int n, k;
 pair<int, int> jewel[300000];   // <price, weight>
-multiset<int> bag;               // 자동으로 오름차순 정렬 
+multiset<int> bag;               // 이진검색트리 
 
 int main(){
     ios::sync_with_stdio(0);
