@@ -34,7 +34,7 @@ int main(){
     for(int i = n-1; i >= 0; i--){  // 가격(price)이 높은 순의 보석을 확인하면서
         int weight, price;
         tie(price, weight) = jewel[i];
-        auto it = bag.lower_bound(weight); // weight 보다 큰 가장 작은 가방의 iterator  
+        auto it = bag.lower_bound(weight); // 'weight'와 같거나 큰값 중 가장 작은 bag의 element 
         if (it == bag.end()) continue;     // weight이상의 가방이 없으면 continue
         res += price;
         bag.erase(it);
