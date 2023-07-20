@@ -25,6 +25,8 @@ int main(){
     cout << ms.count(100) << '\n';
     
     // iterator 
+    // lower_bound(w) : w 값과 같거나 큰 숫자가 배열에 처음 등장하는 주소값. 
+    // upper_bound(w) : w 값을 초과하는 숫자가 배열에 처음 등장하는 주소값.
     auto it1 = ms.begin();            // {-10(<--it), 5, 10, 100, 100, 100}
     auto it2 = ms.upper_bound(100);   // {-10, 5, 10, 100, 100, 100, 100} <--(it) ms.size() 100보다 큰 최초값
     auto it3 = ms.find(100);          // {-10, 5, 10, 100(<--it), 100, 100,}
