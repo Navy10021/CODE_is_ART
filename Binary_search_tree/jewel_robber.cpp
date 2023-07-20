@@ -2,6 +2,9 @@
 보석 털기 : N개의 보석, 무게 M & 가격 V 
 K개의 가방, 담을 수 있는 무게 C && 최대 1개만 넣을 수 있음.
 훔칠 수 있는 보석의 '최대 가격'?
+
+Tip : 가장 가격(price)이 높은 보석부터 확인하며,
+      보석을 담을 수 있는 가방(K) 중 최대무게(C)가 가장 작은 가방을 이용해 보석을 담는 게 이득
 */
 
 #include <bits/stdc++.h>
@@ -28,11 +31,11 @@ int main(){
     
     int res = 0;
     
-    for(int i = n-1; i >= 0; i--){  // price가 큰 순서데로 뽑아서
+    for(int i = n-1; i >= 0; i--){  // 가격(price)이 높은 순의 보석을 확인하면서
         int weight, price;
         tie(price, weight) = jewel[i];
-        auto it = bag.lower_bound(weight); // bag의 무게 중 보석의 weight 보다 같거나 큰 숫자 등장하는 인덱스의 이터레이터  
-        if (it == bag.end()) continue;     // 가장 작은 값이면 continue
+        auto it = bag.lower_bound(weight); // weight 보다 큰 가장 작은 가방의 iterator  
+        if (it == bag.end()) continue;     // weight이상의 가방이 없으면 continue
         res += price;
         bag.erase(it);
     }
