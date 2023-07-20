@@ -6,7 +6,7 @@ insert && search && erase 모두 O(logN)
 using namespace std;
 
 int main(){
-    set<int> s; // binary search tree
+    set<int> s; // binary search tree : 자동 sorting 저장 
     // Insert
     s.insert(1); s.insert(5); s.insert(10);
     s.insert(3);
@@ -22,7 +22,7 @@ int main(){
     s.insert(-10);
     for(auto e : s) cout << e << ' ';
     
-    // Search && move node
+    // unordered_set과 차이점! Search && move node
     cout << "BFS search\n";
     set<int>::iterator it1 = s.begin(); // {-10(<--it), 1, 3, 5, 10}
     it1++;                              // {-10, 1(<--it), 3, 5, 10}
