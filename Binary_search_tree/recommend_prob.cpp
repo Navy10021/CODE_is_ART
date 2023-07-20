@@ -16,7 +16,7 @@ int main(){
     cin.tie(0);
     
     cin >> N;
-    for(int i=0; i<N; i++){
+    while(N--){
         cin >> P >> L;
         prob_to_level[P] = L;
         level_to_prob[L].insert(P);
