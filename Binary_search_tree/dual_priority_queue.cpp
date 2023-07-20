@@ -14,9 +14,9 @@ int main(){
         
         if (oper == 'D'){
             if (ms.empty()) continue;
-            // prev : 가장 큰 원소의 주소값 ex) prev(ms.end(), index) : i-번째 큰수 
+            // prev : 가장 큰 원소의 주소값 -> prev(ms.end());  // ms.end() : {0,1,2,3,4,} (<-- it)
             if (q == 1) ms.erase(prev(ms.end()));
-            // multiset.begin() : 가장 작은 원소의 주소값 
+            // multiset.begin() : 가장 작은 원소의 주소값 -> ms.begin() : ms.begin() : {0(<--it),1,2,3,4,}
             else ms.erase(ms.begin());
         }
         // oper == I 
