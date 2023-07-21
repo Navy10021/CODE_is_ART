@@ -14,7 +14,7 @@ int main()
     cin.tie(0);
     cin >> N >> Q;
     
-    for (int i = 1; i < N; i++){
+    for (int i = 1; i <= N; i++){
         cin >> t;
         if (t) univ.insert(i);  // 명소(1)만의 인덱스 저장 
         }
