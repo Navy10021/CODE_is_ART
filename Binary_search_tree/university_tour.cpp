@@ -29,7 +29,7 @@ int main()
         
         else if (t == 2){
             cin >> x;
-            curr = (curr + x - 1) % N + 1;    // Cycle에서 시계방향으로 x-th 만큼 이동
+            curr = (curr + x - 1) % N + 1;    // Cycle 에서 시계방향으로 x-th 만큼 이동!!!
         }
         
         else if (t == 3){
