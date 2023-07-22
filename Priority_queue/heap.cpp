@@ -14,7 +14,7 @@ struct cmp{
 
 int main(void){
     priority_queue<int> PQ; // 내림차순 저장 
-    //priority_queue<int, vector<int>, greater<int>> PQ;  // 오름차순 저장 
+    //priority_queue<int, vector<int>, greater<int>> PQ;  // 오름차순 저장 : greater<int> 대소관계 바꿀때 사용
     
     PQ.push(10);
     PQ.push(5);
