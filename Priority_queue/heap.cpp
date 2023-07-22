@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct cmp{
+struct cmp{                         // cmp(앞에 위치해야 하는 원소, 뒤에 위치해야 하는 원소) = true
     bool operator()(int a, int b){  // 절대값이 작은값에 우선순위, 같다면 더 작은값에 우선순위 
         if (abs(a) > abs(b)) return true; 
         else if(abs(a) == abs(b)){
