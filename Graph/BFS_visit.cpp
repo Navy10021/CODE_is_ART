@@ -5,7 +5,6 @@ BFS in Graph
 #include <bits/stdc++.h>
 using namespace std;
 
-int v, e;   // node, edge
 vector<int> adj[10];
 bool vis[10];
 
