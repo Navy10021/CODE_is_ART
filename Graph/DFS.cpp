@@ -1,6 +1,6 @@
 /*
-DFS : 기본 : Queue -> Stack 으로만 변경 가능 
-DFS : 연결 그래프에서의 순회, 재귀(recursive)
+DFS : 기본 : Queue -> Stack 으로만 변경 가능 -> 방문순서 유지 X
+DFS : 연결 그래프에서의 순회, 재귀(recursive) -> 실제 방문할 때 출력 -> DFS 방문순서 유지
 */
 #include <bits/stdc++.h>
 using namespace std;
