@@ -26,24 +26,3 @@ void BFS(){
         }
     }
 }
-
-
-int main()
-{
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cin >> v >> e;
-    // Directed Graph
-    for (int i=0; i < e; i++){
-        int u, v;
-        cin >> u >> v;
-        adj[u].push_back(v);
-        //adj[v].push_back(u);
-    }
-    // BFS
-    BFS();
-    for(int i=0; i<10; i++){
-        cout << dist[i] << ' ';
-    }
-}
-
