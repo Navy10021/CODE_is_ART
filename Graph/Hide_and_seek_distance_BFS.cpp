@@ -10,7 +10,7 @@ const int MXN = 50005;
 vector<int> adj[MXN];
 int dist[MXN];
 int n, m;       // num of node, edge
-int mx;
+int mx;         // max distance from start node
 
 // DFS 
 void BFS_trav(int st){
