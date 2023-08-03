@@ -25,8 +25,8 @@ void inorder(int cur){
 
 void postorder(int cur){
     if (lc[cur] != 0) postorder(lc[cur]);
-    cout << cur << ' ';
     if (rc[cur] != 0) postorder(rc[cur]);
+    cout << cur << ' ';
 }
 
 
