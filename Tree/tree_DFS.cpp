@@ -23,13 +23,24 @@ void DFS(int root){
     }
 }
 
+
 // 재귀 DFS 
-void DFS_2(int cur){
+void DFS(int cur){
     cout << cur << ' ';
     for (int nxt : adj[cur]){
         if (p[cur] == nxt) continue;
         p[nxt] = cur;
         depth[nxt] = depth[cur] + 1;
-        DFS_2(nxt);
+        DFS(nxt);
+    }
+}
+
+
+// 단순 순회 재귀 DFS 
+void DFS(int cur, int par){
+    cout << cur << ' ';
+    for (int nxt : adj[cur]){
+        if (par == nxt) continue;
+        DFS(nxt, cur);
     }
 }
