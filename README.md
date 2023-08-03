@@ -1,2 +1,1 @@
-# Coding_study
-This is a GitHub space to study coding.
+### Private study space for advanced programming
