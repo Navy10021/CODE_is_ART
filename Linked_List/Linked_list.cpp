@@ -1,4 +1,5 @@
 #include <iostream>
+#include<stdc++.h>
 using namespace std;
 
 // Node Struct 구현 
@@ -26,6 +27,8 @@ public:
 		return head;
 	}
 	void display(node* head);
+	void getCount(node* head);
+	void Reverse(node* head);
 };
 
 
@@ -84,28 +87,52 @@ void LinkedList::display(node* head) {
 		cout << '\n';
 	}
 	else {
+		/*
 		cout << head->data << " ";
-		display(head->next);
+		display(head->next);*/
+		node* temp = head;
+		while (temp != NULL) {
+			cout << temp->data << " ";
+			temp = temp->next;
+		}
 	}
 	cout << "\n";
 }
+
+void LinkedList::getCount(node* head) {
+	int cnt = 0;
+	node* cur = head;
+	while (cur != NULL) {
+		cnt++;
+		cur = cur->next;
+	}
+	cout << "len of linked list : " << cnt << '\n';
+}
+
+void LinkedList::Reverse(node* head) {
+	node* curr = head;
+	node* prev = NULL;
+	node* temp = NULL;
+
+	while (curr != NULL) {
+		temp = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = temp;
+	}
+	head = prev;
+}
+
 
 void main() {
 	LinkedList LL;
 	LL.addNode(1);
 	LL.addNode(2);
 	LL.addNode(3);
+	LL.addNode(4);
 	LL.display(LL.getHead());
 
-	
-	LL.addFrontNode(-1);
-	LL.display(LL.getHead());
-
-	// 4번째에 0 삽입
-	LL.insertNode(LL.getHead()->next->next, 0);
-	LL.display(LL.getHead());
-
-	// 3번째값 제거 
-	LL.deleteNode(LL.getHead()->next);
+	// reverse 
+	LL.Reverse(LL.getHead());
 	LL.display(LL.getHead());
 }
