@@ -7,15 +7,6 @@ class LinkedList:
     def __init__(self):
         self.head = None
         
-    def reverse(self):
-        prev = None
-        curr = self.head 
-        while (curr is not None):
-            next = curr.next 
-            curr.next =prev 
-            prev = curr 
-            curr = next 
-        self.head = prev 
         
     def push(self, data):
         new_node = Node(data)
@@ -27,6 +18,16 @@ class LinkedList:
         while(temp):
             print(temp.data, end = " ")
             temp = temp.next
+
+    def reverse(self):
+        prev = None
+        curr = self.head 
+        while (curr is not None):
+            temp = curr.next 
+            curr.next =prev 
+            prev = curr 
+            curr = temp 
+        self.head = prev 
             
 LL = LinkedList()
 LL.push(1)
