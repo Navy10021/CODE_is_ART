@@ -10,7 +10,7 @@ public:
         return static_cast<float>(sideLength * sideLength);
     }
 
-    virtual void print() {
+    void print() {
         std::cout << "This is Shape. Area is " << area() << "\n";
     }
 
@@ -22,7 +22,7 @@ class Square : public Shape {
 public:
     Square(double _sideLength) : Shape(_sideLength) {}
 
-    void print() override {
+    void print() {
         std::cout << "This is Square. Area is " << area() << "\n";
     }
 };
@@ -35,7 +35,7 @@ public:
         return static_cast<float>((std::sqrt(3) / 4) * sideLength * sideLength);
     }
 
-    void print() override {
+    void print() {
         std::cout << "This is Equilateral Triangle. Area is " << area() << "\n";
     }
 };
@@ -49,8 +49,7 @@ int main() {
     
     Shape* s1 = &sq;
     Shape* s2 = &eq;
-
-    // print (This is Shape ...)
+    
     s1->print();
     s2->print();
 
