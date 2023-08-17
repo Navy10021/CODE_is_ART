@@ -49,7 +49,8 @@ int main() {
     
     Shape* s1 = &sq;
     Shape* s2 = &eq;
-    
+
+    // print (This is Shape ...)
     s1->print();
     s2->print();
 
