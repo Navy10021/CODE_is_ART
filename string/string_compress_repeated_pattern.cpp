@@ -6,7 +6,7 @@ std::string compressRepeatedPattern(const std::string &input) {
     std::string compressed;
 
     for (size_t patternLen = 1; patternLen <= len / 2; ++patternLen) {
-        std::string pattern = input.substr(0, patternLen);
+        std::string pattern = input.substr(0, patternLen);  // (인덱스 부터, 길이 만큼)
         size_t i = patternLen;
 
         while (i + patternLen <= len) {
