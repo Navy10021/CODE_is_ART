@@ -2,84 +2,106 @@
 Queue : 선입선출(FIFO) : enqueue(추가) / dequeue(제거) / front(제거없이 가져오기)
       : isEmpty(비어있는지 확인) / size(큐의 크기)
 */
-#include <iostream>
+#include<iostream>
 
-template <typename T>
+class Node {
+    public : 
+        int data;
+        Node* next;
+
+        Node(int value) : data(value), next(nullptr) {}
+};
+
+// Queue class : First In First Out
 class Queue{
     private:
-        struct Node{
-            T data;
-            Node* next;
-            Node(const T& value) : data(value), next(nullptr) {}
-        };
-        
-        Node* frontNode; // 머리노드
-        Node* rearNode;  // 꼬리노드
-        size_t queueSize;
+        Node* front;
+        Node* rear;
     
     public:
-        Queue() : frontNode(nullptr), rearNode(nullptr), queueSize(0) {}
+        Queue() : front(nullptr), rear(nullptr) {}
 
-        void enqueue(const T& item){
-            Node* newNode = new Node(item);
-            if (isEmpty()) {
-                frontNode = rearNode = newNode;
-            }
-            else {
-                rearNode->next = newNode;
-                rearNode = newNode;
-            }
-            queueSize++;
-        }
-
-        void dequeue(){
-            if (!isEmpty()){
-                Node* temp = frontNode;
-                frontNode = frontNode->next;
-                delete temp;
-                queueSize--;
+        void push(int value){
+            Node* newNode = new Node(value);
+            if (rear == nullptr){
+                front = rear = newNode;
             }
             else{
-                std::cout << "Queue is empty.";
-                exit(EXIT_FAILURE);
+                rear->next = newNode;
+                rear = newNode;
             }
         }
 
-        T front() const {
-        if (!isEmpty()) {
-            return frontNode->data;
-        } else {
-            std::cerr << "Queue is empty. Cannot get front element.\n";
-            exit(EXIT_FAILURE);
-        }
-    }
-        
-        bool isEmpty() const {
-            return queueSize == 0;
+        void pop(){
+            if(isempty()){
+                std::cout << "Queue is empty.";
+                return;
+            }
+            // else
+            Node* temp = front;
+            front = front->next;
+            delete temp;
+
+            if (front == nullptr){
+                rear = nullptr;
+            }
         }
 
-        size_t size() const{
-            return queueSize;
+        int Front(){
+            if (isempty()){
+                std::cout << "Queue is empty.";
+                return -1;
+            }
+            // else
+            return front->data;
         }
 
+        bool isempty(){
+            return front == nullptr;
+        }
+
+        int size(){
+            int cnt = 0;;
+            Node* curr = front;
+            while (curr != nullptr){
+                cnt++;
+                curr = curr->next;
+            }
+            return cnt;
+        }
+
+        void display(){
+            Node* curr = front;
+            while (curr != nullptr){
+                std::cout << curr->data << " ";
+                curr = curr->next;
+            }
+            std::cout << "\n";
+            
+        }
         ~Queue(){
-            while (!isEmpty()){
-                dequeue();
+            while (!isempty()){
+                pop();
             }
         }
 };
 
 int main(){
-    Queue<int> myQ;
-    myQ.enqueue(0);
-    myQ.enqueue(10);
-    myQ.enqueue(100);
+    Queue Q;
+    Q.push(0);
+    Q.push(10);
+    Q.push(20);
+    Q.push(30);
+    Q.push(40);
+    Q.push(50);
 
-    std::cout << myQ.front() << "\n";
-    std::cout << myQ.size() << "\n";
+    Q.display();
+    std::cout << "front element : " << Q.Front() << "\n";
+    std::cout << "Queue size : " << Q.size() << "\n";
 
-    while (!myQ.isEmpty()){
-        std::cout << "TOP : " << myQ.front() << "\n";
-        myQ.dequeue();
+    while (!Q.isempty()){
+        std::cout << Q.Front() << "\n";
+        Q.pop();
     }
 }
+
