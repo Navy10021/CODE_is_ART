@@ -1,6 +1,7 @@
 /*
 Heaps : Binary Tree 형태.
-Max heap : 부모노드 =< 자식노드. Root == 가장 작은값.
+Min heap : 부모노드 =< 자식노드. Root == 가장 작은값.
+Min heap == Priority Queue;
 */ 
 #include <iostream>
 #include <vector>
@@ -22,6 +23,17 @@ class MinHeap{
             }
         }
     }
+    /*
+    void heapifUp (int idx){
+        int parernt = (idx - 1) / 2;
+        while(idx > 0 && heap[parernt] > heap[idx]){
+            std::swap(heap[parernt], heap[idx]);
+            idx = parernt;
+            parernt = (idx - 1) / 2;
+        }
+    }
+    */
+   
     // element를 아래로 내려서 Min Heap 속성을 유지하는 함수
     void heapDown(int idx){
         int leftChildIdx = 2 * idx + 1;
