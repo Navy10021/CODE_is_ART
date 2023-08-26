@@ -1,30 +1,39 @@
 #include <stdio.h>
 #include <string.h>
 
-void reverseStr(char str[], int idx1, int idx2){
-    while (idx1 < idx2){
-        char temp = str[idx1];
-        str[idx1] = str[idx2];
-        str[idx2] = temp;
-        idx1++;
-        idx2--;
+void reverseStr(char str[]){
+    int length = strlen(str);
+
+    for (int i=0; i < length/2; i++){
+        char temp = str[i];
+        str[i] = str[length - i - 1];
+        str[length - i - 1] = temp;
     }
 }
 
+void reverseRecursion(char str[], int i, int j){
+    if (i >= j){
+        return; // base case : if start is greater than end -> out
+    }
+    // Swap characters at start and end idx
+    char temp = str[i];
+    str[i] = str[j];
+    str[j] = temp;
+
+    reverseRecursion(str, i+1, j-1);
+}
+
 int main(){
-   char input_str[] = "Hello, World!";
-   int idx_1 = 0;
-   int idx_2 = 5;
+    char input_str[] = "Lee yoon seop";
+    int length = strlen(input_str);
 
-   printf("Original string : %s\n", input_str);
+    printf("Original : %s\n", input_str);
 
-   if (idx_1 < 0 || idx_2 < 0 || idx_1 >= strlen(input_str) || idx_2 >= strlen(input_str)){
-    printf("Invalid \n");
-   }
-   else{
-    reverseStr(input_str, idx_1, idx_2);
-    printf("After reverse : %s\n", input_str);
-   }
+    reverseStr(input_str);
+    printf("Reverse : %s\n", input_str);
+
+    reverseRecursion(input_str, 0, length-1);
+    printf("Reverse again : %s\n", input_str);
 
     return 0;
 }
