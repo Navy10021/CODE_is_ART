@@ -7,7 +7,7 @@ using namespace std;
 bool palindrome(string str){
     int l = 0;
     int r = str.size()-1;
-    while (r > l){
+    while (l <= r){
         if (str[l++] != str[r--])
             return false;
     }
