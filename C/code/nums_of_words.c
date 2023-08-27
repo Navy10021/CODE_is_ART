@@ -1,27 +1,29 @@
 #include <stdio.h>
-#include <stdbool.h>  // Required for bool data type
+#include <stdbool.h>
 
-int main(){
-    char str[10000];
-    bool inWord = false; // flag to track if we're inside a word
-    int wordCnt = 0;
-
-    printf("Enter a string : ");
-    scanf("%[^\n]", str);   // Read the entire line
+int countWords(const char *str){
+    bool in_word = false;
+    int word_cnt = 0;
 
     for (int i=0; str[i] != '\0'; i++){
         if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'){
-            if (!inWord){
-                inWord = true;
-                wordCnt++;
+            if (!in_word){
+                in_word = true;
+                word_cnt++;
             }
         }
-        else {
-            inWord = false;
+        else{
+            in_word = false;
+            }
         }
-    }   
+        return word_cnt;
+}
 
-    printf("Number of words : %d \n", wordCnt);
+int main(){
+    char str[1000];
+    scanf("%[^\n]", str);
     
+    int words = countWords(str);
+    printf("Number of words : %d\n", words);
     return 0;
 }
