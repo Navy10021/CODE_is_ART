@@ -8,7 +8,7 @@ int main(){
    scanf("%s", nums);
 
    for (int i = 0; i < length; i++){
-    sum += nums[i] - '0';
+    sum += nums[i] - '0';   // char -> int
    }
    
    printf("%d\n", sum);
