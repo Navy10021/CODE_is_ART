@@ -28,4 +28,13 @@ printf("is empty? %d\n", st.empty());
 
 //스택에 저장되어 있는 원소의 수 출력
 printf("Stack size : %d\n", st.size()); return 0; 
+
+//스택 요소 출력
+while (!st.empty())
+{
+    cout << st.top() << " ";
+    st.pop();
+}
+
+
 }
