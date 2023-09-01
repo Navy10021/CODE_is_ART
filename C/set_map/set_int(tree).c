@@ -49,8 +49,14 @@ void inorderTraversal(Node* root) {
         return;
     }
     inorderTraversal(root->left);
-    printf("%d\n", root->data);
+    printf("%d ", root->data);
     inorderTraversal(root->right);
+}
+
+void printSet(Node *root) {
+    printf("{ ");
+    inorderTraversal(root);
+    printf("}\n");
 }
 
 typedef struct {
@@ -88,7 +94,7 @@ int main() {
     insertToTreeSet(&set, 2); // Duplicate
 
     printf("Set contents:\n");
-    inorderTraversal(set.root);
+    printSet(set.root);
 
     printf("Size of the set: %d\n", sizeOfTreeSet(&set));
 
