@@ -50,7 +50,7 @@ int main(){
         *(arr+i) = i;
     }
 
-    realloc(arr, sizeof(int) * len2);
+    realloc(arr, sizeof(int) * len2);    // arr = realloc(arr, sizeof(int) * len2);
     for (int i=len; i<len2; i++){
         arr[i] = i;
     }
