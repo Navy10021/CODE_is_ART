@@ -49,6 +49,15 @@ int find(HashTable *hashTable, const char *key) {
     return -1; // Key not found
 }
 
+void printHashTable(const HashTable *hashTable) {
+    printf("Hash Table Contents:\n");
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        if (hashTable->table[i].value != -1) {
+            printf("Index %d: Key = %s, Value = %d\n", i, hashTable->table[i].key, hashTable->table[i].value);
+        }
+    }
+}
+
 int main() {
     HashTable hashTable;
     initHashTable(&hashTable);
