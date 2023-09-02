@@ -3,7 +3,7 @@
 
 // Define a structure for a set (implemented as an array of integers)
 struct Set {
-    int* elements;
+    int* elements;    // int elements[size];
     int size;
 };
 
@@ -29,10 +29,10 @@ void insertIntoSet(struct Set* set, int element) {
         // Increase the size of the set
         set->size++;
         
-        // Reallocate memory for the set elements
+        // Reallocate memory for the set elements. realloc(Pointer, Size);
         set->elements = realloc(set->elements, sizeof(int) * set->size);
         
-        // Add the new element to the set
+        // Add the new element(array) to the set
         set->elements[set->size - 1] = element;
     }
 }
