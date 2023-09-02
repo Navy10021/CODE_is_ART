@@ -23,6 +23,10 @@ int main(){
     }
     cout << "\n";
 
+    for(auto &element : m){
+        cout << element.first << ":" << element.second << " ";
+    }
+
     // key와 연관된 원소를 pair로 리턴 
     printf("%d\n", m.find("a")->second);
     printf("%d\n", m["b"]);
