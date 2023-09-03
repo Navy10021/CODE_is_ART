@@ -216,15 +216,14 @@ bool isPalindrome(struct Node* head){
     return true;    // is palindrome.
 }
 
-void display_sublist(struct Node* head){
+void display_sublist(struct Node* head) {
     struct Node* curr = head;
-    while (curr != NULL){
+
+    while (curr != NULL) {
         struct Node* sublist = curr;
-        while(sublist != NULL){
+
+        while (sublist != NULL) {
             display(sublist);
-            if(isPalindrome(sublist)){
-                printf("This sublist is palindrome ! \n");
-            }
             sublist = sublist->next;
         }
         curr = curr->next;
@@ -255,9 +254,9 @@ int main(){
     //display(head);
 
     // reverse
-    reverse(&head);
-    printf("After reverse : ");
-    display(head);
+    //reverse(&head);
+    //printf("After reverse : ");
+    //display(head);
 
     // erase
     //erase(&head, 3);
@@ -269,7 +268,7 @@ int main(){
     //display(head);
 
     // sublist
-    /*
+
     struct Node* sublist = NULL;
     push_front(&sublist, 4);
     push_front(&sublist, 5);
@@ -281,14 +280,12 @@ int main(){
     else{
         printf("Not found.\n");
     }
-    */
+    // check is palindrome
+    if(isPalindrome(head)){
+        printf("is Palindrome\n");
+    }
 
-    // display all sublist
-    printf("\n");
-    printf("if sublist is palindrome or not\n");
     display_sublist(head);
-
-    // is palindrome
 
 }
 
