@@ -1,5 +1,5 @@
 /*
-1부터 N까지 자연수 중에서 M개를 고르는 것
+1부터 N까지 자연수 중에서 M개를 고르는 것(순서 없음.)
 */
 #include <stdio.h>
 #include <stdbool.h>
