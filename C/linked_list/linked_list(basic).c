@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Sturcture for a single node 
 struct Node{
@@ -145,6 +146,90 @@ void erase_duplicates(struct Node* head){
 }
 
 
+// Function to check if one linked list is a sublist of another
+bool isSublist(struct Node* mainList, struct Node* subList) {
+    if (subList == NULL) {
+        return true; // An empty list is always a sublist
+    }
+    if (mainList == NULL) {
+        return false; // Cannot be a sublist if the main list is empty
+    }
+
+    struct Node* mainCurrent = mainList;
+    struct Node* subCurrent = subList;
+
+    while (mainCurrent != NULL) {
+        if (mainCurrent->data == subCurrent->data) {
+            struct Node* mainTemp = mainCurrent;
+            struct Node* subTemp = subCurrent;
+
+            while (mainTemp != NULL && subTemp != NULL && mainTemp->data == subTemp->data) {
+                mainTemp = mainTemp->next;
+                subTemp = subTemp->next;
+            }
+
+            if (subTemp == NULL) {
+                return true; // Sublist found in the main list
+            }
+        }
+
+        mainCurrent = mainCurrent->next;
+    }
+
+    return false; // Sublist not found in the main list
+}
+
+bool isPalindrome(struct Node* head){
+    if (head == NULL){
+        return true;
+    }
+
+    // 1. 리스트의 중간을 찾는다.
+    struct Node* slow = head;
+    struct Node* fast = head;
+    while(fast != NULL && fast->next != NULL){
+        slow = slow->next;      // Node* slow = middle
+        fast = fast->next->next;
+    }
+    // 2. 뒤에 절반(second half)을 reverse
+    struct Node* prev = NULL;
+    struct Node* curr = slow;
+    struct Node* next_node;
+
+    while(curr != NULL){
+        next_node = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next_node;
+    }
+    // 3. 비교 : first half <-> reversed second half
+    struct Node* first_half = head;
+    struct Node* second_half = prev;
+
+    while(second_half != NULL){
+        if (first_half->data != second_half->data){
+            return false;
+        }
+        first_half = first_half->next;
+        second_half = second_half->next;
+    }
+    return true;    // is palindrome.
+}
+
+void display_sublist(struct Node* head){
+    struct Node* curr = head;
+    while (curr != NULL){
+        struct Node* sublist = curr;
+        while(sublist != NULL){
+            display(sublist);
+            if(isPalindrome(sublist)){
+                printf("This sublist is palindrome ! \n");
+            }
+            sublist = sublist->next;
+        }
+        curr = curr->next;
+    }
+}
 
 int main(){
     struct Node* head = NULL;   // creat head Node;
@@ -159,15 +244,15 @@ int main(){
     display(head);
     
     // Search (target)
-    printf("%d", search(head, 3));
-    printf("\n");
-    printf("%d", search(head, 7));
-    printf("\n");
+    //printf("%d", search(head, 3));
+    //printf("\n");
+    //printf("%d", search(head, 7));
+    //printf("\n");
     
     // Sorting
-    sorted(&head);
-    printf("After sorting : ");
-    display(head);
+    //sorted(&head);
+    //printf("After sorting : ");
+    //display(head);
 
     // reverse
     reverse(&head);
@@ -175,12 +260,35 @@ int main(){
     display(head);
 
     // erase
-    erase(&head, 3);
-    display(head);
+    //erase(&head, 3);
+    //display(head);
 
     // erase duplicate
-    erase_duplicates(head);
-    printf("After erase duplicates : ");
-    display(head);
+    //erase_duplicates(head);
+    //printf("After erase duplicates : ");
+    //display(head);
+
+    // sublist
+    /*
+    struct Node* sublist = NULL;
+    push_front(&sublist, 4);
+    push_front(&sublist, 5);
+    printf("Sublist : ");
+    display(sublist);
+    if (isSublist(head, sublist)){
+        printf("Sublist found.\n");
+    }
+    else{
+        printf("Not found.\n");
+    }
+    */
+
+    // display all sublist
+    printf("\n");
+    printf("if sublist is palindrome or not\n");
+    display_sublist(head);
+
+    // is palindrome
+
 }
 
