@@ -34,7 +34,7 @@ def DFS(G, st):
         if (nxt.color == "W"):
             nxt.parent = st
             DFS(G, nxt)
-    nxt.color = "B"
+    st.color = "B"
     time += 1 
     st.fin = time
     printG(G)
