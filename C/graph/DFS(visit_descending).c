@@ -121,6 +121,7 @@ int main() {
     reverseAdjLists(graph);
 
     /*
+    // 시작노드에서 연결된 노드만 순회
     int startNode;
     printf("Enter the starting node for DFS: ");
     scanf("%d", &startNode);
@@ -128,6 +129,8 @@ int main() {
     printf("Depth First Search starting from node %d:\n", startNode);
     DFS(graph, startNode);
     */
+
+    // 연결되지 않은 노드까지 순회
     for (int start=1; start <= vertices; start++){
         if (!graph->visited[start]){
             DFS(graph, start);
