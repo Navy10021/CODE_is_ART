@@ -65,7 +65,7 @@ void BFS(struct Graph* graph, int startVertex) {
     while (front < rear) {
         // Dequeue a vertex from the queue and print it
         int vertex = queue[front++];
-        printf("%d(%d) -> ", vertex, dist[vertex]);
+        printf("%d(%d) -> ", vertex, dist[vertex]);    // 방문노드(거리) 표시
         
         // Get all adjacent vertices of the dequeued vertex
         struct Node* currentNode = graph->adjList[vertex];
