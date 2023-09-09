@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void reverse(char str[]) {
+void reverse(char str[]) {    // string 은 배열이다. char str[] == char* str
     int length = strlen(str);
     int start = 0;
     int end = length - 1;
