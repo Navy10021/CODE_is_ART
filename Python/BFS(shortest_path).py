@@ -11,7 +11,7 @@ from collections import deque
 def find_shortest_path(G, start, end):
     # BFS 활용 
     start.color = "G"   # 방문표시 
-    start.distance = 0  # Root vertex
+    start.dist = 0  # Root vertex
     Q = deque()  
     Q.append((start, [start.id])) # (Vertex, Path list)
     
@@ -19,6 +19,7 @@ def find_shortest_path(G, start, end):
         curr, path = Q.popleft()
         for nei in G[curr]:
             if nei.color == "W":
+                nei.dist = curr.dist + 1
                 if nei == end:
                     return path + [nei.id]
                 else:
