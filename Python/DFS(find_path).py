@@ -7,13 +7,13 @@ class GNode:
         return self.id
 
 def find_path(graph, start, target):
-    def DFS(curr, path):
+    def DFS(curr, path):  # path 는 curr vertex를 담는 리스트
         if curr == target:
             return path + [curr.id]
         
         if curr.color == "W":
             curr.color = "G"
-            for nei in graph.get(curr, []):
+            for nei in graph.get(curr, []):  # curr 없으면 빈 리스트 반환
                 new_path = DFS(nei, path + [curr.id])
                 if new_path:
                     return new_path
