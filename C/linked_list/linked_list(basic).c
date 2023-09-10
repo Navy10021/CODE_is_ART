@@ -10,7 +10,7 @@ struct Node{
 
 struct Node* createNode(int data){
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode==NULL){
+    if (newNode == NULL){
         printf("Memory allocation failed.\n");
         exit(1);
     }
@@ -102,6 +102,35 @@ void reverse(struct Node** head){
         curr = next_node;
     }
     *head = prev;
+}
+
+void rotate(struct Node** head, int k){
+    if (k <= 0 || *head == NULL)
+        return;
+    
+    // 1.Traverse find length 
+    struct Node* curr;
+    int length = 1;
+    curr = *head;
+    while (curr->next != NULL){
+        curr = curr->next;
+        length++;
+    }
+
+    // 2. Make the list circular
+    curr->next = *head;
+
+    // 3. Find the new head after rotation
+    int new_head_position = length - (k % length) -1;
+
+    // 4. Traverse to the new head position
+    curr = *head;
+    for (int i = 0; i < new_head_position; i++){
+        curr = curr->next;
+    }
+    // 5. Update new head and break the circular link
+    *head = curr->next;
+    curr->next = NULL;
 }
 
 void erase(struct Node** head, int target){
@@ -241,6 +270,10 @@ int main(){
     }
     printf("Original list : ");
     display(head);
+
+    printf("After Rotate : ");
+    rotate(&head, 3);
+    display(head);
     
     // Search (target)
     //printf("%d", search(head, 3));
@@ -266,9 +299,8 @@ int main(){
     //erase_duplicates(head);
     //printf("After erase duplicates : ");
     //display(head);
-
+    /*
     // sublist
-
     struct Node* sublist = NULL;
     push_front(&sublist, 4);
     push_front(&sublist, 5);
@@ -286,6 +318,5 @@ int main(){
     }
 
     display_sublist(head);
-
+    */
 }
-
