@@ -173,7 +173,29 @@ void erase_duplicates(struct Node* head){
         curr = curr->next;
     }    
 }
+// merge two sorted linked lists
+struct Node* mergeLists(struct Node* list1, struct Node* list2) {
+    struct Node* dummy = createNode(0);
+    struct Node* merged = dummy;
 
+    while (list1 != NULL && list2 != NULL) {
+        if (list1->data < list2->data) {
+            merged->next = list1;
+            list1 = list1->next;
+        } else {
+            merged->next = list2;
+            list2 = list2->next;
+        }
+        merged = merged->next;
+    }
+
+    if (list1 != NULL)
+        merged->next = list1;
+    else
+        merged->next = list2;
+
+    return dummy->next;
+}
 
 // Function to check if one linked list is a sublist of another
 bool isSublist(struct Node* mainList, struct Node* subList) {
@@ -261,20 +283,29 @@ void display_sublist(struct Node* head) {
 
 int main(){
     struct Node* head = NULL;   // creat head Node;
+    struct Node* head2 = NULL;
     // Enter the elements(array)
-    int N, num;
-    scanf("%d", &N);
+    int arr [] = {1, 3, 5, 7, 9};
+    int arr2 [] = {0, 2, 4, 8, 10}; 
+    int N = 5;
     for (int i=0; i<N; i++){
-        scanf("%d", &num);
-        push_back(&head, num);
+        push_back(&head, arr[i]);
+        push_back(&head2, arr2[i]);
     }
     printf("Original list : ");
     display(head);
+    display(head2);
 
-    printf("After Rotate : ");
-    rotate(&head, 3);
-    display(head);
+    struct Node* mergedList = mergeLists(head, head2);
+    display(mergedList);
+
+
+    //printf("After Rotate : ");
+    //rotate(&head, 3);
+    //display(head);
     
+
+
     // Search (target)
     //printf("%d", search(head, 3));
     //printf("\n");
