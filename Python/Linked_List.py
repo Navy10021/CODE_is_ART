@@ -142,6 +142,31 @@ class LinkedList:
 
         return True
 
+    def find_all_sublists(self):
+        sublists = []
+        current = self.head
+
+        while current:
+            sublist_start = current
+            while sublist_start:
+                sublist_end = current
+                sublist = LinkedList()
+                while sublist_end and sublist_start != sublist_end.next:
+                    sublist.append(sublist_end.data)
+                    sublist_end = sublist_end.next
+                sublists.append(sublist)
+                sublist_start = sublist_start.next
+            current = current.next
+
+        return sublists
+    
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
     def __str__(self):
         elements = []
         current = self.head
@@ -159,8 +184,8 @@ if __name__ == "__main__":
     linked_list.append(2)
     linked_list.append(1)
 
-    print("Original Linked List:")
-    print(linked_list)
+    sublists = linked_list.find_all_sublists()
 
-    print("Is Palindrome:", linked_list.is_palindrome())
+    for sublist in sublists:
+       print(sublist)
 
