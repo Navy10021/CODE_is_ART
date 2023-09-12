@@ -154,6 +154,8 @@ class LinkedList:
                 while sublist_end and sublist_start != sublist_end.next:
                     sublist.append(sublist_end.data)
                     sublist_end = sublist_end.next
+                #if sublist.isPalindrome():
+                    #sublists.append(sublist)
                 sublists.append(sublist)
                 sublist_start = sublist_start.next
             current = current.next
