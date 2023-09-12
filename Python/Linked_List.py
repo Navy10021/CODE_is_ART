@@ -190,4 +190,16 @@ if __name__ == "__main__":
 
     for sublist in sublists:
        print(sublist)
+    
+    maxFlag = 0
+    for sublist in sublists:
+        elements = []
+        curr = sublist.head
+        while curr:
+            elements.append(str(curr.data))
+            curr = curr.next 
+        if maxFlag < len(elements):
+            maxFlag = len(elements)
+            maxList = elements 
+    print(maxList)
 
