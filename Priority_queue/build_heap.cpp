@@ -8,7 +8,7 @@ Heap : 이진트리(Binary Tree) 자료구조 -> 부모노드 < 자식노드(2�
 using namespace std;
 
 int heap[100005];   // Heap 배열 : idx 의 부모 = idx / 2 && 부모의 left = 2*idx && 부모의 right = 2*idx + 100005
-int sz = 0;         // heap에 들어있는 원소의 수 
+int sz = 0;         // heap에 들어있는 원소의 수(인덱스 개념)
 
 void push(int x){   // push 함수
     heap[++sz] = x; // idx 1 == root  
