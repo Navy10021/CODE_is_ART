@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 1.palindrome function : can make palindrome or not
+// 1.palindrome function : can make palindrome or not : 주어진 알파벳으로 팰린드롬을 만들 수 있는지 여부 확인
 bool is_palin(string str, int* freq){
     // Initializing frequency array with all zeros
-    memset(freq, 0, 26*sizeof(int));
+    memset(freq, 0, 26*sizeof(int));    // freq memory setting (int* freq, setting memory, size)
     int L = str.length();
     
     // update frequency according to given string
