@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 int main(){
+    int N;
+    //scanf("%d", &N);
+    //int * arr = (int*)calloc(N+1, sizeof(int));
+    //int * prefix = (int*)calloc(N+1, sizeof(int));
     int arr[5] = {3, 5, 7, 1, 4};
     int psum[5];
 
