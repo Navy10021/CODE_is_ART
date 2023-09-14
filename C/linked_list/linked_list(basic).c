@@ -141,14 +141,15 @@ void erase(struct Node** head, int target){
         prev = curr;
         curr = curr->next;
     }
-
+	// 타겟이 없는 경우
     if (curr == NULL){
         return;     // target is not in Linked list
     }
-
+	// 타겟이 헤드인 경우
     if (prev == NULL){
         *head = curr->next;
     }
+    // 타겟 발견
     else{
         prev->next = curr->next;
     }
@@ -161,7 +162,7 @@ void erase_duplicates(struct Node* head){
     while(curr != NULL){
         runner = curr;
         while (runner->next != NULL){
-            if(curr->data == runner->next->data){
+            if(curr->data == runner->next->data){ // 조건을 만족하면 삭제
                 struct Node* duplicate = runner->next;
                 runner->next = runner->next->next;
                 free(duplicate);
