@@ -36,7 +36,7 @@ def DFS(G, st, stack):
     st.color = "B"
     time += 1 
     st.fin = time
-    stack.append(st)
+    stack.insert(0, st.id)
 
 def topological_sort(G):
     stack = []
@@ -50,11 +50,9 @@ x, y, z = GNode("x"), GNode("y"), GNode("z")
 # Directed adj
 G = dict()
 G[u] = [v, x]   # u -> v, x 
-G[v] = [y]
-G[w] = [y, z]
-G[x] = [v]
-G[y] = [x]
-G[z] = [z]
+G[v] = [w, y]
+G[w] = [z]
+G[z] =[]
 
 result = topological_sort(G)
-print("Topological Sort:", [node.id for node in result])
+print("Topological Sort:", [node for node in result])
