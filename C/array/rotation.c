@@ -1,44 +1,39 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void rotateArray(int arr[], int length, int positions) {
-    positions %= length; // Adjust positions to handle overflows
-
-    int temp[positions];
-
-    // Store the last 'positions' elements in temp
-    for (int i = length - positions, j = 0; i < length; i++, j++) {
-        temp[j] = arr[i];
+// Function to rotate an array to the left by 'd' positions
+void leftRotate(int arr[], int n, int d) {
+    //int temp[d];
+    int *temp = (int*)calloc(d, sizeof(int));
+    // 0 ~ position까지 array를 temp에 복사
+    for (int i = 0; i < d; i++) {
+        temp[i] = arr[i];
     }
-
-    // Shift the remaining elements to the right
-    for (int i = length - positions - 1; i >= 0; i--) {
-        arr[i + positions] = arr[i];
+    // position 이후의 값을 저장
+    for (int i = d; i < n; i++) {
+        arr[i - d] = arr[i];
     }
-
-    // Copy back the elements from temp to the beginning of the array
-    for (int i = 0; i < positions; i++) {
-        arr[i] = temp[i];
+    // temp 값을 추가
+    for (int i = 0; i < d; i++) {
+        arr[n - d + i] = temp[i];
     }
 }
 
 int main() {
-    int input[] = {3, 9, 2, 8, 5};
-    int length = sizeof(input) / sizeof(input[0]);
-    int positions = 2;
-
-    printf("Original array: ");
-    for (int i = 0; i < length; i++) {
-        printf("%d ", input[i]);
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int d = 2; // Number of positions to rotate left
+    printf("Original Array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
     }
-    printf("\n");
 
-    rotateArray(input, length, positions);
+    leftRotate(arr, n, d);
 
-    printf("Array after rotating %d positions to the right: ", positions);
-    for (int i = 0; i < length; i++) {
-        printf("%d ", input[i]);
+    printf("\nArray after left rotation by %d positions: ", d);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
     }
-    printf("\n");
 
     return 0;
 }
