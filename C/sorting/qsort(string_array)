@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h> // Include the string.h header for working with strings
+
+// Comparison function for qsort() to sort strings in alphabetical order(알파벳 순 정렬)
+int compareAlphabetical(const void *a, const void *b) {
+    return strcmp(*(const char **)a, *(const char **)b);
+}
+
+int main() {
+    //const char *arr[] = {"apple", "banana", "cherry", "date", "grape", "fig"};
+    char *arr[] = {"C", "A", "B", "D", "E"};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%s ", arr[i]);
+    }
+
+    // Sort the array of strings using qsort()
+    qsort(arr, n, sizeof(const char *), compareAlphabetical);
+
+    printf("\nSorted array in alphabetical order: ");
+    for (int i = 0; i < n; i++) {
+        printf("%s ", arr[i]);
+    }
+
+    return 0;
+}
