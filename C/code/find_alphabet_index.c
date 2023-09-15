@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-
+/*
+알파벳 배열에 string의 인덱스를 저장하는 알고리즘
+*/
 int main(){
    char str[100];
    int alphabet[26];
