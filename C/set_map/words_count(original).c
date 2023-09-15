@@ -19,7 +19,7 @@ int main() {
         char word[100];
         scanf("%s", word);
         
-        // struct에 해당단어가 있는지 여부 확인
+        // struct에 해당 단어가 있는지 여부 확인
         int found = 0;
         // 1. 해당 단어가 wordArr 존재하는지 확인 및 빈도 업데이트
         for (int i=0; i<wordCount; i++){
@@ -29,7 +29,7 @@ int main() {
                 break;
             }
         }
-        // 2. 없으면, wordArr에 추가 및 단어개수++(Array Size)
+        // 2. 없으면, wordArr에 추가(복사) 및 단어개수++(Array Size)
         if (!found){
             strcpy(wordArr[wordCount].word, word);
             wordArr[wordCount].frequency = 1;
