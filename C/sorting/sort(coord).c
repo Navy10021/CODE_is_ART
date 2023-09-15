@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+x를 기준으로 정렬, x가 같은경우 y를 기준으로 정렬
+*/
 typedef struct{
     int x;
     int y;
