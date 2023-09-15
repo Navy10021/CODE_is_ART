@@ -85,18 +85,16 @@ void destroyQueue(struct Queue* queue) {
 
 int main() {
     struct Queue* Q = createQueue();
-    enqueue(Q, 10);
-    enqueue(Q, 20);
-    enqueue(Q, 30);
-    enqueue(Q, 40);
-    enqueue(Q, 50);
+    int arr[] = {10, 20, 30, 40, 50};
+    int size = sizeof(arr) / sizeof(int);
+
+    for (int i = 0; i < size; i++){
+        enqueue(Q, arr[i]);
+    }
+    printf("Original array : ");
     display(Q);
-    /*
-    printf("Front element: %d\n", front(Q));
-    printf("Dequeue! \n");
-    dequeue(Q);
-    display(Q);
-    */
+    printf("\n");
+
     printf("Left Rotation 3 : ");
     int N = 3;
     int num;
@@ -106,15 +104,6 @@ int main() {
         enqueue(Q, num);
     }
     display(Q);
-
-    /*
-    while(!isEmpty(Q)){
-        printf("Front %d \n", front(Q));
-        printf("Dequeue! \n");
-        dequeue(Q);
-    }
-    */
-    //destroyQueue(Q);
 
     return 0;
 }
