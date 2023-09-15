@@ -1,3 +1,6 @@
+/*
+A set과 B set에 서로 포함되지 않은 원소들(different elements) 출력
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
