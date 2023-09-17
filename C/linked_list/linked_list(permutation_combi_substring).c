@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Node struct 정의
 struct Node{
@@ -28,11 +29,35 @@ void append(struct Node** headRef, int data){
 
 // Print Linked List 함수 
 void printList(struct Node* head){
+    printf("[ ");
     while(head != NULL){
-        printf("%d -> ", head->data);
+        printf("%d ", head->data);
         head = head->next;
     }
-    printf("NULL\n");
+    printf("]\n");
+}
+
+// Function to check if a linked list contains a specific value
+bool is_contain(struct Node* head, int target) {
+    struct Node* current = head;
+    while (current) {
+        if (current->data == target) {
+            return true; // Value found in the linked list
+        }
+        current = current->next;
+    }
+    return false; // Value not found in the linked list
+}
+
+bool is_continous(struct Node* head){
+    struct Node* curr = head;
+    while (curr->next != NULL){
+        if(curr->data == curr->next->data + 1 || curr->data + 1 == curr->next->data)
+            return true;
+        
+        curr = curr->next;
+    }
+    return false;
 }
 
 // Swap Node 함수
@@ -44,7 +69,8 @@ void swapNodes(struct Node* a, struct Node* b){
 
 // Permutation 생성 함수
 void genPermutation(struct Node* head, struct Node* curr){
-    if (curr == NULL){ // 끝까지 도달(Linked list size)했으면 출력
+    //if (curr == NULL && is_continous(head)==false){ // 끝까지 도달(Linked list size)했으면 출력
+    if (curr == NULL){
         printList(head);
         return;
     }
@@ -145,9 +171,6 @@ int main(){
     struct Node* head = NULL;
     append(&head, 1);
     append(&head, 2);
-    append(&head, 3);
-    //append(&head, 3);
-    append(&head, 4);
     append(&head, 5);
     printf("=== Original List ===\n");
     printList(head);
@@ -158,6 +181,8 @@ int main(){
     printf("=== Permutation with Repetition ===\n");
     genPermutationRep(head, head);
 
+
+/*
     printf("=== Combination ===\n");
     int comboSize = 2;
     struct Node* combo[comboSize];
@@ -168,6 +193,6 @@ int main(){
     int en_idx = 3;  // End index (inclusive)
     struct Node* subList = genSub(head, st_idx, en_idx);
     printList(subList);
-
+*/
     return 0;
 }
