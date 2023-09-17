@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 
 using namespace std;
 
@@ -33,8 +34,8 @@ public:
     }
 
     // Function to perform a level-order traversal of the BST
-    void levelOrderTraversal() {
-        levelOrderTraversalQueue(root);
+    vector<vector<int>> levelOrderTraversal() {
+        return levelOrderTraversalQueue(root);
     }
 
 private:
@@ -78,23 +79,34 @@ private:
     }
 
     // Function for level-order traversal using a queue
-    void levelOrderTraversalQueue(TreeNode* root) {
+    vector<vector<int>> levelOrderTraversalQueue(TreeNode* root) {
+        vector<vector<int>> result;
         if (root == nullptr)
-            return;
+            return result;
 
         queue<TreeNode*> q;
         q.push(root);
 
         while (!q.empty()) {
-            TreeNode* current = q.front();
-            cout << current->data << " ";
-            q.pop();
+            int levelSize = q.size();
+            vector<int> levelValues;
 
-            if (current->left)
-                q.push(current->left);
-            if (current->right)
-                q.push(current->right);
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode* current = q.front();
+                q.pop();
+
+                levelValues.push_back(current->data);
+
+                if (current->left)
+                    q.push(current->left);
+                if (current->right)
+                    q.push(current->right);
+            }
+
+            result.push_back(levelValues);
         }
+
+        return result;
     }
 };
 
@@ -115,10 +127,21 @@ int main() {
     bst.inOrderTraversal();
     cout << endl;
 
-    // Perform level-order traversal to print the values level by level
-    cout << "Level-order traversal: ";
-    bst.levelOrderTraversal();
-    cout << endl;
+    // Perform level-order traversal and print the result
+    vector<vector<int>> levelOrderResult = bst.levelOrderTraversal();
+    cout << "Level-order traversal: [";
+    for (size_t i = 0; i < levelOrderResult.size(); i++) {
+        cout << "[";
+        for (size_t j = 0; j < levelOrderResult[i].size(); j++) {
+            cout << levelOrderResult[i][j];
+            if (j < levelOrderResult[i].size() - 1)
+                cout << ", ";
+        }
+        cout << "]";
+        if (i < levelOrderResult.size() - 1)
+            cout << ", ";
+    }
+    cout << "]" << endl;
 
     // Search for values in the BST
     int searchValue = 40;
