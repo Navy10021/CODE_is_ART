@@ -56,10 +56,16 @@ public:
             vector<string> path = Q.front().second;
             Q.pop();
 
+            // Collect adjacent vertices and sort them alphabetically
+            vector<Vertex*> sortedAdjacency = curr->GetAdjList();
+            sort(sortedAdjacency.begin(), sortedAdjacency.end(), [](Vertex* a, Vertex* b) {
+                return a->GetName() < b->GetName();
+            });
+
             if (curr == end) {
                 return path; // Return the shortest path
             }
-
+            //for (Vertex* nei : sortedAdjacency) {
             for (Vertex* nei : curr->GetAdjList()) {
                 if (!visited[nei]) {
                     visited[nei] = true;
