@@ -7,97 +7,90 @@
 
 using namespace std;
 
-class Vertex{
-    private:
-        string name_;
-        vector<Vertex*> adjList_;
+class Vertex {
+private:
+    string name_;
+    vector<Vertex*> adjList_;
 
-    public:
-        Vertex(string name) { name_ = name; }   // Constructor
-        string GetName() { return name_; }
-        
-        void addToadjList(Vertex* vertex){
-            adjList_.push_back(vertex);
-        }  
-        vector<Vertex*> GetAdjList() { return adjList_; }
+public:
+    Vertex(string name) { name_ = name; }
+    string GetName() { return name_; }
 
-};
-
-class Graph{
-    private:
-        vector<Vertex*> vertices_;
-    
-    public:
-        Graph() {}  // Constructor
-        ~Graph(){   // Destructor
-            for (auto vertex : vertices_)
-                delete vertex;
-            vertices_.clear();
-        }
-        // Vertex 생성
-        Vertex* GenVertex(string name){
-            Vertex* vertex = new Vertex(name);
-            vertices_.push_back(vertex);
-            return vertex;
-        } 
-        // Vertex 연결 : s -> e
-        void GenEdge(Vertex* start, Vertex* end){
-            start->addToadjList(end);
-        }
-        // vetetices 결과 저장값 
-        vector<Vertex*> GetVertices() { return vertices_; }
-        
-        // Print Graph
-        void PrintGraph(){
-            for (auto vertex : vertices_){
-                cout << "Vertex " << vertex->GetName() << " || Adj List : ";
-                
-                bool is_first = true;
-                for (auto nei : vertex->GetAdjList()){
-                    if (is_first == false){
-                        cout << ", ";
-                    }
-                    cout << "Vertex " << nei->GetName();
-                    is_first = false;
-                }
-                cout << "\n";
-            }
-        }
-};
-
-// 시작 Vertex
-void BFS(Vertex* start) {
-    Vertex* vertex;
-    queue<Vertex*> q;
-    map<Vertex*, bool> visited;   // 방문표시
-  
-    // 1. mark root node as visited
-    visited[start] = true;
-    // 2. push (root node, distance 0) pair to the queue
-	q.push(start);
-
-	// 3. loop utill the queue is empty
-	while (q.empty() == false) {
-        int levelSize = q.size();
-        for (int i = 0; i < levelSize; i++){
-            vertex = q.front();
-            q.pop();
-            cout << vertex->GetName() << " ";
-            for (auto adjacent : vertex->GetAdjList()) {
-            // when adjacent vertex is not yet visited
-                if (visited[adjacent] == false) {
-                    visited[adjacent] = true;
-                    q.push(adjacent);
-                }
-            }
-	    }
-        cout << "\n";
+    void addToadjList(Vertex* vertex) {
+        adjList_.push_back(vertex);
     }
-}
+    vector<Vertex*> GetAdjList() { return adjList_; }
+};
 
-int main(){
+class Graph {
+private:
+    vector<Vertex*> vertices_;
+
+public:
+    Graph() {}
+    ~Graph() {
+        for (auto vertex : vertices_)
+            delete vertex;
+        vertices_.clear();
+    }
+    Vertex* GenVertex(string name) {
+        Vertex* vertex = new Vertex(name);
+        vertices_.push_back(vertex);
+        return vertex;
+    }
+    void GenEdge(Vertex* start, Vertex* end) {
+        start->addToadjList(end);
+    }
+    vector<Vertex*> GetVertices() { return vertices_; }
+
+    // Perform BFS and print the result in the specified format
+    void BFS(Vertex* start) {
+        queue<Vertex*> q;
+        map<Vertex*, bool> visited;
+        vector<vector<string>> result;  // <level : levelNode>
+
+        visited[start] = true;
+        q.push(start);
+
+        while (!q.empty()) {
+            int levelSize = q.size();
+            vector<string> levelNodes;
+
+            for (int i = 0; i < levelSize; i++) {
+                Vertex* vertex = q.front();
+                q.pop();
+                levelNodes.push_back(vertex->GetName());    // 같은 레벨 노드를 저장
+
+                for (auto adjacent : vertex->GetAdjList()) {
+                    if (visited[adjacent] == false) {
+                        visited[adjacent] = true;
+                        q.push(adjacent);
+                    }
+                }
+            }
+
+            result.push_back(levelNodes);       // 레벨 순으로 push_back
+        }
+
+        // Print the result in the specified format
+        cout << "[";
+        for (const auto& level : result) {
+            if (level != result.front()) cout << ", ";
+            cout << "[";
+            for (const string& node : level) {
+                if (node != level.front()) cout << ", ";
+                cout << node;
+            }
+            cout << "]";
+        }
+        cout << "]" << endl;
+    }
+};
+
+int main() {
     Graph graph;
-    // generate vertices
+
+    // Generate vertices
     Vertex* vertex_r = graph.GenVertex("r");
     Vertex* vertex_s = graph.GenVertex("s");
     Vertex* vertex_t = graph.GenVertex("t");
@@ -107,22 +100,32 @@ int main(){
     Vertex* vertex_x = graph.GenVertex("x");
     Vertex* vertex_y = graph.GenVertex("y");
 
-    // generate edges(Undirected Graph)
-    graph.GenEdge(vertex_r, vertex_s); graph.GenEdge(vertex_s, vertex_r);
-    graph.GenEdge(vertex_r, vertex_v); graph.GenEdge(vertex_v, vertex_r);
-    graph.GenEdge(vertex_s, vertex_w); graph.GenEdge(vertex_w, vertex_s);
-    graph.GenEdge(vertex_t, vertex_w); graph.GenEdge(vertex_w, vertex_t);
-    graph.GenEdge(vertex_t, vertex_x); graph.GenEdge(vertex_x, vertex_t);
-    graph.GenEdge(vertex_t, vertex_u); graph.GenEdge(vertex_u, vertex_t);
-    graph.GenEdge(vertex_u, vertex_x); graph.GenEdge(vertex_x, vertex_u);
-    graph.GenEdge(vertex_u, vertex_y); graph.GenEdge(vertex_y, vertex_u);
-    graph.GenEdge(vertex_w, vertex_x); graph.GenEdge(vertex_x, vertex_w);
-    graph.GenEdge(vertex_x, vertex_y); graph.GenEdge(vertex_y, vertex_x);
+    // Generate edges (Undirected Graph)
+    graph.GenEdge(vertex_r, vertex_s);
+    graph.GenEdge(vertex_s, vertex_r);
+    graph.GenEdge(vertex_r, vertex_v);
+    graph.GenEdge(vertex_v, vertex_r);
+    graph.GenEdge(vertex_s, vertex_w);
+    graph.GenEdge(vertex_w, vertex_s);
+    graph.GenEdge(vertex_t, vertex_w);
+    graph.GenEdge(vertex_w, vertex_t);
+    graph.GenEdge(vertex_t, vertex_x);
+    graph.GenEdge(vertex_x, vertex_t);
+    graph.GenEdge(vertex_t, vertex_u);
+    graph.GenEdge(vertex_u, vertex_t);
+    graph.GenEdge(vertex_u, vertex_x);
+    graph.GenEdge(vertex_x, vertex_u);
+    graph.GenEdge(vertex_u, vertex_y);
+    graph.GenEdge(vertex_y, vertex_u);
+    graph.GenEdge(vertex_w, vertex_x);
+    graph.GenEdge(vertex_x, vertex_w);
+    graph.GenEdge(vertex_x, vertex_y);
+    graph.GenEdge(vertex_y, vertex_x);
 
-  
-    
     Vertex* start = vertex_s;
-    // BFS level order
-    BFS(start);
 
+    // BFS level order and print in the specified format
+    graph.BFS(start);
+
+    return 0;
 }
