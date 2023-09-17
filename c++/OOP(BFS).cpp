@@ -103,6 +103,12 @@ void BFS(Vertex* start, map<Vertex*, unsigned int> &distance) {
         cout << vertex->GetName() << " -> ";
         curr = q.front().second;
         q.pop();
+		
+        // Collect adjacent vertices and sort them alphabetically
+        vector<Vertex*> sortedAdjacency = vertex->GetAdjacencyList();
+        sort(sortedAdjacency.begin(), sortedAdjacency.end(), [](Vertex* a, Vertex* b) {
+            return a->GetName() < b->GetName();
+        });
 
         for (auto adjacent : vertex->GetAdjacencyList()) {
         // when adjacent vertex is not yet visited
