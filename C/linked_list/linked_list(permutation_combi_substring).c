@@ -69,8 +69,8 @@ void swapNodes(struct Node* a, struct Node* b){
 
 // Permutation 생성 함수
 void genPermutation(struct Node* head, struct Node* curr){
-    //if (curr == NULL && is_continous(head)==false){ // 끝까지 도달(Linked list size)했으면 출력
-    if (curr == NULL){
+    if (curr == NULL && is_continous(head)==false){ // 끝까지 도달(Linked list size)했으면 출력
+    //if (curr == NULL){
         printList(head);
         return;
     }
@@ -176,10 +176,10 @@ int main(){
     printList(head);
 
     printf("=== Permutation ===\n");
-    genPermutation(head, head);
-
-    printf("=== Permutation with Repetition ===\n");
     genPermutationRep(head, head);
+
+    printf("=== Permutation except consecutive number ===\n");
+    genPermutation(head, head);
 
 
 /*
