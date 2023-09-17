@@ -18,9 +18,17 @@ def append(head, data):
 def print_list(head):
     current = head
     while current:
-        print(current.data, end=" -> ")
+        print(current.data, end=" ")
         current = current.next
-    print("None")
+    print("")
+
+def display(head):
+    current = head
+    result = []
+    while current:
+        result.append(current.data)
+        current = current.next
+    return result
 
 # Swap Node function
 def swap_nodes(a, b):
@@ -52,18 +60,24 @@ def generate_combination(head, combo_size, index, combo, combo_idx):
     generate_combination(head.next, combo_size, index, combo, combo_idx)
 
 # Permutation with Repetition function
-def generate_permutation_rep(head, curr):
-    if curr is None:
-        print_list(head)
-        return
-    iter_node = curr
-    while iter_node:
-        swap_nodes(curr, iter_node)
-        generate_permutation_rep(head, curr.next)
-        swap_nodes(curr, iter_node)
-        iter_node = iter_node.next
-        while iter_node and iter_node.data == curr.data:
+def permutation_no_duplication(head):
+    res = set()
+
+    def generate_permutation_rep(curr):
+        nonlocal res
+        if curr is None:
+            res.add(tuple(display(head)))
+            return
+        iter_node = curr
+        while iter_node:
+            swap_nodes(curr, iter_node)
+            generate_permutation_rep(curr.next)
+            swap_nodes(curr, iter_node)
             iter_node = iter_node.next
+
+    generate_permutation_rep(head)
+    for perm in res:
+        print(perm)
 
 # Loop check function
 def has_loop(head):
@@ -97,9 +111,8 @@ if __name__ == "__main__":
     head = None
     head = append(head, 1)
     head = append(head, 2)
-    head = append(head, 3)
-    head = append(head, 4)
-    head = append(head, 5)
+    head = append(head, 2)
+
     
     print("=== Original List ===")
     print_list(head)
@@ -108,15 +121,15 @@ if __name__ == "__main__":
     generate_permutation(head, head)
 
     print("=== Permutation with Repetition ===")
-    generate_permutation_rep(head, head)
+    permutation_no_duplication(head)
 
-    print("=== Combination ===")
-    combo_size = 2
-    combo = [None] * combo_size
-    generate_combination(head, combo_size, 0, combo, 0)
+    #print("=== Combination ===")
+    #combo_size = 2
+    #combo = [None] * combo_size
+    #generate_combination(head, combo_size, 0, combo, 0)
 
-    print("=== Subset ===")
-    st_idx = 1  # Start index (inclusive)
-    en_idx = 3  # End index (inclusive)
-    sub_list = generate_sub_list(head, st_idx, en_idx)
-    print_list(sub_list)
+    #print("=== Subset ===")
+    #st_idx = 1  # Start index (inclusive)
+    #en_idx = 3  # End index (inclusive)
+    #sub_list = generate_sub_list(head, st_idx, en_idx)
+    #print_list(sub_list)
