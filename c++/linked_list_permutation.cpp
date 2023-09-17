@@ -46,7 +46,7 @@ int main(){
     while(head != nullptr){
         Node* tmep = head;
         head = head->next;
-        delete head;
+        delete temp;
     }
 
     return 0;
