@@ -99,7 +99,7 @@ void DFS(Vertex* vertex, unsigned int &timestamp,   // start vertex, start time
   // Sorting(오름차순 방문을 원할시)
   vector<Vertex*> sorted_adj_list = vertex->GetAdjacencyList();
   sort(sorted_adj_list.begin(), sorted_adj_list.end(),
-       [](const Vertex* a, const Vertex* b) { return a->GetName() < b->GetName(); });
+       [](Vertex* a, Vertex* b) { return a->GetName() < b->GetName(); });
 
   // recursively call DFS for vertices in the adjancency list
   for (auto adjacent : sorted_adj_list){
