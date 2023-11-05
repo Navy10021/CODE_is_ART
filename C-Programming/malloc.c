@@ -18,11 +18,11 @@ int main(){
     
     for (int i = max_len; i > 0; i--){
         if (str[i] == ' '){
-            printf("%s ", &str[i+1]);   // 주소값으로 출력.
+            printf("%s ", &str[i+1]);   // Print Substring start str[i+1]
             str[i] = 0;                 // NUL 처리.
         }
     }
-    printf("%s ", &str[0]);             // 주소값으로 출력.
+    printf("%s ", &str[0]);             // Print Substring start str[0]
     free(str);
     return 0;
 }
