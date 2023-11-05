@@ -28,6 +28,7 @@ void printSubstring(const char *str){
             }
         }
     }
+    free(substr);
 }
 
 int main(){
