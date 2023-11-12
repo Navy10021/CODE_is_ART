@@ -152,6 +152,147 @@ int isPalindrome(Node * head){
     return True;
 }
 
+// Merge Two Sorted Lists
+Node* MergeSortedLists(Node* list1, Node* list2) {
+    if (list1 == NULL) {
+        return list2;
+    }
+    if (list2 == NULL) {
+        return list1;
+    }
+
+    Node* merged = NULL;
+    Node* current = NULL;
+
+    while (list1 != NULL && list2 != NULL) {
+        if (list1->data < list2->data) {
+            if (merged == NULL) {
+                merged = list1;
+                current = merged;
+            } else {
+                current->next = list1;
+                current = current->next;
+            }
+            list1 = list1->next;
+        } else {
+            if (merged == NULL) {
+                merged = list2;
+                current = merged;
+            } else {
+                current->next = list2;
+                current = current->next;
+            }
+            list2 = list2->next;
+        }
+    }
+
+    if (list1 != NULL) {
+        current->next = list1;
+    } else if (list2 != NULL) {
+        current->next = list2;
+    }
+
+    return merged;
+}
+
+// Detect a Cycle
+int HasCycle(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) {
+            return True; // Cycle detected
+        }
+    }
+
+    return False; // No cycle
+}
+
+// Remove Duplicates
+void RemoveDuplicates(Node* head) {
+    Node* current = head;
+
+    while (current != NULL) {
+        Node* runner = current;
+
+        while (runner->next != NULL) {
+            if (runner->next->data == current->data) {
+                Node* temp = runner->next;
+                runner->next = runner->next->next;
+                free(temp);
+            } else {
+                runner = runner->next;
+            }
+        }
+
+        current = current->next;
+    }
+}
+
+// Intersection Point.
+Node* FindIntersection(Node* list1, Node* list2) {
+    int len1 = Length(list1);
+    int len2 = Length(list2);
+
+    int diff = abs(len1 - len2);
+
+    Node* longer = (len1 > len2) ? list1 : list2;
+    Node* shorter = (len1 > len2) ? list2 : list1;
+
+    // Move the longer list to the same starting point as the shorter list
+    for (int i = 0; i < diff; ++i) {
+        longer = longer->next;
+    }
+
+    // Move both lists until they intersect
+    while (longer != NULL && shorter != NULL) {
+        if (longer == shorter) {
+            return longer; // Intersection point found
+        }
+
+        longer = longer->next;
+        shorter = shorter->next;
+    }
+
+    return NULL; // No intersection
+}
+
+// Rotate a Linked List
+Node* RotateList(Node* head, int k) {
+    if (head == NULL || k == 0) {
+        return head;
+    }
+
+    int len = Length(head);
+    k = k % len; // Handle cases where k is greater than the length of the list
+
+    if (k == 0) {
+        return head; // No rotation needed
+    }
+
+    Node* tail = head;
+    for (int i = 1; i < len - k; ++i) {
+        tail = tail->next;
+    }
+
+    Node* newHead = tail->next;
+    tail->next = NULL;
+
+    Node* temp = newHead;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    temp->next = head;
+
+    return newHead;
+}
+
+
 int main(void){
     Node *head = NULL;
     InsertAtBe(&head, 1);
