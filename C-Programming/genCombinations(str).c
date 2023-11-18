@@ -32,7 +32,7 @@ void genAllCombinations(char * arr, int n, int r){
 int main(){
     char arr[] = "ABCD";
     int n = strlen(arr);
-    for (int r = 0; r < n; r++){
+    for (int r = 0; r <= n; r++){
         genAllCombinations(arr, n, r);
     }
     return 0;
