@@ -23,7 +23,7 @@ def find_all_paths(G, start, end, path = None):
     
     paths = []
     for nxt in G[start]:
-        if nxt.data not in path:        # Need to not modifiy original path.
+        if nxt.data not in path:                                    # Need to not modifiy original path.
             new_paths = find_all_paths(G, nxt, end, path.copy())    # new copy path preventing the issue of modifying the Original path
             for p in new_paths:
                 paths.append(p)
@@ -34,7 +34,6 @@ A, B, C = GNode("A"), GNode("B"), GNode("C")
 D, E, F, G = GNode("D"), GNode("E"), GNode("F"), GNode("G")
 
 # Adj List (Directed edges)
-#Graph = dict()
 G = dict()
 G[A] = [B, C]
 G[B] = [A, D]
