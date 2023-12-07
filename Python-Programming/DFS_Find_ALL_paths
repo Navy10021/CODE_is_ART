@@ -1,10 +1,7 @@
 class GNode:
-    def __init__(self, data, color = "W", dist = -1, fin = -1, parent = None):
+    def __init__(self, data, color = "W"):
         self.data = data 
         self.color = color 
-        self.dist = dist 
-        self.fin = fin 
-        self.parent = parent
     
     def __str__(self):
         return "(" + self.data + ")" 
@@ -23,7 +20,7 @@ def find_all_paths(G, start, end, path = None):
     
     paths = []
     for nxt in G[start]:
-        if nxt.data not in path:                                    # Need to not modifiy original path.
+        if nxt.data not in path:        # Need to not modifiy original path.
             new_paths = find_all_paths(G, nxt, end, path.copy())    # new copy path preventing the issue of modifying the Original path
             for p in new_paths:
                 paths.append(p)
@@ -34,6 +31,7 @@ A, B, C = GNode("A"), GNode("B"), GNode("C")
 D, E, F, G = GNode("D"), GNode("E"), GNode("F"), GNode("G")
 
 # Adj List (Directed edges)
+#Graph = dict()
 G = dict()
 G[A] = [B, C]
 G[B] = [A, D]
