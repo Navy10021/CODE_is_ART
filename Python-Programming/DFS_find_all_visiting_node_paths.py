@@ -5,7 +5,7 @@ class GNode:
         self.color = color
 
 def DFS(graph, curr, visited, path, all_paths):
-    curr.color = "G"
+    #curr.color = "G"
     visited.add(curr.data)
     path.append(curr.data)
     if len(visited) == len(graph):
@@ -16,7 +16,7 @@ def DFS(graph, curr, visited, path, all_paths):
                 DFS(graph, nxt, visited, path, all_paths)
 
     # Backtrack
-    curr.color = "W"
+    #curr.color = "W"
     visited.remove(curr.data)
     path.pop()
 
