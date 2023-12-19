@@ -139,8 +139,18 @@ int main() {
     Point res_sw = ~p1;
     Point res_updown = -p1;
     
-    cout << p1;
-    cout << p2;
+    cout << "Point 1:"<< p1 << endl;
+    cout << "Point 2:"<< p2 << endl;
+
+    // Display results of basic arithmetic operations
+    cout << "Addition: " << res_add << endl;
+    cout << "Subtraction: " << res_sub << endl;
+    cout << "Multiplication: " << res_mul << endl;
+    cout << "Division: " << res_div << endl;
+    cout << "Equal: " << res_equal << endl;
+    cout << "Not Equal: " << res_diff << endl;
+    cout << "Switch: " << res_sw << endl;
+    cout << "Minus: " << res_updown << endl;
 
     return 0;
 }
