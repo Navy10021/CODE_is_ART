@@ -40,7 +40,7 @@ class Book{
         }
         ~Book(){
             delete [] title;
-            delete [ ] isbn;
+            delete [] isbn;
         }
 };
 
@@ -79,7 +79,7 @@ int main(void){
     ebook2.ShowEBookInfo();
     cout << endl;
     EBook ebook3("dumy", "dumy", 0, "dumy");
-    ebook3 = ebook2;
+    ebook3 = ebook2;         //복사생성자 호출
     ebook3.ShowEBookInfo();
     cout << endl;
     return 0;
