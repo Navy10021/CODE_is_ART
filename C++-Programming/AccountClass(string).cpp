@@ -3,7 +3,7 @@
 using namespace std;
 
 class Account {
-protected:
+protected:    // 상속된 Clss와 멤버 공유
     string accountNumber;
     double balance;
 
