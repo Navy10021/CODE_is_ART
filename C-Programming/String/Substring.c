@@ -35,6 +35,22 @@ void printSubstr(char * str, int len){
 	}
 }
 
+// 3. Substring 인덱스 슬라이싱(start ~ end), 결과값을 외부 변수에(*res) 저장
+void subString(const char * src, int st, int en, char * res){
+    int len = strlen(src);
+
+    if (en > len){
+        en = len;
+    }
+
+    // Copy the substring
+    for (int i = st; i < en; i++){
+        res[i - st] = src[i];
+    }
+    // Null terminate
+    res[en - st] = '\0';
+}
+
 int main()
 {
     char inputStr[10];
