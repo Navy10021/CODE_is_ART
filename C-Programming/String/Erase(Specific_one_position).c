@@ -3,7 +3,7 @@ char* remove_char_at_index(const char* str, size_t index) {
     if (!str || index >= strlen(str)) {
         return NULL;
     }
-
+	// char *strncpy(char *dest, const char *src, size_t n); : dest(복사된 문자가 저장될 대상 포인터) / src(복사할 문자의 원본을 가르키는 포인터)
     char* new_str = (char*)malloc(strlen(str));  // one less than original length
     strncpy(new_str, str, index);  // Copy up to the index : The number of index. No Null-termination
     strcpy(new_str + index, str + index + 1);  // Copy from index + 1 to end
