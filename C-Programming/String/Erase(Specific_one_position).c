@@ -5,7 +5,7 @@ char* remove_char_at_index(const char* str, size_t index) {
     }
 
     char* new_str = (char*)malloc(strlen(str));  // one less than original length
-    strncpy(new_str, str, index);  // Copy up to the index
+    strncpy(new_str, str, index);  // Copy up to the index : The number of index. No Null-termination
     strcpy(new_str + index, str + index + 1);  // Copy from index + 1 to end
 
     return new_str;
