@@ -1,5 +1,21 @@
 // 1.특정 위치의 문자 삭제처리 후 반환
-char* remove_char_at_index(const char* str, size_t index) {
+
+void erase(char* str, int position){
+    int length = strlen(str);
+
+    if (position < 0 || position >= length){
+        printf("Invalid.\n");
+        return;
+    }
+
+    for (int i = position; i < length - 1; i++){
+        str[i] = str[i + 1];
+    }
+
+    str[length - 1] = '\0';
+}
+
+char* erease2(const char* str, size_t index) {
     if (!str || index >= strlen(str)) {
         return NULL;
     }
@@ -12,7 +28,7 @@ char* remove_char_at_index(const char* str, size_t index) {
 }
 
 // 지정된 범위의 문자를 제거 : start부터 length 만큼 삭제
-void erase(char* s, int start, int length) {
+void erase3(char* s, int start, int length) {
     /* Erases length characters from the string, starting at the given index. */
     int i = start;
     while (s[i + length]) {
@@ -23,8 +39,11 @@ void erase(char* s, int start, int length) {
 }
 
 int main() {
+    char input[50] = "ABCD";
+    int tgt = 0;
+    erase(input, tgt);
     // For remove_char_at_index
-    char* result = remove_char_at_index("Hello, World!", 7);
+    char* result = erase2("Hello, World!", 7);
     if (result) {
         printf("Test remove_char_at_index: %s\n", result);
         free(result);
