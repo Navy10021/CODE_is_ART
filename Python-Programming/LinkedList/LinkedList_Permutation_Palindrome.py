@@ -84,28 +84,6 @@ class LinkedList:
         print(" -> ".join(map(str, elements)))
 
 
-def is_palindrome(linked_list):
-    #slow = linked_list.head
-    #fast = linked_list.head
-    
-    #while (fast and fast.next):
-    #    slow = slow.next
-    #    fast = fast.next.next 
-    
-    curr_first = linked_list.head
-    curr_second = linked_list.copy().reverse()
-    
-    while(curr_second):
-        if (curr_first.data != curr_second.data):
-            return False 
-        curr_first = curr_first.next 
-        curr_second = curr_second.next 
-    
-    # Restore the original state of the linked list
-    linked_list.reverse()
-
-    return True 
-
 def string_to_LinkedList(str):
     linked_list = LinkedList()
     
