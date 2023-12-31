@@ -52,7 +52,6 @@ class LinkedList:
             fast = fast.next.next
         return slow if (slow != None) else None 
 
-
     def is_palindrome(self):
         # Deep Copy 
         copyList = self.copy()
@@ -74,7 +73,6 @@ class LinkedList:
             second_half_rev = second_half_rev.next
         return True
     
-
     def display(self):
         elements = []
         current_node = self.head
