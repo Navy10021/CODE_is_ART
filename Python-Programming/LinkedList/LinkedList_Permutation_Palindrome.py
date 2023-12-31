@@ -42,7 +42,6 @@ class LinkedList:
             prev = current
             current = next_node
         self.head = prev
-
     def find_middle(self):
         slow = self.head
         fast = self.head
@@ -71,8 +70,8 @@ class LinkedList:
                 return False
             first_half = first_half.next
             second_half_rev = second_half_rev.next
-        return True
-    
+        return True 
+
     def display(self):
         elements = []
         current_node = self.head
@@ -84,10 +83,8 @@ class LinkedList:
 
 def string_to_LinkedList(str):
     linked_list = LinkedList()
-    
     for char in str:
         linked_list.append(char)
-    
     return linked_list
 
 
@@ -114,11 +111,8 @@ def permutation_LinkedList(linked_list):
         
 
 # Example usage
-
 string = "AABB"
 my_LL = string_to_LinkedList(string)
-#print(my_LL.is_palindrome())
-
 permutations = permutation_LinkedList(my_LL)
 
 for perm in permutations:
