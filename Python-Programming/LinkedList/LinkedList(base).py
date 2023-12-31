@@ -39,6 +39,14 @@ class LinkedList:
 
         if current_node.next:
             current_node.next = current_node.next.next
+            
+        def copy(self):
+            new_linked_list = LinkedList()
+            current_node = self.head
+            while current_node:
+                new_linked_list.append(current_node.data)
+                current_node = current_node.next
+            return new_linked_list
 
     def display(self):
         elements = []
