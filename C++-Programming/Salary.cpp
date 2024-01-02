@@ -97,7 +97,7 @@ class SalaryCalculator {
 
 int main(void){
     SalaryCalculator MyCompany;
-    Employee * ptr;
+    Employee * ptr;			// Can access All inheritance class by Employee pointer!
     ptr = new HourlyEmployee("Cleaner", 101, 15.0, 56);
     MyCompany.AddEmployee(ptr);
     ptr = new SalariedEmployee("AI Engineer", 102, 90000.0);
