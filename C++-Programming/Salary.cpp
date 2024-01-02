@@ -56,8 +56,9 @@ class SalaryCalculator {
         Employee* employeesArr[MAX_EMPLOYEES];
         int numEmp;
     public:
-        SalaryCalculator() : numEmp(0) {}
-        ~SalaryCalculator(){
+        SalaryCalculator() : numEmp(0) {}		// Constructor
+
+        ~SalaryCalculator(){					// Destructor
             for (int i = 0; i < numEmp; i++){
                 delete employeesArr[i];
             }
