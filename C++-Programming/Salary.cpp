@@ -62,6 +62,7 @@ class SalaryCalculator {
                 delete employeesArr[i];
             }
         }
+
         void AddEmployee(Employee * emp){
             if (numEmp < MAX_EMPLOYEES){
                 employeesArr[numEmp++] = emp;
