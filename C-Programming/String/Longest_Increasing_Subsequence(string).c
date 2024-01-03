@@ -45,6 +45,7 @@ void lengthOfLIS(char * str){
     free(subseq);
     printf("LIS : %s\n", maxSubstr);
     printf("Max length : %d\n", maxLen);
+    free(maxSubstr);
 }
 
 
