@@ -35,7 +35,8 @@ int repeatedSubstr(char * str){
             free(newstr);
         }
     }
-    printf("%s pattern is repeated in string\n", resStr);
+    int numRepeated = len / strlen(resStr);
+    printf("%s pattern is repeated %d times in string\n", resStr, numRepeated);
     return flag;
 }
 
