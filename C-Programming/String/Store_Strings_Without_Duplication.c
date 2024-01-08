@@ -21,7 +21,7 @@ int main(void){
     for (int i = 0; i < 6; i++){
         if(!isIn(strings, currIdx, temp[i])){
             //strings[currIdx++] = strdup(temp[i]);
-            strings = (char**)realloc(strings, (currIdx + 1) * sizeof(char));
+            strings = (char**)realloc(strings, (currIdx + 1) * sizeof(char*));
             strings[currIdx++] = strdup(temp[i]);
         }
     }
