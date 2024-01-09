@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-// 60. Permutation Sequence.
+// 60. K-th Permutation Sequence.
 
 void swap(char* a, char* b) {
     char temp = *a;
@@ -45,7 +45,7 @@ char* genPerm(char *str, int st, int length, int k, int* currentCount) {
     return NULL;  // No result found
 }
 
-char* getPermutation(int n, int k) {
+char* getPermutation(int n, int k) { // K번째 permutation 찾기
     char *str = (char*)malloc(sizeof(char) * (n + 1));
     int strIdx = 0;
     
