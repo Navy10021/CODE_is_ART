@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 459. Repeated Substring Pattern 
+// "abab" -> true, "aba" -> false, "abcabcabcabc" -> ture
+
 void removeSubstr(char *str, char *sub){
     int len = strlen(sub);
     while((str = strstr(str, sub))){
