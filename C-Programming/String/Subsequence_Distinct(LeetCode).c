@@ -2,6 +2,7 @@
 #include <string.h>
 
 // 115. Distinct Subsequences
+// s = "rabbbit", t = "rabbit" -> 3가지 경우의 수로 삭제, t를 생성 / s = "badgbag", t = "bag" -> 5가지 경우의수로 삭제, t를 생성
 
 void genSubseq(char *str, char *tgt, int index, char *subseq, int* count) {
     if (str[index] == '\0') {
