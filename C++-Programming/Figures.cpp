@@ -7,6 +7,7 @@ using namespace std;
 class Figure{
     public:
         virtual double CalculateArea() const = 0; 
+        virtual double CalculateVolume() const { return 0.0; }
         virtual void DisplayInfo() const = 0;
         virtual ~Figure() {}
 };
@@ -23,6 +24,22 @@ class Circle : public Figure{
         void DisplayInfo() const override{
             cout << "Type : Circle || Area : " << CalculateArea() << endl;
         }
+};
+
+// Cylinder class
+class Cylinder : public Circle{
+    private:
+        double height;
+    public:
+        Cylinder(double r, double h) : Circle(r), height(h) {}
+
+        double CalculateVolume() const override{
+            return CalculateArea() * height;
+        }
+        void DisplayInfo() const override{
+            cout << "Type : Cylinder || Volumne : " << CalculateVolume() << " || Area : " << CalculateArea() << endl;
+        } 
+        
 };
 
 // Square Class
@@ -42,7 +59,20 @@ class Square : public Figure{
         }      
 };
 
-// Rectengle class : inheriting from Sqare 
+// Cube class : inheriting from Square
+class Cube : public Square{
+    public:
+        Cube(double side) : Square(side) {}
+
+        double CalculateVolume() const override {
+            return CalculateArea() * getSide();
+        }
+        void DisplayInfo() const override{
+            cout << "Type : Cube || Volume : " << CalculateVolume() << " || Area : " << CalculateArea() << endl;
+        }
+};
+
+// Rectengle class : inheriting from Square 
 class Rectangle : public Square{
     private:
         double height;
@@ -54,6 +84,21 @@ class Rectangle : public Square{
         }
         void DisplayInfo() const override{
             cout << "Type : Rectangle || Area : " << CalculateArea() << endl;
+        }
+};
+
+// Piramid class : inheriting from Rectangle
+class Pyramid : public Rectangle {
+    private:
+        double height;
+    public:
+        Pyramid(double l, double w, double h) : Rectangle(l, w), height(h) {}
+
+        double CalculateVolume() const override{
+            return CalculateArea() * height / 3.0;
+        }
+        void DisplayInfo() const override{
+            cout << "Type : Pyramid || Volume : " << CalculateVolume() << " || Area : " << CalculateArea() << endl;
         }
 };
 
@@ -152,6 +197,9 @@ int main(void){
     manager.AddFigure(new Square(4.0));
     manager.AddFigure(new Rectangle(3.0, 5.0));
     manager.AddFigure(new EquilateralTriangle(5.0));
+    manager.AddFigure(new Cylinder(5.0, 10.0));
+    manager.AddFigure(new Cube(5.0));
+    manager.AddFigure(new Pyramid(3.0, 5.0, 10.0));
 
     // Display
     cout << "Total Area of all figures : " << manager.TotalArea() << endl;
