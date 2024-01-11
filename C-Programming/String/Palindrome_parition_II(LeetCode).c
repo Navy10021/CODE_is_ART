@@ -44,7 +44,7 @@ void get_partitioned_substr(char *str) {
     int max_size = strlen(str);
     int minCut = max_size;
 
-    // Allocate memory for current partition
+    // Allocate memory for current partition(2D-array)
     char *curr_partition[max_size];
     for (int i = 0; i < max_size; i++) {
         curr_partition[i] = (char *)malloc((max_size + 1) * sizeof(char));
