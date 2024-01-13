@@ -28,22 +28,6 @@ public:
     }
 };
 
-// Cylinder class
-class Cylinder : public Circle {
-private:
-    double height;
-
-public:
-    Cylinder(double r, double h) : Circle(r), height(h) {}
-
-    double CalculateVolume() const override {
-        return CalculateArea() * height;
-    }
-    void DisplayInfo() const override {
-        cout << "Type: Cylinder || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
-    }
-};
-
 // Square Class
 class Square : public Figure {
 private:
@@ -62,19 +46,6 @@ public:
     }
 };
 
-// Cube class : inheriting from Square
-class Cube : public Square {
-public:
-    Cube(double side) : Square(side) {}
-
-    double CalculateVolume() const override {
-        return CalculateArea() * getSide();
-    }
-    void DisplayInfo() const override {
-        cout << "Type: Cube || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
-    }
-};
-
 // Rectangle class : inheriting from Square
 class Rectangle : public Square {
 private:
@@ -88,22 +59,6 @@ public:
     }
     void DisplayInfo() const override {
         cout << "Type: Rectangle || Area: " << CalculateArea() << endl;
-    }
-};
-
-// Pyramid class : inheriting from Rectangle
-class Pyramid : public Rectangle {
-private:
-    double height;
-
-public:
-    Pyramid(double l, double w, double h) : Rectangle(l, w), height(h) {}
-
-    double CalculateVolume() const override {
-        return CalculateArea() * height / 3.0;
-    }
-    void DisplayInfo() const override {
-        cout << "Type: Pyramid || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
     }
 };
 
@@ -180,6 +135,73 @@ public:
     virtual double CalculateVolume() const = 0;
 };
 
+// Cylinder class : inheriting from ThreeDimensionalFigure
+class Cylinder : public ThreeDimensionalFigure {
+private:
+    double radius;
+    double height;
+
+public:
+    Cylinder(double r, double h) : radius(r), height(h) {}
+
+    double CalculateVolume() const override {
+        return CalculateArea() * height;
+    }
+
+    double CalculateArea() const override {
+        return 2 * 3.14 * radius * (radius + height);
+    }
+
+    void DisplayInfo() const override {
+        cout << "Type: Cylinder || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
+    }
+};
+
+// Cube class : inheriting from ThreeDimensionalFigure
+class Cube : public ThreeDimensionalFigure {
+private:
+    double side;
+
+public:
+    Cube(double s) : side(s) {}
+
+    double CalculateVolume() const override {
+        return CalculateArea() * side;
+    }
+
+    double CalculateArea() const override {
+        return 6 * side * side;
+    }
+
+    void DisplayInfo() const override {
+        cout << "Type: Cube || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
+    }
+};
+
+// Pyramid class : inheriting from ThreeDimensionalFigure
+class Pyramid : public ThreeDimensionalFigure {
+private:
+    double length;
+    double width;
+    double height;
+
+public:
+    Pyramid(double l, double w, double h) : length(l), width(w), height(h) {}
+
+    double CalculateVolume() const override {
+        return (length * width * height) / 3.0;
+    }
+
+    double CalculateArea() const override {
+        return length * width + length * sqrt((width / 2.0) * (width / 2.0) + height * height) +
+               width * sqrt((length / 2.0) * (length / 2.0) + height * height);
+    }
+
+    void DisplayInfo() const override {
+        cout << "Type: Pyramid || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
+    }
+};
+
 // Sphere class : Inheriting from ThreeDimensionalFigure
 class Sphere : public ThreeDimensionalFigure {
 private:
@@ -200,6 +222,8 @@ public:
         cout << "Type: Sphere || Volume: " << CalculateVolume() << " || Area: " << CalculateArea() << endl;
     }
 };
+
+
 
 // Figure Manager class
 class FigureManager {
@@ -255,4 +279,30 @@ public:
     void sortByArea() {
         sort(figureArr, figureArr + Idx, [](const Figure* a, const Figure* b) {
             return a->CalculateArea() > b->CalculateArea();
-       
+
+
+    double TotalVolume() const {
+        double totalVolume = 0.0;
+        for (int i = 0; i < Idx; i++) {
+            ThreeDimensionalFigure* threeDFigure = dynamic_cast<ThreeDimensionalFigure*>(figureArr[i]);
+            if (threeDFigure) {
+                totalVolume += threeDFigure->CalculateVolume();
+            }
+        }
+        return totalVolume;
+    }
+
+    double AvgVolume() const {
+        int numThreeDFigures = 0;
+        double totalVolume = 0.0;
+
+        for (int i = 0; i < Idx; i++) {
+            ThreeDimensionalFigure* threeDFigure = dynamic_cast<ThreeDimensionalFigure*>(figureArr[i]);
+            if (threeDFigure) {
+                totalVolume += threeDFigure->CalculateVolume();
+                numThreeDFigures++;
+            }
+        }
+
+        return (numThreeDFigures == 0) ? 0.0 : totalVolume / numThreeDFigures;
+    }
