@@ -3,7 +3,11 @@
 #include<stdlib.h>
 
 // 443. String Compression : If group's length is 1, append the characters to s. Otherwise, append character to s + lengths
+/*
+**`sprintf`** 함수는 지정된 버퍼에 문자열을 저장하면서 동시에 저장된 문자열의 길이를 반환합니다. 이 길이에는 널 종료 문자('\0')가 포함되지 않습니다.
 
+예를 들어, **`sprintf`** 함수를 사용하여 정수와 문자열을 버퍼에 저장하는 경우, 예를 들어 **`sprintf(buffer, "%d %s", 123, "abc");`**, 함수는 "123 abc" 라는 문자열을 **`buffer`**에 저장하고, 이 문자열의 길이인 7을 반환합니다. 이는 "123 abc"의 문자 개수와 같으며, 널 종료 문자는 이 길이에 포함되지 않습니다.
+*/
 void compress(char* str){
     int count = 1;
     char * newStr = (char*)malloc(sizeof(char) * (strlen(str) + 1));
