@@ -44,13 +44,13 @@ def kLeftRotation(head, k):
         len += 1
         currNode = currNode.next
     
-    rotation_count = k % length
+    rotation_count = k % len
     if rotation_count == 0:
         return head 
     
     # Traver to the node Postition and Cut
     currNode = head 
-    for _ in range(rotation_count):
+    for _ in range(rotation_count - 1):
         currNode = currNode.next
     
     # Make New Linked List and Cut Original Linked List tail
@@ -59,7 +59,7 @@ def kLeftRotation(head, k):
     
     # Connecte two Linked List
     currNode = new_head
-    while(currNode):
+    while currNode.next:
         currNode = currNode.next
     currNode.next = head
     
