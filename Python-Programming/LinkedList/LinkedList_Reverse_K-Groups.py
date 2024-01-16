@@ -19,7 +19,6 @@ class LinkedList:
         while last_node.next:
             last_node = last_node.next
         last_node.next = new_node
-
         
     def copy(self):
         new_linked_list = LinkedList()
