@@ -75,8 +75,11 @@ def permutation_LinkedList(linked_list):
 
 # Example usage
 
-string = "AAA"
+string = "ABB"
 my_LL = string_to_LinkedList(string)
+
+#my_LL.swap(my_LL.head, my_LL.head.next.next)
+#my_LL.display()
 
 permutations = permutation_LinkedList(my_LL)
 
