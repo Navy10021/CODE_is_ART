@@ -23,6 +23,14 @@ class LinkedList:
     def strToList(self, str):
         for c in str:
             self.append(c)
+
+    def copy(self):
+        new_list = LinkedList()
+        currNode = self.head
+        while currNode:
+            new_list.append(currNode.val)
+            currNode = currNode.next 
+        return new_list
     
     def display(self):
         elements = []
@@ -97,14 +105,33 @@ def kRightRotation(head, k):
     while currNode.next:
         currNode = currNode.next
     currNode.next = head
+    
     return new_head
 
+def AllRotation(head):
+    # Find Linked List length
+    len = 1
+    currNode = head 
+    while(currNode):
+        len += 1
+        currNode = currNode.next
+    
+    all_rotations = []
+    # need to deep copy 
+    for i in range(len - 1):
+        resLL = LinkedList()
+        LLCopy = LL.copy()
+        resLL.head = kRightRotation(LLCopy.head, i)
+        all_rotations.append(resLL)
+        resLL.display()
+    
+    return resLL
+        
+    
     
 input = "12345"
 LL = LinkedList()
 LL.strToList(input)
+AllRotation(LL.head)
 
-LL.head = kRightRotation(LL.head, 2)
-LL.display()
-LL.head = kLeftRotation(LL.head, 2)
-LL.display()
+
