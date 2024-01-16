@@ -19,7 +19,6 @@ class LinkedList:
         while last_node.next:
             last_node = last_node.next
         last_node.next = new_node
-
         
     def copy(self):
         new_linked_list = LinkedList()
@@ -51,7 +50,6 @@ def string_to_LinkedList(str):
     
     return linked_list
 
-
 def permutation_LinkedList(linked_list):
     def backtrack(start_node):
         if not start_node.next:
@@ -77,7 +75,6 @@ def permutation_LinkedList(linked_list):
 
 string = "ABB"
 my_LL = string_to_LinkedList(string)
-
 #my_LL.swap(my_LL.head, my_LL.head.next.next)
 #my_LL.display()
 
