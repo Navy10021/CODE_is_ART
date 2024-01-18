@@ -42,24 +42,26 @@ def deleteDuplicate(head):
     dummy.next = head
     prev = dummy
     
-    if (curr is Node or curr.next is None):
+    if (curr is None or curr.next is None):
         return head
     
     while(curr and curr.next):
         if curr.data == curr.next.data:
-            while(curr.data != curr.next.data):
+            while(curr.next and curr.data == curr.next.data):
                 curr = curr.next
-            prev.next = curr.next # remove 
-        
-        prev = curr
-        curr = curr.next
+                
+            curr = curr.next      # Move to the next distnct
+            prev.next = curr      # remove 
+        else:
+            prev = curr
+            curr = curr.next
     
     head = dummy.next 
     
     return head
     
 
-inputs = [1,1,2,3,3,4,4,5]
+inputs = [1,2,3,3,4,4,5,5,5]
 LL = arrToList(inputs)
 LL.display()
 
