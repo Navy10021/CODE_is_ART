@@ -32,7 +32,7 @@ void letterCombination(char *str){
     int length = strlen(str);
     // store all combination results
     int combinations_size = 1 << length;
-    char**combinations = (char**)malloc(sizeof(combinations_size) * sizeof(char*));
+    char**combinations = (char**)malloc(combinations_size * sizeof(char*));
     int combinations_idx = 0;
     
     for (int depth = 1; depth <= length; depth++){
