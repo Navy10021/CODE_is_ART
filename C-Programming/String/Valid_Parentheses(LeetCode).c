@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 int isValid(char *s) {
     int len = strlen(s);
@@ -10,7 +11,13 @@ int isValid(char *s) {
     for (int i = 0; i < len; i++) {
         if (s[i] == '(' || s[i] == '[' || s[i] == '{') {
             stack[++top] = s[i];
-        } else {
+        } 
+        
+        else if (isalpha(s[i]) || isalnum(s[i])){
+            continue;
+        }
+        
+        else {
             if (top == -1) {
                 return 0;  // No matching open bracket
             }
@@ -20,11 +27,9 @@ int isValid(char *s) {
                 (s[i] == '}' && stack[top] != '{')) {
                 return 0;  // Mismatched closing bracket
             }
-
             top--;
         }
     }
-
     return (top == -1);  // Check if all open brackets are closed
 }
 
