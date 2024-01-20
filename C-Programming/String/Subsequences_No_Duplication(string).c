@@ -3,7 +3,6 @@
 #include<string.h>
 
 // Generate subsequences
-
 int seen(char ** arr, int arr_idx, char * target){
     for(int i=0; i<arr_idx; i++){
         if(strcmp(arr[i], target)==0){
@@ -33,6 +32,7 @@ void backtrack(char *str, int index, char*subseq, char**subseqs, int*subseqs_idx
     subseq[strlen(subseq)-1] = '\0';
 }
 
+// 2. subsequence
 void generateSubseqs(char *str){
     int len = strlen(str);
     char * subseq = (char*)malloc(sizeof(char) * (len + 1));
