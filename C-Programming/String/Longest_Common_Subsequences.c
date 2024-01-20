@@ -44,8 +44,8 @@ void LongestCommonSubseqs(char *str1, char *str2){
     char ** subsequences2 = (char**)malloc(sizeof(char*) * subsequences_size2);
     int subsequences_idx1 = 0;
     int subsequences_idx2 = 0;
-    backtrack(str1, 0, subseq1, subsequences1, &subsequences_idx1);
-    backtrack(str2, 0, subseq2, subsequences2, &subsequences_idx2);
+    backtrack(str1, 0, subseq1, 0, subsequences1, &subsequences_idx1);
+    backtrack(str2, 0, subseq2, 0, subsequences2, &subsequences_idx2);
     
     free(subseq1);
     free(subseq2);
@@ -68,11 +68,10 @@ void LongestCommonSubseqs(char *str1, char *str2){
 }
 
 int main(void){
-    char str1[100] = "ABYYB";
-    char str2[100] = "XXAXXBXXB";
+    char str1[100] = "AABYYBOOOOOOOOOOOOOOO";
+    char str2[100] = "AAAXXAXXBXXB";
     
     LongestCommonSubseqs(str1, str2);
     
     return 0;
-    // generate subseqs arr -> compare
 }
