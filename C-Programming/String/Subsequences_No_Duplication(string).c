@@ -40,7 +40,10 @@ void generateSubseqs(char *str){
     char ** subsequences = (char**)malloc(sizeof(char*) * subsequences_size);
     int subsequences_idx = 0;
     backtrack(str, 0, subseq, subsequences, &subsequences_idx);
-    
+
+    // Using subsequnces
+
+    // free memory
     free(subseq);
     for(int i = 0; i < subsequences_idx; i++){
         printf("%s\n", subsequences[i]);
@@ -50,8 +53,6 @@ void generateSubseqs(char *str){
 
 int main(void){
     char str1[100] = "ABB";
-    //char str2[100] = "XXAXXBXXC";
-    
     generateSubseqs(str1);
     
     // generate subseqs arr -> compare
