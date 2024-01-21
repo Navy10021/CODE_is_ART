@@ -47,7 +47,7 @@ int seen(char **arr, int arr_idx, char *target) {
 
 // Backtrack to generate subsequences
 void backtrack(char *str, int index, char *subseq, int subseq_idx, char **subseqs, int *subseqs_idx) {
-    if (str[index] == '\0' && strlen(subseq) > 0) {
+    //if (str[index] == '\0' && strlen(subseq) > 0) {
     if (str[index] == '\0' && strlen(subseq) > 0 && isValid(subseq)) {
         //if (!seen(subseqs, *subseqs_idx, subseq)) {
             subseqs[*subseqs_idx] = strdup(subseq);
