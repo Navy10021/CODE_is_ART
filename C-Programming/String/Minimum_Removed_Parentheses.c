@@ -54,8 +54,6 @@ void backtrack(char *str, int index, char *subseq, int subseq_idx, char **subseq
             (*subseqs_idx)++;
             return;
         }
-        return;
-    }
     for (int i = index; i <= strlen(str); i++){
         // 1. Include current character
         subseq[subseq_idx] = str[i];
@@ -81,15 +79,21 @@ void generateSubseqs(char *str) {
 
     // Find minimum removed results
     int maxlen = 0;
-    char* maxValid = NULL;
+    //char* maxValid = NULL;
     for (int i = 0; i < subsequences_idx; i++) {
         if(strlen(subsequences[i]) > maxlen){
             maxlen = strlen(subsequences[i]);
-            maxValid = strdup(subsequences[i]);
+            //maxValid = strdup(subsequences[i]);
         }
     }
-
-    printf("Minimum Removed Pharentheses : %s\n", maxValid);
+    
+    //printf("Minimum Removed Pharentheses : %s\n", maxValid);
+    printf("Minimum Removed Pharentheses :");
+    for (int i = 0; i < subsequences_idx; i++) {
+        if(strlen(subsequences[i]) == maxlen){
+            printf("%s, ", subsequences[i]);
+        }
+    }
 
     // Free memory
     for (int i = 0; i < subsequences_idx; i++) {
@@ -97,7 +101,7 @@ void generateSubseqs(char *str) {
     }
     free(subseq);
     free(subsequences);
-    free(maxValid);
+    //free(maxValid);
 }
 
 // s = "lee(t(c)o)de)" -> "lee(t(c)o)de"  // Input: s = "a)b(c)d" -> "ab(c)d"  // "))((" -> ""
