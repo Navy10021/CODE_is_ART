@@ -11,6 +11,7 @@ class GNode:
         return "(" + self.data + ")"
 
 def BFS_shortest_path(graph, start, target):
+    # 1. Store all connected Node's distances from start Node using BFS
     distances = {vertex.data: float('inf') for vertex in graph}
     start.color = "G"
     start.distance = 0
@@ -32,7 +33,8 @@ def BFS_shortest_path(graph, start, target):
                 distances[nxt.data] = nxt.distance
                 Q.append(nxt)
         curr.color = "B"  # current Vertex Queue out
-
+	
+    # Tracking Path using parent
     if distances[target.data] == float('inf'):
         print("No path found between {} and {}".format(start.data, target.data))
     else:
