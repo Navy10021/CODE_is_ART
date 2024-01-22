@@ -36,6 +36,21 @@ def shortest_path(graph, start):
     
     return distances
 
+def find_all_paths(graph, start, end):
+    def DFS(curr, path):
+        if curr == end:
+            paths.append(path.copy())
+            return
+        for nei in graph[curr]:
+            DFS(nei, path + [nei.data])
+    paths = []
+    DFS(start, [start.data])
+    
+    print("All paths {} -> {}".format(start.data, end.data))
+    for path in paths:
+        print(path)
+    
+    return paths
 
 A, B, C, D = GNode('A'), GNode('B'), GNode('C'), GNode('D')
 E, F, G, H = GNode('E'), GNode('F'), GNode('G'), GNode('H')
@@ -44,10 +59,14 @@ Graph = {
     A: [B, C],
     B: [D],
     C: [D],
-    D: [E],
+    D: [E, F],
     E: [F],
-    F: []
+    F: [G],
+    G: [H],
+    H: []
 }
 
 startNode = A
-shortest_path(Graph, startNode)
+endNode = H
+dist_dict = shortest_path(Graph, startNode)
+paths = find_all_paths(Graph, startNode, endNode)
