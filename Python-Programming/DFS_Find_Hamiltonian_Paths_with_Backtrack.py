@@ -17,13 +17,14 @@ def is_hamiltonian_cycle(graph):
                     DFS(nei, path)
         
         # backtrack for all search
+        print("DFS from {} is finish. {} will POP in {}.".format(path[0], curr.data, path))
         path.pop()
         curr.color = "W"
     
     for start_node in graph:
         DFS(start_node, [])
     
-    hamiltonian_paths = ["->".join(p) for p in hamiltonian_paths]
+    hamiltonian_paths = [" -> ".join(p) for p in hamiltonian_paths]
     
     print("Hamiltonian paths : {} || {}".format(len(hamiltonian_paths), hamiltonian_paths))
     return hamiltonian_paths
