@@ -54,9 +54,9 @@ void rearrange(char* str, int str_idx, int length){
     }
     for (int i = str_idx; i < length; i++){
         if (shouldSwap(str, str_idx, i)){
-            swap(&str[st], &str[i]);
+            swap(&str[str_idx], &str[i]);
             rearrange(str, str_idx + 1, length);
-            swap(&str[st], &str[i]);
+            swap(&str[str_idx], &str[i]);
         }
     }
 }
@@ -103,7 +103,7 @@ void longestPalindrome(char * str){
             is_odd = 1;
             strcat(copy_str, reversed_str);
             //printf("%s\n", copy_str);
-            rearrange(copy_str);
+            rearrange(copy_str, 0, strlen(copy_str));
             str_idx--;
             free(copy_str);
         }
@@ -113,7 +113,7 @@ void longestPalindrome(char * str){
         char * copy_str = strdup(new_str);
         strcat(copy_str, reversed_str);
         //printf("%s\n", copy_str);
-        rearrange(copy_str);
+        rearrange(copy_str, 0, strlen(copy_str));
         free(copy_str);
     }
     
