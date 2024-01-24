@@ -48,12 +48,33 @@ void longestPalindrome(char * str){
     new_str[str_idx] = '\0';
     char * reversed_str = strdup(new_str);
     reverse(reversed_str);
-    printf("%s | %s\n", new_str, reversed_str);
+    //printf("%s | %s\n", new_str, reversed_str);
     
+    // special case : odd length palindrome.
+    int is_odd = 0;
+    for (int i=0; i<256; i++){
+        if(hash[i] == 1){
+            char * copy_str = strdup(new_str);
+            copy_str[str_idx++] = i;
+            copy_str[str_idx] = '\0';
+            is_odd = 1;
+            strcat(copy_str, reversed_str);
+            printf("%s\n", copy_str);
+            str_idx--;
+            free(copy_str);
+        }
+    }
     
+    if (!is_odd){
+        char * copy_str = strdup(new_str);
+        strcat(copy_str, reversed_str);
+        printf("%s\n", copy_str);
+        free(copy_str);
+    }
     
     free(new_str);
     free(reversed_str);
+    return;
 }
 
 int main(void){
