@@ -7,19 +7,17 @@ class GNode:
         self.distance = d
         self.parent = p
 
-    def __str__(self):
-        return "(" + self.data + ")"
 
 def BFS_shortest_path(graph, start, target):
     # 1. Store all connected Node's distances from start Node using BFS
-    distances = {vertex.data: float('inf') for vertex in graph}
+    #distances = {vertex.data: float('inf') for vertex in graph}
     start.color = "G"
     start.distance = 0
-    distances[start] = 0
-
+    #distances[start] = 0
+    
     Q = deque()
     Q.append(start)
-    distances[start.data] = start.distance
+    #distances[start.data] = start.distance
 
     while Q:
         curr = Q.popleft()
@@ -30,12 +28,13 @@ def BFS_shortest_path(graph, start, target):
                 nxt.color = "G"
                 nxt.distance = curr.distance + 1
                 nxt.parent = curr
-                distances[nxt.data] = nxt.distance
+                #distances[nxt.data] = nxt.distance
                 Q.append(nxt)
         curr.color = "B"  # current Vertex Queue out
 	
     # Tracking Path using parent
-    if distances[target.data] == float('inf'):
+    #if distances[target.data] == float('inf'):
+    if target.distance == -1:
         print("No path found between {} and {}".format(start.data, target.data))
     else:
         print_shortest_path(start, target)     # Backtrace
@@ -53,6 +52,7 @@ def print_shortest_path(start, target):
 
 A, B, C = GNode("A"), GNode("B"), GNode("C")
 D, E, F = GNode("D"), GNode("E"), GNode("F")
+H = GNode("H")
 
 # Adj List (Undirected edges)
 G = dict()
@@ -62,8 +62,9 @@ G[C] = [A, D]
 G[D] = [B, C, E, F]
 G[E] = [D, F]
 G[F] = [D, E]
+G[H] = []
 
 start_vertex = A
-target_vertex = F
+target_vertex = E
 
 BFS_shortest_path(G, start_vertex, target_vertex)
