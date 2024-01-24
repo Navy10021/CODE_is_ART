@@ -16,7 +16,7 @@ void reverse(char * str){
     }
 }
 
-// check palindrome function
+// if need to check palindrome, add function
 
 // LeetCode 409 : Longest Palindrome + print builted Palindrome
 void longestPalindrome(char * str){
