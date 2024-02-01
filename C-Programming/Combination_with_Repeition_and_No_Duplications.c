@@ -52,8 +52,11 @@ void combinations(char set[], int n, int k){
 int main() {
     char set[] = {'A', 'B', 'B'};
     int n = sizeof(set) / sizeof(set[0]);
-    int k = 2; // Length of combinations
+    //int k = 2; // Length of combinations
+    //combinations(set, n, k);
+    for (int k = 1; k <= n; k++){
+        combinations(set, n, k);
+    }
     
-    combinations(set, n, k);
     return 0;
 }
