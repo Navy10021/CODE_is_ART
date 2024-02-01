@@ -66,7 +66,7 @@ void combinations(char set[], int n, int k){
     
     // Print the results
     for (int i = 0; i < arr_cnt; i++) {
-        printf("%s\n", arr[i]);
+        printf("%s, ", arr[i]);
         free(arr[i]); // Free memory for each string
     }
     free(arr);
@@ -82,7 +82,9 @@ int main() {
     //int k = 2; // Length of combinations
     //combinations(set, n, k);
     for (int k = 1; k <= n; k++){
+        printf("{");
         combinations(set, n, k);
+        printf("}\n");
     }
     
     return 0;
