@@ -97,6 +97,7 @@ public:
 
             this->size++;
         } else {
+			// keep ascending order.
             Node<T>* current = this->front;
             while (current->next != nullptr && value > current->next->data) {
                 current = current->next;
