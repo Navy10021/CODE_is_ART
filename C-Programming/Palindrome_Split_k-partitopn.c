@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// is subtext is palindrome.
+// is subtext is palindrome..
 int isSubtextPalindrome(char** arr, int arrSize){
     int st = 0;
     int en = arrSize - 1;
