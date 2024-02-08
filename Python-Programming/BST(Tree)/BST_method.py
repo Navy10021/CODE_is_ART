@@ -210,11 +210,58 @@ class BST:
             print("Not has path sum")
             
     # Lowest Common Ancestor(LCA) : Find the LCA of two nodes
-    
-    # Convert BST to Sotred Linked List 
+    def lowest_common_ancestor(self, node1, node2):
+        def find_LCA(root, p, q):
+            if not root:
+                return None 
+            if root.val > p.val and root.val > q.val:
+                return find_LCA(root.left, p, q)
+            elif root.val < p.val and root.val < q.val:
+                return find_LCA(root.right, p, q)
+            else: 
+                return root 
+        
+        return find_LCA(self.root, node1, node2)
+        
+    # Diameter of BST : The longest path between two nodes.
+    def diameter(self):
+        def diameter_of_tree(node):
+            if not node:
+                return 0, 0 # Diameter, height 
+            
+            left_diameter, left_height = diameter_of_tree(node.left)
+            right_diameter, right_height = diameter_of_tree(node.right)
+            curr_diameter = left_height + right_height + 1 
+            curr_height = max(left_height, right_height) + 1 
+            
+            return max(left_diameter, right_diameter, curr_diameter), curr_height
+        return diameter_of_tree(self.root)[0] - 1  # subtract 1 to count edges instead of nodes 
     
     # Serialize and Deserialize BST : serialize BST <-> string 
-
+    def serialize(self):
+        def serialize_helper(node):
+            if node is None:
+                return "None, "
+            return str(node.val) + ", " + serialize_helper(node.left) + serialize_helper(node.right)
+        return serialize_helper(self.root)
+    
+    def deserialize(self, data):
+        def deserialize_helper(data_list):
+            if data_list[0] == "None":
+                data_list.pop(0)
+                return None 
+            
+            root = Node(int(data_list[0]))
+            data_list.pop(0)
+            root.left = deserialize_helper(data_list)
+            root.right = deserialize_helper(data_list)
+            return root 
+        
+        data_list = data.split(', ')
+        root = deserialize_helper(data_list)
+        self.root = root 
+    
+    
 bst = BST()
 nodes = [50, 30, 70, 20, 40, 60, 80]
 for node in nodes:
@@ -250,4 +297,9 @@ print("3th Smallest Node : ", bst.kth_smallest(3))
 print("3th Largest Node : ", bst.kth_largest(3))
 
 bst.has_path_sum(100)
- 
+
+serial = bst.serialize()
+print("Serialized BST : ", serial)
+new_bst = BST()
+new_bst.deserialize(serial)
+new_bst.inorder_traversal()
