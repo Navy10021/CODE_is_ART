@@ -113,6 +113,7 @@ class BST:
         return nodes 
     
     # Path to given node : returns path from the root to the specific value
+    # DFS in Tree
     def path_to_given_node(self, value):
         path = []
         def _find_path(node, value):
