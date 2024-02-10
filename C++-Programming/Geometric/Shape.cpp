@@ -59,11 +59,6 @@ public:
     }
 };
 
-#include <iostream>
-#include <cmath>
-#include <vector>
-using namespace std;
-
 class Polygon : public Shape {
 private:
     vector<double> sides;
@@ -93,8 +88,7 @@ public:
 };
 
 int main() {
-	int main() {
-    vector<unique_ptr<Shape>> shapes;   // unique_ptr Library : dynamically allocated object
+    vector<unique_ptr<Shape>> shapes;
     shapes.push_back(make_unique<Circle>(5));
     shapes.push_back(make_unique<Rectangle>(4, 5));
     shapes.push_back(make_unique<Triangle>(3, 4, 5));
@@ -106,5 +100,4 @@ int main() {
     }
 
     return 0;
-}
 }
