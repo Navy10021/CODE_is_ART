@@ -82,7 +82,7 @@ class Tree:
                     node = node.left 
                 else:
                     node = node.right
-            return boundary # exclude the leaf 
+            return boundary[:-1] if boundary[:-1] in bottom else boundary # exclude the leaf if in leaf node list 
         
         def find_right_boundary(node):
             boundary = []
@@ -93,12 +93,13 @@ class Tree:
                     node = node.right
                 else:
                     node = node.left 
-            return boundary[::-1]  # reverse
-        
-        left_boundary = find_left_boundary(self.root.left) if self.root.left else []
-        right_boundary = find_right_boundary(self.root.right) if self.root.right else []
+            return boundary[:-1][::-1] if boundary[:-1] in bottom else boundary[::-1]  # reverse
+            
         top = [self.root.val]
         bottom = find_leaves(self.root)
+        left_boundary = find_left_boundary(self.root.left) if self.root.left else []
+        right_boundary = find_right_boundary(self.root.right) if self.root.right else []
+        
         return top + left_boundary + bottom + right_boundary
 # Tree edge
 T = {
