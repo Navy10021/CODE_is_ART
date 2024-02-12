@@ -1,68 +1,59 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-// 132. Palindrome Partitioning II : return minimum cuts for a palindrome patitions of str
-
-int isPalindrome(char *str, int st, int en) {
-    while (st < en) {
-        if (str[st] != str[en]) {
+// Function to check if a substring is a palindrome.
+int isPalindrome(const char *str, int start, int end) {
+    while (start < end) {
+        if (str[start] != str[end]) {
             return 0;
         }
-        st++;
-        en--;
+        start++;
+        end--;
     }
     return 1;
 }
 
-void backtrack(char *str, int start, char **curr_partition, int curr_size, int max_size, int* minCut) {
-    if (start == strlen(str)) {
-        // Check if all substrings in the current partition are palindromes.
-        for (int i = 0; i < curr_size; i++) {
-            if (!isPalindrome(curr_partition[i], 0, strlen(curr_partition[i]) - 1)) {
-                return;  // No need for the flag, just return if any substring is not a palindrome.
+// Recursive function to find palindromic partitions.
+// Added an extra parameter to keep track of the partitions
+void findPalindromicPartitions(int * min_partition, const char *str, int start, int n, int k, int currentPartitions, char partitionedResult[][n+1], int depth) {
+    // Base condition: If we've reached the end of the string
+    if (start >= n) {
+        // If the current partition count matches k, we've found a valid partitioning.
+        if (currentPartitions == k && k < (*min_partition)) {
+            * min_partition = k; 
+            printf("Minimum cuts need to palindromic partitions : %d\n", k-1);
+            for (int i = 0; i < depth; i++) {
+                printf("'%s'", partitionedResult[i]);
             }
-        }
-        // minimum cutting update
-        if (curr_size - 1 < *minCut){
-            *minCut = curr_size - 1;
+            printf("\n");
         }
         return;
     }
-    for (int end = start + 1; end < strlen(str) + 1; end++) {
-        // Add substring to current partition
-        //strncpy(curr_partition[curr_size], &str[start], end - start);
-        strncpy(curr_partition[curr_size], str + start, end - start);
-        curr_partition[curr_size][end - start] = '\0';
 
-        // Continue with the next substring
-        backtrack(str, end, curr_partition, curr_size + 1, max_size, minCut);
+    for (int end = start; end < n; end++) {
+        if (isPalindrome(str, start, end)) {
+            // Copy the current palindromic substring into the partitionedResult array.
+            int len = end - start + 1;
+            strncpy(partitionedResult[depth], str + start, len);
+            partitionedResult[depth][len] = '\0'; // Null-terminate the string.
+
+            // Recurse for the remaining string with the current partition added.
+            findPalindromicPartitions(min_partition, str, end + 1, n, k, currentPartitions + 1, partitionedResult, depth + 1);
+        }
     }
 }
 
-void get_partitioned_substr(char *str) {
-    int max_size = strlen(str);
-    int minCut = max_size;
+int main() {
+    const char *str = "abcbm";
+    int len = strlen(str);
+    char arr[len][len+1]; // Assuming maximum `len` partitions.
+    int min_partition = len;
 
-    // Allocate memory for current partition
-    char *curr_partition[max_size];
-    for (int i = 0; i < max_size; i++) {
-        curr_partition[i] = (char *)malloc((max_size + 1) * sizeof(char));
+    for (int k = 1; k <= len; k++) {
+        findPalindromicPartitions(&min_partition, str, 0, len, k, 0, arr, 0);
     }
-
-    // Start the backtracking
-    backtrack(str, 0, curr_partition, 0, max_size, &minCut);
-    printf("Minimum cuts : %d", minCut);
-    // Free allocated memory
-    for (int i = 0; i < max_size; i++) {
-        free(curr_partition[i]);
-    }
-}
-
-int main(void) {
-    char input[100];
-    scanf("%s", input);
-    get_partitioned_substr(input);
-
+    
+    // print possible Partitioned Palindrome
     return 0;
 }
