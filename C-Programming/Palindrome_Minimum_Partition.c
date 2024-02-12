@@ -22,7 +22,7 @@ void findPalindromicPartitions(int * min_partition, const char *str, int start, 
         // If the current partition count matches k, we've found a valid partitioning.
         if (currentPartitions == k && k < (*min_partition)) {
             * min_partition = k; 
-            printf("Minimum palindromic partitions : %d\n", k);
+            printf("Minimum cuts need to palindromic partitions : %d\n", k-1);
             for (int i = 0; i < depth; i++) {
                 printf("'%s'", partitionedResult[i]);
             }
@@ -45,7 +45,7 @@ void findPalindromicPartitions(int * min_partition, const char *str, int start, 
 }
 
 int main() {
-    const char *str = "racecars";
+    const char *str = "abcbm";
     int len = strlen(str);
     char arr[len][len+1]; // Assuming maximum `len` partitions.
     int min_partition = len;
