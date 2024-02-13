@@ -28,18 +28,19 @@ int hasDuplicate(int n, char arr[][n+1], int arr_size){
 // Recursive function to find palindromic partitions.
 // Added an extra parameter to keep track of the partitions
 // Maximum number of unique characters
-void findPalindromicPartitions(int *max_partition, const char *str, int start, int n, int k, int currentPartitions, char partitionedResult[][n+1], int depth) {
+void findPalindromicPartitions(int *max_partition, char *str, int start, int n, int k, int currentPartitions, char partitionedResult[][n+1], int depth) {
     // Base condition: If we've reached the end of the string
     if (start >= n) {
         // If the current partition count matches k, we've found a valid partitioning.
-        if (currentPartitions == k && !hasDuplicate(n, partitionedResult, depth) && depth > *max_partition) {
-            *max_partition = depth;
-            /*
-            for (int i = 0; i < depth; i++) {
-                printf("'%s'", partitionedResult[i]);
+        if (currentPartitions == k && !hasDuplicate(n, partitionedResult, depth)) {
+            if (depth > *max_partition){
+                *max_partition = depth;
+                
+                for (int i = 0; i < depth; i++) {
+                    printf("'%s'", partitionedResult[i]);
+                }
+                printf("\n");
             }
-            printf("\n");
-            */
         }
         return;
     }
@@ -58,7 +59,8 @@ void findPalindromicPartitions(int *max_partition, const char *str, int start, i
 }
 
 int main() {
-    const char *str = "ababa";
+    char str[100];
+    scanf("%s", str);
     int len = strlen(str);
     char arr[len][len+1]; // Assuming maximum `len` partitions.
     int max_partition = 0;
@@ -66,12 +68,6 @@ int main() {
     for (int k = 1; k <= len; k++) {
         findPalindromicPartitions(&max_partition, str, 0, len, k, 0, arr, 0);
     }
-    
-    // print possible Partitioned Palindrome
-    for (int i = 0; i < max_partition; i++) {
-            printf("'%s'", arr[i]);
-        }
-    printf("\n");
-    
+    printf("Max partition with unique charahcter : %d\n", max_partition);
     return 0;
 }
