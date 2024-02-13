@@ -14,7 +14,7 @@ def DFS(graph, curr, visited, path, all_paths):
         all_paths.append(path.copy())
     else:
         for nxt in graph[curr]:
-            if nxt.data not in visited: # same as nxt.color == "W"
+            if nxt.color == "W":  # nxt.data not in visited
                 nxt.parent = curr
                 DFS(graph, nxt, visited, path, all_paths)
 
@@ -25,6 +25,10 @@ def DFS(graph, curr, visited, path, all_paths):
 
 def find_all_paths(graph):
     all_paths = []
+    # Reset all nodes to white 
+    for node in graph:
+        node.color = "W"
+        node.parent = None 
 
     for start in graph:
         visited = set()
@@ -34,12 +38,12 @@ def find_all_paths(graph):
     return all_paths
 
 A, B, C = GNode("A"), GNode("B"), GNode("C")
-D, E, F = GNode("D"), GNode("E"), GNode("F")
+D, E = GNode("D"), GNode("E")
 
 G = {
     A: [B, C],
-    B: [A, C, D],
-    C: [A, B, D],
+    B: [A, D],
+    C: [A, D],
     D: [B, C, E],
     E : [D],
 }
