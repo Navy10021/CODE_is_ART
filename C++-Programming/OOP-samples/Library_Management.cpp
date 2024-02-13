@@ -17,7 +17,9 @@ public:
         cout << "Item: " << title << ", ID: " << id << endl;
     }
 
-    const string& getId() const {
+    // return a reference to a string : 문자열 수정 X && 문자열 복사(overhead) 방지
+    //  Returning a reference is efficient because it avoids copying the string
+    const string& getId() const { 
         return id;
     }
 
