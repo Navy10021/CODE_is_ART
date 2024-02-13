@@ -14,7 +14,7 @@ def DFS(graph, curr, visited, path, all_paths):
         all_paths.append(path.copy())
     else:
         for nxt in graph[curr]:
-            if nxt.data not in visited:
+            if nxt.data not in visited: # same as nxt.color == "W"
                 nxt.parent = curr
                 DFS(graph, nxt, visited, path, all_paths)
 
