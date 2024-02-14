@@ -94,13 +94,14 @@ class Laptop : public Computer{
             return price;
         }
 
-        void AddGPU(Electronics *aGPU){
-            if (GPUNum > 1){
+        bool AddGPU(Electronics *aGPU){
+            if (GPUNum >= 2){
                 cout << "Laptop can have two GPU as max." << endl;
-                exit(0);
+                return false;
             }
             else{
                 GPUArr[GPUNum++] = aGPU;
+                return true;
             }
         }
 
@@ -120,8 +121,8 @@ int main() {
     myLaptop.AddGPU(ptr);
     ptr = new Computer(100);
     myLaptop.AddGPU(ptr);
-    //ptr = new Computer(100);
-    //myLaptop.AddGPU(ptr);
+    ptr = new Computer(100);
+    myLaptop.AddGPU(ptr);
 
 
     myTV.PrintSelf();
