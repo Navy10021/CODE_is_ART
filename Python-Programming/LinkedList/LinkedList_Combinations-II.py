@@ -21,10 +21,36 @@ class LinkedList:
             curr = curr.next 
         curr.next = newNode
     
+    def copy(self):
+        copy_list = LinkedList()
+        curr = self.head 
+        while curr:
+            copy_list.append(curr.val)
+            curr = curr.next 
+        return copy_list
+    
     def buildList(self, l):
         for e in l:
             self.append(e)
-
+    
+    def toStr(self):
+        elements = []
+        curr = self.head 
+        while curr:
+            elements.append(curr.val)
+            curr = curr.next 
+        return "".join(map(str, elements))
+    
+    def listPop(self):
+        if self.is_empty():
+            return
+        elif self.head.next is None:
+            self.head = None 
+        else:
+            curr = self.head
+            while curr.next.next:
+                curr = curr.next 
+            curr.next = None 
 
 def display(head):
     elements = []
@@ -34,24 +60,20 @@ def display(head):
         curr = curr.next 
     print(' -> '.join(map(str,elements)))
 
-def listPop(head):
-    if head is None:
-        return 
-    elif head.next is None:
-        head = None 
-    else:
-        curr = head 
-        while curr.next.next:
-            curr = curr.next 
-        curr.next = None 
 
 def printCombinations(linkedArr):
     def generateCombinations(node, k, curr_arr):
         # Base case 
         if k == 0:
-            if curr_arr not in combinaions:
-                combinaions.append(curr_arr)
-                display(curr_arr.head)
+            
+            flag = 0
+            curr_str = curr_arr.toStr()
+            for i in combinaions:
+                if (curr_str == i.toStr()):
+                    flag = 1 
+                    break 
+            if (flag == 0):
+                combinaions.append(curr_arr.copy())
             return 
         
         if not node:
@@ -60,7 +82,7 @@ def printCombinations(linkedArr):
         curr_arr.append(node.val)
         generateCombinations(node.next, k-1, curr_arr)
         # Exclude current node and move to next
-        listPop(curr_arr.head)
+        curr_arr.listPop()
         generateCombinations(node.next, k, curr_arr)
     
     def listSize(node):
@@ -85,3 +107,5 @@ LL = LinkedList()
 LL.buildList(List)
 display(LL.head)
 combi = printCombinations(LL)
+for e in combi:
+    display(e.head)
