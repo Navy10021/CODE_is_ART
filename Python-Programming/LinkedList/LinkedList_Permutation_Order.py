@@ -77,6 +77,7 @@ def check_Data(linked_list):
     curr_node = linked_list.head
     
     while(curr_node and curr_node.next):
+        # ASCII : ord() <-> char()
         if (abs(ord(curr_node.data) - ord(curr_node.next.data)) == 1):
             return False 
         curr_node = curr_node.next
