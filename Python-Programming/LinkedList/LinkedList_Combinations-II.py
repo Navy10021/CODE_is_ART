@@ -65,7 +65,6 @@ def printCombinations(linkedArr):
     def generateCombinations(node, k, curr_arr):
         # Base case 
         if k == 0:
-            
             flag = 0
             curr_str = curr_arr.toStr()
             for i in combinaions:
