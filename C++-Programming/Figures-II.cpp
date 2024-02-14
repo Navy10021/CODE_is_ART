@@ -8,8 +8,8 @@ class Math{
         // Constructor 
         Math() {}
         // Two pure virtual functions
-        virtual double calculate() const = 0; // pure virtual function은 모두 만들어야함. 
-        virtual string get_name() const = 0;
+        virtual double calculate() const = 0; // pure virtual function() 상속되는 모든 class에 포함되어야함!
+        virtual string get_name() const = 0;  // pure virtual function()
         // Virtual Destructor is important for base class
         virtual ~Math() {}
 };
