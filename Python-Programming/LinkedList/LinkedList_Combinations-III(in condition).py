@@ -74,7 +74,8 @@ def is_adj(linkedArr):
     while slow:
         fast = slow.next
         while fast:
-            if abs(ord(slow.val) - ord(fast.val)) == 1:
+            #if abs(ord(slow.val) - ord(fast.val)) == 1:
+            if abs(slow.val - fast.val) == 1:
                 return True
             fast = fast.next
         
