@@ -136,5 +136,7 @@ int main(void) {
     MyBookstore.sortByDiscountedPrice();
     MyBookstore.DisplayBooks();
 
+    delete ptr;
+
     return 0;
 }
