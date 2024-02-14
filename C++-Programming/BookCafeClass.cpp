@@ -74,9 +74,9 @@ private:
     Book* booksArr[MAX_BOOKS];
     int numBooks;
 public:
-    Bookstore() : numBooks(0) {}		// Constructor
+    Bookstore() : numBooks(0) {}   // Constructor
 
-    ~Bookstore() {						// Destructor
+    ~Bookstore() {	// Destructor
         for (int i = 0; i < numBooks; i++) {
             delete booksArr[i];
         }
