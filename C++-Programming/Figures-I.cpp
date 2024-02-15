@@ -6,9 +6,9 @@ using namespace std;
 // Base class
 class Figure{
     public:
-        virtual double CalculateArea() const = 0; 
-        virtual double CalculateVolume() const { return 0.0; }
-        virtual void DisplayInfo() const = 0;
+        virtual double CalculateArea() const = 0; // pure virtual function
+        virtual double CalculateVolume() const { return 0.0; }  // not pure
+        virtual void DisplayInfo() const = 0;    // pure virtual function
         virtual ~Figure() {}
 };
 
