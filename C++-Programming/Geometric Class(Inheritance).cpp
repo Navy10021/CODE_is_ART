@@ -229,27 +229,5 @@ int main() {
     cout << "Area: " << ptr3->getArea() << endl;
     cout << "Perimeter: " << ptr3->getPerimeter() << endl;
     
-    
-/*
-    square.display();
-    std::cout << "Area: " << square.calculateArea() << std::endl;
-    std::cout << "Perimeter: " << square.calculatePerimeter() << std::endl;
-
-    ellipse.display();
-    std::cout << "Area: " << ellipse.calculateArea() << std::endl;
-    std::cout << "Perimeter: " << ellipse.calculatePerimeter() << std::endl;
-
-    triangle.display();
-    std::cout << "Area: " << triangle.calculateArea() << std::endl;
-    std::cout << "Perimeter: " << triangle.calculatePerimeter() << std::endl;
-    
-    equilateralTriangle.display();
-    std::cout << "Area: " << equilateralTriangle.calculateArea() << std::endl;
-    std::cout << "Perimeter: " << equilateralTriangle.calculatePerimeter() << std::endl;
-
-    isoscelesTriangle.display();
-    std::cout << "Area: " << isoscelesTriangle.calculateArea() << std::endl;
-    std::cout << "Perimeter: " << isoscelesTriangle.calculatePerimeter() << std::endl;
-*/
     return 0;
 }
