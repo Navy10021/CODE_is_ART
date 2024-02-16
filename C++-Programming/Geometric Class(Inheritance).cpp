@@ -202,11 +202,11 @@ int main() {
     
     // 원형 컨트롤 포인터
     Point* ptr1 = new Circle(2, 3, 5);
-    delete ptr1;    // delete previous object
+    //delete ptr1;    // delete previous object
     ptr1 = new Ellipse(2, 3, 6, 4);
     // 사각형 컨트롤 포인터
     Point* ptr2 = new Rectangle(1, 1, 4, 3);
-    delete ptr2;
+    //delete ptr2;
     ptr2 = new Square(1, 1, 5);
     // 삼각형 컨트롤 포인터 
     Point* ptr3 = new Triangle(4, 4, 4, 1, 3, 5);
