@@ -50,10 +50,7 @@ class Line : public Point {
         double getSlope() const {
             double dx = endX - x;
             double dy = endY - y;
-            if (dx == 0){
-                return INFINITY;
-            }
-            return dy/dx;
+            return (dx == 0) ? INFINITY : dy / dx;
         }
         ~Line() {}
 };
@@ -179,7 +176,7 @@ public:
         return std::sqrt(s * (s - side1) * (s - side2) * (s - side3));
     }
 
-    double getPerimeter() const {
+    double getPerimeter() const override {
         return side1 + side2 + side3;
     }
 };
@@ -202,18 +199,21 @@ public:
 
 int main() {
     Line line(0, 0, 3, 4);
+    
     // 원형 컨트롤 포인터
     Point* ptr1 = new Circle(2, 3, 5);
+    delete ptr1;    // delete previous object
     ptr1 = new Ellipse(2, 3, 6, 4);
     // 사각형 컨트롤 포인터
     Point* ptr2 = new Rectangle(1, 1, 4, 3);
+    delete ptr2;
     ptr2 = new Square(1, 1, 5);
     // 삼각형 컨트롤 포인터 
     Point* ptr3 = new Triangle(4, 4, 4, 1, 3, 5);
     ptr3 = new EquilateralTriangle(4, 4, 5);
     ptr3 = new IsoscelesTriangle(4, 4, 6, 8);
     
-
+    
     line.display();
     cout << "Distance: " << line.getPerimeter() << endl;
     
@@ -229,5 +229,8 @@ int main() {
     cout << "Area: " << ptr3->getArea() << endl;
     cout << "Perimeter: " << ptr3->getPerimeter() << endl;
     
+    delete ptr1;
+    delete ptr2;
+    delete ptr3;
     return 0;
 }
