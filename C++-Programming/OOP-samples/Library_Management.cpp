@@ -4,7 +4,7 @@
 #include <map>
 
 using namespace std;
-
+// Base class for Items
 class LibraryItem {
 protected:
     string title;
@@ -68,6 +68,7 @@ public:
     }
 };
 
+// Peoples class. {name1 : [item*, ...], name2 : [item*, ...], ...}
 class Patron {
     string name;
     map<string, LibraryItem*> borrowedItems;
