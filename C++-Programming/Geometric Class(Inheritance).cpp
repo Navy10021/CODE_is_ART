@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <vector> 
 
 using namespace std;
 
@@ -198,6 +199,30 @@ public:
 };
 
 int main() {
+    vector<Point*> shapes;
+    
+    shapes.push_back(new Line(0, 0, 3, 4));
+    shapes.push_back(new Circle(2, 3, 5));
+    shapes.push_back(new Ellipse(2, 3, 6, 4));
+    shapes.push_back(new Rectangle(1, 0, 5, 6));
+    shapes.push_back(new Square(1, 0, 5));
+    shapes.push_back(new Triangle(5, 5, 1, 1, 3, 5));
+    shapes.push_back(new EquilateralTriangle(5, 5, 10));
+    shapes.push_back(new IsoscelesTriangle(5, 5, 6, 8));
+    
+    for (auto& s : shapes){
+        cout << "Perimeter : " << s->getPerimeter() << endl;
+        cout << "Area : " << s->getArea() << endl;
+    }
+    
+    // clean up 
+    for (auto& s : shapes){
+        delete s;
+    }
+    shapes.clear();
+    
+    
+    /*
     Line line(0, 0, 3, 4);
     
     // 원형 컨트롤 포인터
@@ -232,5 +257,6 @@ int main() {
     delete ptr1;
     delete ptr2;
     delete ptr3;
+    */
     return 0;
 }
