@@ -15,7 +15,7 @@ void generateCombinations(char* str, int l, int r, char* path, int path_idx){
     generateCombinations(str, l + 1, r, path, path_idx + 2);
     
     // Insert '-' between current digit and next digit
-    path[path_idx] = str[l];
+    //path[path_idx] = str[l];
     path[path_idx + 1] = '-';
     generateCombinations(str, l + 1, r, path, path_idx + 2);
 }
