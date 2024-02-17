@@ -4,7 +4,7 @@
 
 void generateCombinations(char* str, int l, int r, char* path, int path_idx){
     if (l == r){
-        path[path_idx - 1] = '\0';
+        path[path_idx] = '\0';
         printf("%s\n", path);
         return;
     }
