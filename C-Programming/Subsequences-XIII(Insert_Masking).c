@@ -12,6 +12,7 @@ void partition(char* str, int l, int r, char* path, int path_idx, char mask){
         add_path[0] = mask;
         strcpy(add_path + 1, path);
         printf("%s\n", add_path);
+        free(add_path);
         return;
     }
     
