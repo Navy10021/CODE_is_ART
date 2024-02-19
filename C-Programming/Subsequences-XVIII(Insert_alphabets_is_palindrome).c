@@ -1,6 +1,5 @@
 // Insert lower alphater given string and check is palindrome.
 // given 'abc' -> '#a#b#c#' can insert alphabets in '#' positions.
-// Insert masking : #A#B*C* Two-diffiernt masking.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
