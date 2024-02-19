@@ -1,11 +1,14 @@
-// Insert alphabet : #a#b#c#
-// Condition 1 : is palindrome
-// Condition 2 : Minimum Insertion to build palindrome.
-// Condition 3 : Lexicographically Smallest
+/* Minimum insertion to make palindrome
+   Insert alphabet : abc -> a#b#c#
+   Condition 1 : is palindrome
+   Condition 2 : Minimum insertion
+   Condition 3 : if same length, return the Lexicographically smallest
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define INT_MAX 100
+
+#define STR_MAX 100
 
 int is_palindrome(char* str){
     int st = 0;
@@ -20,69 +23,50 @@ int is_palindrome(char* str){
     return 1;
 }
 
-void partition(int* min_size, char** min_palindrome, char* str, int l, int r, char* path, int path_idx, char mask_arr[], int arr_size){
+void partition(int* min_size, char** min_palindrome, char* str, int l, int r, char* path, int path_idx, char alpha_arr[], int arr_size){
     if (l == r){
         path[path_idx] = '\0';
-        // Condition 1 & 2. find minimum size palindrome.
-        if (is_palindrome(path) && strlen(path) <= *min_size){
-            //printf("%s\n", path);
-            *min_size = strlen(path);
-            free(*min_palindrome); // Free the previous results
-            *min_palindrome = strdup(path);
-            // Condition 3. Lexicographically smallest
-            if (strlen(*min_palindrome) == strlen(path) && strcmp(path, *min_palindrome) < 0){
+        // Codition 1.
+        if (is_palindrome(path)){
+            // Condition 2 & 3.
+            if (strlen(path) < *min_size || (strlen(path) == *min_size && strcmp(path, *min_palindrome) < 0)){
+                *min_size = strlen(path);
                 free(*min_palindrome);
                 *min_palindrome = strdup(path);
             }
         }
-        // also front masking 
-        for (int i = 0; i < arr_size; i++){
-            char* add_path = (char*)malloc((path_idx + 1) * sizeof(char));
-            add_path[0] = mask_arr[i];
-            strcpy(add_path + 1, path);
-            if (is_palindrome(add_path) && strlen(add_path) <= *min_size){
-                //printf("%s\n", add_path);
-                *min_size = strlen(add_path);
-                free(*min_palindrome);
-                *min_palindrome = strdup(add_path);
-                if (strlen(*min_palindrome) == strlen(add_path) && strcmp(add_path, *min_palindrome) < 0){
-                    free(*min_palindrome);
-                    *min_palindrome = strdup(add_path);
-                }
-            }
-            free(add_path);
-        }
         return;
     }
     
-    // include current char str[l]
+    // Include current char str[l]
     path[path_idx] = str[l];
-    // include current char and proceed to next proceed
-    partition(min_size, min_palindrome, str, l + 1, r, path, path_idx + 1, mask_arr, arr_size);
-    // Insert masks
+    // Include current char and proceed to next proceed 
+    partition(min_size, min_palindrome, str, l + 1, r, path, path_idx + 1, alpha_arr, arr_size);
+    // Insert alphabets and proceed to next proceed 
     for (int i = 0; i < arr_size; i++){
-        path[path_idx + 1] = mask_arr[i];
-        partition(min_size, min_palindrome, str, l + 1, r, path, path_idx + 2, mask_arr, arr_size);
+        path[path_idx + 1] = alpha_arr[i];
+        partition(min_size, min_palindrome, str, l + 1, r, path, path_idx + 2, alpha_arr, arr_size);
     }
 }
 
-void subsequnces(char *str){
+void subsequences(char * str){
     int length = strlen(str);
-    char * path = (char*)malloc((length + 1) * sizeof(char));
-    // store minimum palindrome 
-    int min_size = INT_MAX;
-    char * min_palindrome = strdup("");
-    // insert different alphabets.
-    char masked_arr[26] = {0};
+    char* path = (char*)malloc((length*2 + 1) * sizeof(char));
+    int min_size = STR_MAX;
+    char* min_palindrome = strdup("");
+    // Insert lower alphabet
+    char alpha_arr[26] = {0};
     for (int i = 0; i < 26; i++){
-        masked_arr[i] = i + 'a';
-    }    
-    int arr_size = sizeof(masked_arr) / sizeof(masked_arr[0]);
-    partition(&min_size, &min_palindrome, str, 0, length, path, 0, masked_arr, arr_size);
+        alpha_arr[i] = i + 'a';
+    }
+    int arr_size = sizeof(alpha_arr) / sizeof(alpha_arr[0]);
     
-    printf("Minimum Insertion Palindrome : %s (%d)\n", min_palindrome, min_size);
+    // Let's make palindrome given string
+    partition(&min_size, &min_palindrome, str, 0, length, path, 0, alpha_arr, arr_size);
+    
+    printf("Minimum Insertion Palindrome (length) : %s (%d)\n", min_palindrome, min_size);
 
-    // clean up 
+    // Clean up 
     free(path);
     free(min_palindrome);
 }
@@ -90,7 +74,7 @@ void subsequnces(char *str){
 int main(void){
     char input[10];
     scanf("%s", input);
-
-    subsequnces(input);
+    
+    subsequences(input);
     return 0;
 }
