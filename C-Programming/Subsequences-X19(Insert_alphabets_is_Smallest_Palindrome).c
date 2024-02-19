@@ -1,6 +1,6 @@
 // Insert alphabet : #a#b#c#
 // Condition 1 : is palindrome
-// Conndition 2 : Minimum Insertion to build palindrome.
+// Condition 2 : Minimum Insertion to build palindrome.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
