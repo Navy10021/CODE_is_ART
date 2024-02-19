@@ -50,7 +50,7 @@ void partition(char* str, int l, int r, char* path, int path_idx, char mask_arr[
 
 void subsequnces(char *str){
     int length = strlen(str);
-    char * path = (char*)malloc((length * 2) * sizeof(char));
+    char * path = (char*)malloc((length * 2 + 1) * sizeof(char));
     // insert different alphabets.
     char masked_arr[26] = {0};
     for (int i = 0; i < 26; i++){
