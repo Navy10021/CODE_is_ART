@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define INT_MAX 100;
+#define INT_MAX 100
 
 int is_palindrome(char* str){
     int st = 0;
