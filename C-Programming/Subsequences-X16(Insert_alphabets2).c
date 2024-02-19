@@ -1,4 +1,5 @@
-// Insert masking : A#B#C
+// Insert alphabets : A#B#C
+// Condition 1 : is Palindrome
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
