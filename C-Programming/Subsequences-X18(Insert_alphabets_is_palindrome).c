@@ -1,5 +1,6 @@
-// Insert lower alphater given string and check is palindrome.
+// Insert alphabets : #a#b#c#
 // given 'abc' -> '#a#b#c#' can insert alphabets in '#' positions.
+// Condition 1 : is palindrome.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
