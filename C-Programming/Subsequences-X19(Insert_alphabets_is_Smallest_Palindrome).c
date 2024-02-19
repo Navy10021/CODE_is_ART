@@ -22,28 +22,22 @@ int is_palindrome(char* str){
 void partition(int* min_size, char** min_palindrome, char* str, int l, int r, char* path, int path_idx, char mask_arr[], int arr_size){
     if (l == r){
         path[path_idx] = '\0';
-        // Condition 1 : Minimum Palindrome  
+        // Condition 1 & 2 : Minimum Palindrome  
         if (is_palindrome(path) && strlen(path) <= *min_size){
             *min_size = strlen(path);
-            // Condition 2 : Lexicographically smallest
-            if (strcmp(path, *min_palindrome) < 0){
-                free(*min_palindrome); // Free the previous results
-                *min_palindrome = strdup(path);
-            }
+            free(*min_palindrome); // Free the previous results
+            *min_palindrome = strdup(path);
         }
         // also front masking 
         for (int i = 0; i < arr_size; i++){
             char* add_path = (char*)malloc((path_idx + 1) * sizeof(char));
             add_path[0] = mask_arr[i];
             strcpy(add_path + 1, path);
-            // Condition 1 
+            // Condition 1 & 2 
             if (is_palindrome(add_path) && strlen(add_path) <= *min_size){
                 *min_size = strlen(add_path);
-                // Condition 2 
-                if (strcmp(add_path, *min_palindrome) < 0){
-                    free(*min_palindrome);
-                    *min_palindrome = strdup(add_path);
-                }
+                free(*min_palindrome);
+                *min_palindrome = strdup(add_path);
             }
             free(add_path);
         }
