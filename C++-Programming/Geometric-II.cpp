@@ -5,13 +5,17 @@
 using namespace std;
 
 class Point {
+    /* Attributor */
     protected: // inheritance
         double x;
         double y;
 
     public:
         Point(double _x, double _y) : x(_x), y(_y) {}
-
+        /* If using "Accessor"
+        void getX() {return x;}
+        void getY() {return y;}
+        */
         virtual void display() const {
             cout << "Point - [" << x << ", " << y << "]" << endl;
         }
