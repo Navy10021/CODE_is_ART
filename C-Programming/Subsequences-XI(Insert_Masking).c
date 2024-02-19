@@ -1,4 +1,4 @@
-// Insert masking
+// Insert masking : A#B#C#
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,9 +6,7 @@
 void partition(char* str, int l, int r, char* path, int path_idx){
     if (l == r){
         path[path_idx] = '\0';
-        if (path[path_idx - 1] == str[r - 1]){ // filtering same as last character
-            printf("%s\n", path);
-        }
+        printf("%s\n", path);
         return;
     }
     path[path_idx] = str[l];
