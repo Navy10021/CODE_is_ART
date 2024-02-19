@@ -1,99 +1,98 @@
 #include <iostream>
 #include <cmath>
-#include <limits>
 #include <vector>
 
 using namespace std;
 
-// Base class
-class Point{
-    protected:
-        int x;
-        int y;
-    public:
-        // Constructor
-        Point(int _x, int _y) : x(_x), y(_y) {}
-        // functions
-        int getX() const { return x; }
-        int getY() const { return y; }
-        // Destructor
-        ~Point() {}
+class Point {
+protected:
+    double x, y;
+
+public:
+    /* Attributor double x, y; */
+    Point(double _x, double _y) : x(_x), y(_y) {}
+
+    /* Accessors */
+    double getX() const { return x; }
+    double getY() const { return y; }
 };
 
-// Features class
 class Features : public Point {
-    public:
-        Features(int _x, int _y) : Point(_x, _y) {}
+public:
+    Features(double _x, double _y) : Point(_x, _y) {}
 
-        double getDistance(const Point& p) const {
-            int dx = p.getX() - x;
-            int dy = p.getY() - y;
-            return sqrt(dx*dx + dy*dy);
+    double getSlope(const Point& p) const {
+        if (x == p.getX()) {
+            return INFINITY;
+        } else {
+            return (p.getY() - y) / (p.getX() - x);
         }
+    }
 
-        double getSlope(const Point& p) const {
-            if (x == p.getX()){
-                return numeric_limits<double>::infinity();
-            }
-            else{
-                return (p.getY() - y) / (p.getX() - x);
-            }
-        }
-
-        ~Features() {}
+    double getDistance(const Point& p) const {
+        return sqrt(pow(p.getX() - x, 2) + pow(p.getY() - y, 2));
+    }
 };
 
 class Shape : public Features {
-    public:
-        Shape(int _x, int _y) : Features(_x, _y) {}
+public:
+    Shape(double _x1, double _y1, double _x2, double _y2, double _x3, double _y3, double _x4, double _y4)
+            : Features(_x1, _y1), p2(_x2, _y2), p3(_x3, _y3), p4(_x4, _y4) {}
 
-        void getShape(const Point& p1, const Point& p2, const Point& p3){
-            double arr[3];
-            arr[0] = Features::getSlope(p1);
-            arr[1] = Features::getSlope(p2);
-            arr[2] = Features::getSlope(p3);
-            int is_same = 0;
-            for (int i = 0; i < 3; i++){
-                for (int j = i+1; j < 3; j++){
-                    if (arr[i] == arr[j])
-                    is_same++;
-                }
-            }
-            if (is_same == 0){
-                cout << "is Quadrilateral" << endl;
-            }
-            else if (is_same == 1){
-                cout << "is Triangle" << endl;
-            }
-            else{
-                cout << "is Line" << endl;
-            }
+    string getShape() const {
+        double slope1 = getSlope(p2);
+        double slope2 = getSlope(p3);
+        double slope3 = getSlope(p4);
+
+        if (slope1 == slope2 && slope2 == slope3) {
+            return "Line";
+        } else if (slope1 == slope2 || slope1 == slope3 || slope2 == slope3) {
+            return "Triangle";
+        } else {
+            return "Quadrilateral";
         }
+    }
 
-        ~Shape() {}
+private:
+    Features p2, p3, p4;
 };
 
 class Area : public Point {
-    public:
-        Area(int _x, int _y) : Point(_x, _y) {}
-        // formula
-        double getArea(const Point& p1, const Point& p2, const Point& p3) const {
-            double area = 0.0;
-            vector<Point> polygon = {p1, p2, p3};
-            
-            cout << "Calculate Area : " << endl;
-        }
+public:
+    Area(double _x1, double _y1, double _x2, double _y2, double _x3, double _y3, double _x4, double _y4)
+            : Point(_x1, _y1), p2(_x2, _y2), p3(_x3, _y3), p4(_x4, _y4) {}
 
-        ~Area() {} 
+    double getArea() const {
+        Shape shape(getX(), getY(), p2.getX(), p2.getY(), p3.getX(), p3.getY(), p4.getX(), p4.getY());
+        string shapeType = shape.getShape();
+
+        if (shapeType == "Line") {
+            return 0;
+        } else {
+            double area = 0.5 * fabs((getX() * p2.getY() + p2.getX() * p3.getY() + p3.getX() * p4.getY() + p4.getX() * getY()) -
+                                    (p2.getX() * getY() + p3.getX() * p2.getY() + p4.getX() * p3.getY() + getX() * p4.getY()));
+            return area;
+        }
+    }
+
+
+private:
+    Features p2, p3, p4;
 };
 
-int main(void){
-    Point p1(1, 1);
-    Point p2(2, 0);
-    Point p3(1, -1);
+int main() {
+    //Point p2(2,2);
+    //double ans = Features(1,1).getSlope(p2);
+    double x1, y1, x2, y2, x3, y3, x4, y4;
+    cout << "Enter x and y coordinates of four points: ";
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
 
-    Shape s1(0, 0);
-    s1.getShape(p1, p2, p3);
+    Shape shape(x1, y1, x2, y2, x3, y3, x4, y4);
+    Area area(x1, y1, x2, y2, x3, y3, x4, y4);
+
+    cout << "Shape formed by the points: " << shape.getShape() << endl;
+    cout << "Area between the points: " << area.getArea() << endl;
+    //cout << "ans: " << ans << endl;
 
     return 0;
 }
