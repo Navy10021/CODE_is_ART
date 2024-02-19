@@ -1,4 +1,4 @@
-// Insert masking : #A#B*C* Two-diffiernt masking.
+// Insert alphabets : #A#B#C#
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
