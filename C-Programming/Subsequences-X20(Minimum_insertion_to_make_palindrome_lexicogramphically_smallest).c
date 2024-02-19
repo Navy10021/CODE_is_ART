@@ -1,6 +1,7 @@
-// Insert lower alphater given string and check is palindrome.
-// given 'abc' -> '#a#b#c#' can insert alphabets in '#' positions.
-// Minimum Insertion to build palindrome.
+// Insert alphabet : #a#b#c#
+// Condition 1 : is palindrome
+// Condition 2 : Minimum Insertion to build palindrome.
+// Condition 3 : Lexicographically Smallest
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
