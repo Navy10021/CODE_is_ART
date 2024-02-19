@@ -1,6 +1,7 @@
 // Insert alphabet : #a#b#c#
 // Condition 1 : is palindrome
 // Condition 2 : Minimum Insertion to build palindrome.
+// Condition 3 : Lexicographically Smallest
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,22 +23,32 @@ int is_palindrome(char* str){
 void partition(int* min_size, char** min_palindrome, char* str, int l, int r, char* path, int path_idx, char mask_arr[], int arr_size){
     if (l == r){
         path[path_idx] = '\0';
-        // Condition 1 & 2 : Minimum Palindrome  
+        // Condition 1 & 2. find minimum size palindrome.
         if (is_palindrome(path) && strlen(path) <= *min_size){
+            //printf("%s\n", path);
             *min_size = strlen(path);
             free(*min_palindrome); // Free the previous results
             *min_palindrome = strdup(path);
+            // Condition 3. Lexicographically smallest
+            if (strlen(*min_palindrome) == strlen(path) && strcmp(path, *min_palindrome) < 0){
+                free(*min_palindrome);
+                *min_palindrome = strdup(path);
+            }
         }
         // also front masking 
         for (int i = 0; i < arr_size; i++){
             char* add_path = (char*)malloc((path_idx + 1) * sizeof(char));
             add_path[0] = mask_arr[i];
             strcpy(add_path + 1, path);
-            // Condition 1 & 2 
             if (is_palindrome(add_path) && strlen(add_path) <= *min_size){
+                //printf("%s\n", add_path);
                 *min_size = strlen(add_path);
                 free(*min_palindrome);
                 *min_palindrome = strdup(add_path);
+                if (strlen(*min_palindrome) == strlen(add_path) && strcmp(add_path, *min_palindrome) < 0){
+                    free(*min_palindrome);
+                    *min_palindrome = strdup(add_path);
+                }
             }
             free(add_path);
         }
