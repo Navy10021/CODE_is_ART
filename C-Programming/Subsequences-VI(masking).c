@@ -1,4 +1,4 @@
-// Combination Masking given string
+// Combination Masking given string : ABC -> #BC, A#C, AB#, ... ###
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
