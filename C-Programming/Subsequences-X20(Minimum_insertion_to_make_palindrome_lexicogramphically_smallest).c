@@ -61,7 +61,7 @@ void partition(int* min_size, char** min_palindrome, char* str, int l, int r, ch
 
 void subsequnces(char *str){
     int length = strlen(str);
-    char * path = (char*)malloc((length + 1) * sizeof(char));
+    char * path = (char*)malloc((length * 2) * sizeof(char));
     // store minimum palindrome 
     int min_size = INT_MAX;
     char * min_palindrome = strdup("");
