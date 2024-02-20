@@ -73,7 +73,7 @@ void subsequnces(char *str){
     int arr_size = sizeof(masked_arr) / sizeof(masked_arr[0]);
     partition(&min_size, &min_palindrome, str, 0, length, path, 0, masked_arr, arr_size);
     
-    printf("Minimum Insertion Palindrome : %s (%d)\n", min_palindrome, min_size);
+    printf("Minimum Insertion Palindrome : %s (Insertion : %d)\n", min_palindrome, min_size-length);
 
     // clean up 
     free(path);
