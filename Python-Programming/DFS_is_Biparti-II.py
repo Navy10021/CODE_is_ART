@@ -5,7 +5,7 @@ class GNode:
         self.parent = p
         
 def is_biparti(graph, start_node):
-    def DFS(node):
+    def DFS(node):    # True and False DFS
         for nei in graph[node]:
             # if adj is same color, graph is not biparti
             if nei.color == node.color:
@@ -20,7 +20,7 @@ def is_biparti(graph, start_node):
                     return False
         return True
     
-    start_node.color = "R"
+    start_node.color = "R"     # initialization start node
     if not DFS(start_node):
         return False
     
