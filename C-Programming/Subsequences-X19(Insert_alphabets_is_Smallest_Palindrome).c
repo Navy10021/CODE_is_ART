@@ -64,7 +64,7 @@ void subsequences(char * str){
     // Let's make palindrome given string
     partition(&min_size, &min_palindrome, str, 0, length, path, 0, alpha_arr, arr_size);
     
-    printf("Minimum Insertion Palindrome (length) : %s (%d)\n", min_palindrome, min_size);
+    printf("Minimum Insertion Palindrome : %s (Insertion : %d)\n", min_palindrome, min_size - length);
 
     // Clean up 
     free(path);
