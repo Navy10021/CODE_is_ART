@@ -18,7 +18,7 @@ class Unit {
             : name(_name), performance(_performance), price(_price) {}
 
         virtual void display() const {
-            cout << "Title : " << name << ", Price : $" << price;
+            cout << "Device : " << name << ", Price : $" << price;
             cout << ", Performance Score : " << performance << endl;
         }
 
