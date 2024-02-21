@@ -133,7 +133,7 @@ class SSD : public HDD {
     }
 
     void display() const override {
-        cout << "SSD: ";
+        cout << "SSD | ";
         HDD::display(); // Use the base class display and append any SSD-specific details if needed
     }
 
@@ -196,6 +196,15 @@ public:
         cout << ", Total Performance: " << totalPerformance << endl;
     }
 
+    virtual void display_detail() const {
+        display();
+        for (int i =0; i < unitsIdx; i++){
+            if (units[i]){
+                units[i]->display();
+            }
+        }
+    }
+
     virtual ~Computer() {
         // Destructor to clean up dynamically allocated Unit objects
         for (int i = 0; i < unitsIdx; ++i) {
@@ -220,6 +229,15 @@ class SuperComputer : public Computer {
         void display() const override {
             Computer::display(); // Call base class display
             cout << "Nodes: " << numberOfNodes << ", Cooling System Efficiency: " << coolingSystemEfficiency << endl;
+        }
+
+        void display_detail() const override{
+            display();
+            for (int i =0; i < unitsIdx; i++){
+                if (units[i]){
+                    units[i]->display();
+                }
+            }
         }
 
         // Overriding calculatePerformance to factor in the number of nodes and cooling efficiency
@@ -280,8 +298,10 @@ int main(void){
     mySuperComputer.addUnit(new SSD("Intel Optane SSD 900P", 120, 1500, 480, 2500));
 
     // Display
-    myComputer.display();
-    mySuperComputer.display();
+    //myComputer.display();
+    //mySuperComputer.display();
+    myComputer.display_detail();
+    mySuperComputer.display_detail();
 
     return 0;
 }
