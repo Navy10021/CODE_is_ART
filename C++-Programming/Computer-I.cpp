@@ -5,7 +5,7 @@ using namespace std;
 
 // Computer's Units : CPU, GPU, RAM, SSD, HDD
 
-// Base class
+// Base Unit class
 class Unit {
     protected:
         string name;
@@ -35,7 +35,7 @@ class Unit {
         virtual ~Unit() {}
 };
 
-// Driven from Unit
+// Devices driven from Unit
 class CPU : public Unit {
     private:
         int num_cores;  // Cores in CPU
@@ -142,6 +142,8 @@ class SSD : public HDD {
         performance = performance * (1.2 + (capacity / 100.0 * 0.02) + (speed / 50.0 * 0.02));
     }
 };
+
+// Computer class
 class Computer {
 protected:
     string name;
@@ -163,7 +165,7 @@ public:
             calculatePrice();
         }
 
-    void addUnit(Unit* unit) {
+    void addUnit(Unit* unit) {  // Unit을 추가할때마다 Performance & Price 계산산
         if (unitsIdx < 10) { // Check to avoid adding more than 10 units
             units[unitsIdx++] = unit;
             calculatePerformance();
@@ -213,6 +215,7 @@ public:
     }
 };
 
+// Super-Computer driven from Computer 
 class SuperComputer : public Computer {
     private:
         int numberOfNodes; // Represents the number of computing nodes in the supercomputer
