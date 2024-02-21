@@ -3,11 +3,13 @@
 
 using namespace std;
 
-// Computer's Units : CPU, GPU, RAM, SSD, HDD
+// Object-oriented programming (OOP) approach to modeling computer components and assembling them into computers.
+// Computer components: CPU, GPU, RAM, SSD, HDD
 
 // Base Unit class
 class Unit {
     protected:
+        // Attributes: name, performance, price
         string name;
         double performance;  // 0 ~ 100;
         double price;        // $
@@ -17,17 +19,19 @@ class Unit {
         Unit(string _name, double _performance, double _price)
             : name(_name), performance(_performance), price(_price) {}
 
+        // Methods: display(), calculatePerformance(), getPrice(), getPerformance() 
         virtual void display() const {
             cout << "Device : " << name << ", Price : $" << price;
             cout << ", Performance Score : " << performance << endl;
         }
 
-        virtual void calculatePerformance() = 0;  // pure virtual function
+        // Pure virtual function. Implement their own performance logic
+        virtual void calculatePerformance() = 0; 
 
+        // Accessors for price and performance
         double getPrice() const{
             return price;
         }
-
         double getPerformance() const{
             return performance;
         }
@@ -35,17 +39,20 @@ class Unit {
         virtual ~Unit() {}
 };
 
-// Devices driven from Unit
+// Devices driven from Unit(CPU, GPU, RAM, HDD, SSD)
 class CPU : public Unit {
     private:
+        // Custom Attributes
         int num_cores;  // Cores in CPU
     
     public:
+        // Constructor : Calls 'calculatePerformance()' to adjust the performance based on the number of cores.
         CPU(string _name, double _performance, double _price, int _num_cores)
             : Unit(_name, _performance, _price), num_cores(_num_cores) {
                 calculatePerformance();
             }
-        
+
+        // Overridden Methods : display(), calculatePerformance.
         void display() const override{
             cout << "CPU | ";
             Unit::display();
@@ -59,6 +66,7 @@ class CPU : public Unit {
 
 class GPU : public Unit {
     private:
+        // Custom Attributes
         int num_cores;  // Cores in GPU
         int memory;     // Memory size in GB
     
@@ -81,6 +89,7 @@ class GPU : public Unit {
 
 class RAM : public Unit {
     private:
+        // Custom Attributes
         int memory;     // Memory size in GB
         int speed;      // Speed in MHz
 
@@ -104,6 +113,7 @@ class RAM : public Unit {
 
 class HDD : public Unit {
     protected:
+        // Custom Attributes
         int capacity;   // Storage capacity in GB
         int speed;      // Data transfer speed in MB/s
     
@@ -125,6 +135,7 @@ class HDD : public Unit {
     }
 };
 
+// Inherits from HDD class
 class SSD : public HDD {
     public:
         SSD(string _name, double _performance, double _price, int _capacity, int _speed)
@@ -143,9 +154,10 @@ class SSD : public HDD {
     }
 };
 
-// Computer class
+// Computer class : Represents a computer that can hold various units (components).
 class Computer {
 protected:
+    // Attributes
     string name;
     double basePrice;
     double basePerformance;
@@ -155,6 +167,7 @@ protected:
     int unitsIdx;
 
 public:
+    // Constructor : if so, adds the unit and re-calculates the computer's total price and performance.
     Computer(string _name, double _basePrice, double _basePerformance)
         : name(_name), basePrice(_basePrice), basePerformance(_basePerformance), totalPrice(0.0), totalPerformance(0.0), unitsIdx(0) {
             // Initialize units array to nullptr
@@ -165,7 +178,8 @@ public:
             calculatePrice();
         }
 
-    void addUnit(Unit* unit) {  // Unit을 추가할때마다 Performance & Price 계산산
+    // Methods
+    void addUnit(Unit* unit) {  // Unit을 추가할때마다 Performance & Price 계산
         if (unitsIdx < 10) { // Check to avoid adding more than 10 units
             units[unitsIdx++] = unit;
             calculatePerformance();
