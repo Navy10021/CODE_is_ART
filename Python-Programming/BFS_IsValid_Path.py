@@ -18,7 +18,7 @@ def BFS(graph, start, target):
 
     while Q:
         curr = Q.popleft()
-        # If Lexicographical order
+        # Lexicographical order
         graph[curr] = sorted(graph[curr], key = lambda x: x.data)
         for nxt in graph[curr]:
             if nxt.color == "W":
