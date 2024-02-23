@@ -1,15 +1,12 @@
 from collections import deque
-
-# 연결된 노드를 찾는 함수
+# BFS-Find Connected Components
+# BFS 이용 연결된 노드들의 그룹을 확인하는 함수 / return [[group1], [group2] ... ]
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
         self.color = c  # white -> gray(in Queue) -> black(out Queue)
         self.distance = d
         self.parent = p
-
-    def __str__(self):
-        return "(" + self.data + ")"
     
 def BFS_connected_components(graph):
     components = []
