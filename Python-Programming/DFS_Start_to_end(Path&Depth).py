@@ -1,18 +1,15 @@
-# BFS distance between Two nodes
+# DFS-Find Path-II(with Distance)
+# 시작노드 ~ 끝노드간 DFS 탐색 경로와 거리를 리턴
 class GNode:
   def __init__(self, id, c="W", d=-1):
     self.id = id
     self.color = c
     self.dist = d
 
-#time = -1
 def DFS(Graph, curr, en, path = []):
   #global time
   path = path + [curr.id]   # Visited && Path 두 가지 역할
   curr.color = "G"
-  #time += 1
-  #curr.dist = time
-  #print(curr.id, end="->")
   if curr == en:
     return path
   if curr not in Graph:
