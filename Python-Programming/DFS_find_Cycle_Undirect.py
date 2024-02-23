@@ -1,3 +1,5 @@
+#DFS-Find Cycle in UDAG
+#DFS 이용 사이클을 탐지 및 출력하는 함수
 class GNode:
     def __init__(self, data, color="W", dist=-1, fin=-1, parent=None):
         self.data = data
@@ -5,10 +7,6 @@ class GNode:
         self.dist = dist
         self.fin = fin
         self.parent = parent
-
-    def __str__(self):
-        return "(" + self.data + ")"
-    
 
 def DFS(graph, curr, path):
     curr.color = "G"                # 방문표시 
