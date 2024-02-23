@@ -1,5 +1,5 @@
 from collections import deque
-
+# 시작노드(start)부터 끝노드(end|target)까지 최단거리와 경로(The Shortest Path)를 찾는함수
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
@@ -27,7 +27,7 @@ def BFS(graph, start, target):
                 Q.append(nxt)
         curr.color = "B"  # current Vertex Queue out
 	
-    # Check is Vaid Path
+    # Check is Vaid Path & Find the shortest path.
     if target.distance == -1:
         print("No path found between {} and {}".format(start.data, target.data))
         return False
