@@ -1,5 +1,6 @@
 from collections import deque
 
+# 연결된 노드를 찾는 함수
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
