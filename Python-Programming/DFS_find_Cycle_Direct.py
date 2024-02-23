@@ -1,4 +1,5 @@
 # DFS-Find Cycle in DAG
+# 사이클을 탐지하고, 탐지된 사이클을 출력까지하는 함수
 class GNode:
     def __init__(self, data, color="W", dist=-1, fin=-1, parent=None):
         self.data = data
