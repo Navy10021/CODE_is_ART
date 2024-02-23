@@ -1,4 +1,5 @@
-# BFS distance between Two nodes
+# BFS-Find Distance-IV(start ~ end)
+# 주어진 두 노드간의 거리를 구하는 함수. I/II/III과 같은 맥락이므로 참고만..
 class GNode:
   def __init__(self, id, c="W", d=-1):
     self.id = id
