@@ -1,5 +1,6 @@
 from collections import deque
-
+# BFS-Find Shortest Path-II
+# 최단경로를 찾되 알파벳 정렬순으로 방문
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
@@ -21,7 +22,7 @@ def BFS_shortest_path(graph, start, target):
 
     while Q:
         curr = Q.popleft()
-        # If Lexicographical order
+        # Lexicographical order
         graph[curr] = sorted(graph[curr], key = lambda x: x.data)
         for nxt in graph[curr]:
             if nxt.color == "W":
