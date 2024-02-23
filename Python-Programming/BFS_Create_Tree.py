@@ -1,4 +1,5 @@
 from collections import deque
+# 그래프를 트리로 전환하는 함수
 
 class GNode:
     def __init__(self, id, c="W", d=-1):
