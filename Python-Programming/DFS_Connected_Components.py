@@ -1,11 +1,10 @@
+# DFS-Find Connected Components
+# DFS 이용 연결된 노드들의 그룹을 확인하는 함수 / return [[group1], [group2] ... ]
+
 class GNode:
     def __init__(self, data, color="W"):
         self.data = data
         self.color = color
-
-    def __str__(self):
-        return "(" + str(self.data) + ")"
-    
 
 def DFS(graph, curr, component):
     curr.color = "G"
