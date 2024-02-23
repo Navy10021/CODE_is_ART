@@ -1,6 +1,7 @@
 import heapq
 from collections import defaultdict
 
+# MST(최소신장트리) : Prim 알고리즘 이용
 class GNode:
     def __init__(self, data):
         self.data = data
