@@ -1,4 +1,5 @@
 from collections import deque
+# BFS-Find shortest path-I
 # 시작노드(start)부터 끝노드(end|target)까지 최단거리와 경로(The Shortest Path)를 찾는함수
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
