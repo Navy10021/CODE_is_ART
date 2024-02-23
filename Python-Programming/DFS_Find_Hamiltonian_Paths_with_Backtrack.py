@@ -1,4 +1,5 @@
-# Hamiltonian Cycle with Backtracking
+# DFS-Find Hamiltonian Paths-II(Backtracking)
+# Find Hamiltonian Cycle with Backtracking
 class GNode:
     def __init__(self, data, color = "W"):
         self.data = data 
