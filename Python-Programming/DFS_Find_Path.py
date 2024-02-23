@@ -1,3 +1,5 @@
+# DFS-Find path(start~end)
+# 시작노드로 부터 끝노드까지 알파벳순으로 방문하며 DFS 탐색 경로를 찾는 함수
 class GNode:
     def __init__(self, data, color="W", dist=-1, fin=-1, parent=None):
         self.data = data
