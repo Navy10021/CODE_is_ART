@@ -1,5 +1,7 @@
 from collections import deque
-
+# BFS-Find Distance-II(Level Order)
+# 시작노드로 부터 거리를 리턴하는 함수 / return {노드 : 거리}
+# {노드 : 거리}를 기반으로 Level-order
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
