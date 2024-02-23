@@ -8,19 +8,6 @@ class GNode:
         self.fin = fin
         self.parent = parent
 
-    def __str__(self):
-        return "(" + self.data + ")"
-
-
-def printG(graph):
-    print("====== Graph ======")
-    for key, val in graph.items():
-        print(str(key) + " :", end=" ")
-        for u in val:
-            print(str(u), end=" ")
-        print("")
-
-
 def DFS(graph, curr, end_vertex, path):
     global time
     time += 1
