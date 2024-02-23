@@ -1,6 +1,6 @@
-# Max depth in Graph
-
 from collections import deque
+# 시작노드로 부터 가장 멀리있는 노드(Maximum Distiance)를 찾는 함수
+
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
