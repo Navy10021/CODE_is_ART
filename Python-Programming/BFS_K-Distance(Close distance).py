@@ -1,12 +1,12 @@
 from collections import deque
-
+# BFS-Find K-Distnace(Get Close)
+# 시작 노드로 부터 K-거리 보다 작거나 같은 Node를 알파벳순으로 리턴하는 함수
 class GNode:
   def __init__(self, id, c="W", d=-1):
     self.id = id
     self.color = c
     self.dist = d
   
-# Get Close : Node로 부터 K-distance 보다 작거나 같은 Node를 ID순 리턴
 def BFS(graph, start, path):
   start.color = "G"
   start.dist += 1
