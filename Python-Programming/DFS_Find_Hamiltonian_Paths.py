@@ -1,4 +1,5 @@
 # Hamiltonian Cycle : Visits every vertex exactly once in Undirected Graph.
+# 모든 노드를 정확히 한번씩 방문하는 모든 경로 찾는 함수. 
 class GNode:
     def __init__(self, data, color = "W"):
         self.data = data 
