@@ -1,3 +1,5 @@
+# DFS-Find All Paths-II(Long and Short)
+# 시작노드 ~ 끝노드간 가장 긴 경로(Longest path)와 가장 짧은 경로(Shortest path)를 찾는 함수
 class GNode:
     def __init__(self, data, color = "W"):
         self.data = data 
