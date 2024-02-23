@@ -1,5 +1,5 @@
 from collections import deque
-
+# BFS-Find Distance-I
 # 시작노드로 부터 거리를 확인하는 함수 / 리턴값 {노드 : 거리}
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
