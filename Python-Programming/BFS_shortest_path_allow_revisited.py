@@ -1,5 +1,6 @@
 from collections import deque
-
+# BFS-Find Shortest Path-III
+# + case : 재방문이 가능한 경우
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
