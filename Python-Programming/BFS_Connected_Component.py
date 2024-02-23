@@ -23,6 +23,8 @@ def BFS_connected_components(graph):
             
             while (Q):
                 curr = Q.popleft()
+                # Lexicographical order
+                G[curr] = sorted(G[curr], key = lambda x: x.data)
                 component.append(curr.data)
                 
                 for nxt in G[curr]:
