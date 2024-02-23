@@ -1,4 +1,5 @@
 from collections import deque
+# BFS-Find Distance-III(Maximum Distance)
 # 시작노드로 부터 가장 멀리있는 노드(Maximum Distiance)를 찾는 함수
 
 class GNode:
