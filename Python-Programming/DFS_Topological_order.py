@@ -1,12 +1,8 @@
+# DFS를 활용한 위상정렬
 class GNode:
     def __init__(self, data, color="W"):
         self.data = data
         self.color = color
-
-    def __str__(self):
-        return "(" + self.data + ")"
-    
-    
     
 def DFS(graph, curr, path):
     curr.color = "G"
