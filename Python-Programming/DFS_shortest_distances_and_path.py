@@ -1,5 +1,7 @@
 from collections import defaultdict
 
+# DFS-Find Shorest Path with Topological Sort.
+# DFS - 최단경로 찾기
 class GNode:
     def __init__(self, data, d = -1, c = "W"):
         self.data = data
