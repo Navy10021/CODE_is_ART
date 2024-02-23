@@ -1,3 +1,4 @@
+# DFS-Find Cycle in DAG
 class GNode:
     def __init__(self, data, color="W", dist=-1, fin=-1, parent=None):
         self.data = data
@@ -5,10 +6,6 @@ class GNode:
         self.dist = dist
         self.fin = fin
         self.parent = parent
-
-    def __str__(self):
-        return "(" + self.data + ")"
-
 
 def DFS(graph, curr, visited, path):
     if visited[curr]:
