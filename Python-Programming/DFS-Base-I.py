@@ -1,3 +1,4 @@
+# DFS 탐색 기본함수(Recursive)
 class GNode:
     def __init__(self, data, color = "W", dist = -1, fin = -1, parent = None):
         self.data = data 
