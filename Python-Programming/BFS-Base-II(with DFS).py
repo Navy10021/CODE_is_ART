@@ -1,6 +1,6 @@
 from collections import deque
 # BFS_DFS_Paths
-# 시작노드로 부터 BFS 탐색 및 DFS 탐색 경로를 리턴하는 함수
+# 시작노드로 부터 BFS 탐색 및 DFS 탐색 경로(path)를 리턴하는 함수
 
 class GNode:
   def __init__(self, id, c="W", d=-1):
