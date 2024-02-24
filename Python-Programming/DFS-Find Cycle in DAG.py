@@ -21,7 +21,7 @@ def DFS(graph, curr, visited, path):
                 return True
 
         elif nxt in path:
-            # Cycle detected: The neighbor is already in the current path
+            # Cycle detected: The neighbor is already in the current path. 이미 방문한 곳이면 사이클(path[-1] == path[0])
             print("Cycle found : ", [vertex.data for vertex in path] + [path[0].data], end = "\n")
             return True
 
