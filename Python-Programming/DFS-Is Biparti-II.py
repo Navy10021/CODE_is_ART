@@ -1,3 +1,4 @@
+# Is Biparti : 주어진 그래프를 "빨강" "파랑" 두 가지로 분류할 수 있는지 확인. 인접한 노드간 같은 색이면 안됨!
 class GNode:
     def __init__(self, id, c="W", p = None):
         self.id = id 
