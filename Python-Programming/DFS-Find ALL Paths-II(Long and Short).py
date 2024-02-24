@@ -1,12 +1,10 @@
 # DFS-Find All Paths-II(Long and Short)
 # 시작노드 ~ 끝노드간 가장 긴 경로(Longest path)와 가장 짧은 경로(Shortest path)를 찾는 함수
+# 접근법 : 주어진 시작노드와 끝노드에서 가능한 모든 경로를 찾고, 가장 긴 경로와 짧은 경로를 리턴 
 class GNode:
     def __init__(self, data, color = "W"):
         self.data = data 
         self.color = color 
-    
-    def __str__(self):
-        return "(" + self.data + ")" 
     
 def find_all_paths(G, start, end, path = None):
     if path is None:
@@ -22,11 +20,10 @@ def find_all_paths(G, start, end, path = None):
     
     paths = []
     for nxt in G[start]:
-        if nxt.data not in path:        # Need to not modifiy original path.
-            new_paths = find_all_paths(G, nxt, end, path.copy())    # new copy path preventing the issue of modifying the Original path
+        if nxt.data not in path:                                    # Need to not modifiy original path.
+            new_paths = find_all_paths(G, nxt, end, path.copy())    # "new copy path" preventing the issue of modifying the Original path
             for p in new_paths:
                 paths.append(p)
-    
     return paths
 
 def longest_shortest_path(G, st, en):
