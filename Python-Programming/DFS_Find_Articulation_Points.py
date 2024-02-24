@@ -1,3 +1,4 @@
+# Alticulation Points : 해당 노드가 없으면 두 개의 그래프로 나눠지는 노드.
 class GNode:
     def __init__(self, data, c="W", d=float('inf'), p=None):
         self.data = data
