@@ -1,5 +1,5 @@
 from collections import deque
-
+# BFS 탐색 기본 함수
 class GNode:
     def __init__(self, data, c="W", d=-1, p=None):
         self.data = data
