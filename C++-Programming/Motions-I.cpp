@@ -109,7 +109,7 @@ class ProjectileMotion : public Motion {
 
         void calcDistance() {
             double radians = angle * (PI / 180.0);
-            distance = (velocity * velocity) * sin(2*angle) / 9.8; 
+            distance = (velocity * velocity) * sin(2*radians) / 9.8; 
         }  
 };
 
@@ -156,6 +156,6 @@ int main(void){
         delete m;
     }
     motions.clear();
-    
+
     return 0;
 }
