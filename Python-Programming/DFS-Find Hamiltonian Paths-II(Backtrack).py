@@ -17,8 +17,8 @@ def is_hamiltonian_cycle(graph):
                 if nei.color == "W":
                     DFS(nei, path)
         
-        # backtrack for all search
-        print("DFS from {} is finish. {} will POP in {}.".format(path[0], curr.data, path))
+        # backtrack for all search & Initialization visit(color)
+        #print("DFS from {} is finish. {} will POP in {}.".format(path[0], curr.data, path))
         path.pop()
         curr.color = "W"
     
