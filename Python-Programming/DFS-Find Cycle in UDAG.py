@@ -8,7 +8,8 @@ class GNode:
 
 
 def DFS(graph, curr, path):
-    curr.color = "G"                # 방문표시 
+    curr.color = "B"                # 방문표시 
+    #path.append(curr)              # 이미 시작노드가 포함되있어 불필요
     
     for nxt in graph[curr]:
         if nxt.color == "W":
@@ -29,7 +30,7 @@ def DFS(graph, curr, path):
 def has_cycle(graph):
     for node in graph:          # Traverse all vertex as start.
         if node.color == "W":
-            path = [node]       # append start node
+            path = [node]       # append start node. 시작노드를 경로에 추가하고 시작
             if DFS(graph, node, path):
                 print("Cycle found : ", [vertex.data for vertex in path], end = "\n")
                 return True  
