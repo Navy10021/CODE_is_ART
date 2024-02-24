@@ -4,38 +4,38 @@ class GNode:
     def __init__(self, data, color="W", dist=-1, fin=-1, parent=None):
         self.data = data
         self.color = color
-        self.dist = dist
-        self.fin = fin
-        self.parent = parent
+        
 
-def DFS(graph, curr, visited, path):
-    if visited[curr]:
-        return True  # Cycle detected: Already visited
+def DFS(graph, curr, path):
+    if curr.color == "B":  # 이미 방문한 곳이면 사이클!
+        return True        # Cycle detected: Already visited
 
-    visited[curr] = True  # Mark as visited
-    path.append(curr)
+    curr.color = "B"        # Mark as visited
+    path.append(curr)       # path를 visit List와 처럼 함께 사용
 
     for nxt in graph[curr]:
-        if not visited[nxt]:
-            if DFS(graph, nxt, visited, path):
+        if nxt.color == "W":
+        #if nxt not in path:
+            if DFS(graph, nxt, path):
                 return True
 
-        elif nxt in path:
+        elif nxt.color == "B":
+        #elif nxt in path:
             # Cycle detected: The neighbor is already in the current path. 이미 방문한 곳이면 사이클(path[-1] == path[0])
             print("Cycle found : ", [vertex.data for vertex in path] + [path[0].data], end = "\n")
             return True
 
-    path.pop()  # Backtrack : This step is crucial in DFS! -> Explore Other possible paths(Cycle) in the Graph.
+    path.pop()          # Backtrack : This step is crucial in DFS! -> Explore Other possible paths(Cycle) in the Graph.
+    curr.color = "W"    # Backtrack
     return False
 
 
 def has_cycle(graph):
-    visited = {node: False for node in graph}
-
+    # 모든 노드를 시작점으로 돌면서 사이클 확인
     for node in graph:
-        if not visited[node]:
+        if node.color == "W":
             path = []
-            if DFS(graph, node, visited, path):
+            if DFS(graph, node, path):
                 return True
 
     return False
