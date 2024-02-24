@@ -5,22 +5,20 @@ class GNode:
         self.color = color
         self.parent = parent
 
-def DFS(graph, curr, visited, path, all_paths):
-    curr.color = "G"
-    visited.add(curr.data)
+def DFS(graph, curr, path, all_paths):
+    curr.color = "B"
     path.append(curr.data)
     
-    if len(visited) == len(graph):
+    if len(path) == len(graph):
         all_paths.append(path.copy())
     else:
         for nxt in graph[curr]:
             if nxt.color == "W":
                 nxt.parent = curr
-                DFS(graph, nxt, visited, path, all_paths)
+                DFS(graph, nxt, path, all_paths)
 
     # Backtrack
     curr.color = "W"
-    visited.remove(curr.data)
     path.pop()
 
 def find_all_paths(graph):
@@ -31,9 +29,8 @@ def find_all_paths(graph):
         node.parent = None 
 
     for start in graph:
-        visited = set()
         path = []
-        DFS(graph, start, visited, path, all_paths)
+        DFS(graph, start, path, all_paths)
 
     return all_paths
 
