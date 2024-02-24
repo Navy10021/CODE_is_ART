@@ -5,9 +5,7 @@ class GNode:
     def __init__(self, data, color = "W"):
         self.data = data 
         self.color = color 
-    
-    def __str__(self):
-        return "(" + self.data + ")" 
+
     
 def find_all_paths(G, start, end, path = None):
     if path is None:
@@ -20,6 +18,11 @@ def find_all_paths(G, start, end, path = None):
     
     if start not in G:
         return []
+    
+    # Lexicographical order : Need Sorting adj List
+    #G[start] = sorted(G[start], key=lambda x : x.data)
+    # UnLexicographical order
+    #G[start] = sorted(G[start], key=lambda x : x.data, reverse=True)
     
     paths = []
     for nxt in G[start]:
@@ -36,7 +39,7 @@ D, E, F, G = GNode("D"), GNode("E"), GNode("F"), GNode("G")
 # Adj List (Directed edges)
 #Graph = dict()
 G = dict()
-G[A] = [B, C]
+G[A] = [B, D]   # Lexicographical order
 G[B] = [A, D]
 G[C] = [A, D]
 G[D] = [B, C, F, E]
