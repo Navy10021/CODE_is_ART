@@ -1,12 +1,11 @@
 #DFS-Find Cycle in UDAG
-#DFS 이용 사이클을 탐지 및 출력하는 함수
+# DFS 이용 사이클을 탐지 및 사이클 경로를 출력하는 함수
 class GNode:
-    def __init__(self, data, color="W", dist=-1, fin=-1, parent=None):
+    def __init__(self, data, color="W", parent=None):
         self.data = data
         self.color = color
-        self.dist = dist
-        self.fin = fin
         self.parent = parent
+
 
 def DFS(graph, curr, path):
     curr.color = "G"                # 방문표시 
@@ -22,7 +21,8 @@ def DFS(graph, curr, path):
             path.append(nxt)        # 사이클 노드 시각화를 위해 Path 리스트에 vertex를 저장
             return True             # Cycle detected.
     
-    path.pop()      # Backtrack if no cycle is found
+    path.pop()          # Backtrack if no cycle is found
+    curr.color = "W"    # Backtrack
     return False
 
 
