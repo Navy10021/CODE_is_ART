@@ -1,3 +1,9 @@
+class GNode:
+    def __init__(self, id, c="W", d=0):  # Changed default distance to 0 for root
+        self.id = id
+        self.color = c  
+        self.distance = d
+        
 class BSTNode:
     def __init__(self, data):
         self.data = data
@@ -46,6 +52,14 @@ def printBST(root, indent=""):
         printBST(root.right, indent + "   ")
         print(f"{indent}{root.data.id}")
         printBST(root.left, indent + "   ")
+
+
+# Graph setup
+A, B, C = GNode("A"), GNode("B"), GNode("C")
+D, E, F = GNode("D"), GNode("E"), GNode("F")
+H, I, J = GNode("H"), GNode("I"), GNode("J")
+
+G = {A: [B, C], B: [D, E], C: [F], D: [], E: [H], F: [I], H: [], I: [], J: []}
 
 # Assuming G is your graph and start_vertex is the start node
 sortedNodes = flattenGraphToSortedList(G)
