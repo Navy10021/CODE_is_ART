@@ -1,5 +1,5 @@
 # DFS-Find All Paths-I
-# 시작노드 ~ 끝노드간 모든 경로를 찾는 함수
+# 입력된 시작노드와 끝노드에 대해 시작노드 ~ 끝노드 모든 경로(paths)를 찾는 함수
 
 class GNode:
     def __init__(self, data, color = "W"):
