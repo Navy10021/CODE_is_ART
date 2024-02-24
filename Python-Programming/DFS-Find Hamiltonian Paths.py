@@ -1,5 +1,6 @@
 # Hamiltonian Cycle : Visits every vertex exactly once in Undirected Graph.
-# 모든 노드를 정확히 한번씩 방문하는 모든 경로 찾는 함수. 
+# 주어진 그래프에서 모든 노드를 정확히 한번씩 방문하는 모든 경로 찾는 함수. 즉, 모든 노드를 한번에 탐색하는 경로!
+# 접근법 : 각 노드를 시작노드로(초기화 필요 or Path 리스트 활용) 모든 경로 저장 -> 모든 노드 방문 여부 확인.
 class GNode:
     def __init__(self, data, color = "W"):
         self.data = data 
@@ -13,7 +14,7 @@ def is_hamiltonian_cycle(graph):
                 paths.append(path.copy())
                 return
             for nxt in graph[curr]:
-                if nxt.data not in path:  # also visited check!
+                if nxt.data not in path:  # also visited check!(self.color 초기화 불필요)
                     DFS(nxt, path + [nxt.data])
         paths = []
         DFS(start, [start.data])
