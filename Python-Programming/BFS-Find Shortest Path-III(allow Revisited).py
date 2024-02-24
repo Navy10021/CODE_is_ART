@@ -8,12 +8,10 @@ class GNode:
         self.distance = d
         self.parent = p
 
-    def __str__(self):
-        return "(" + self.data + ")"
 
 def BFS_shortest_path(graph, start, target):
     distances = {vertex.data: float('inf') for vertex in graph}
-    start.color = "G"
+    start.color = "B"
     start.distance = 0
     distances[start] = 0
 
@@ -27,12 +25,11 @@ def BFS_shortest_path(graph, start, target):
         graph[curr] = sorted(graph[curr], key = lambda x: x.data)
         for nxt in graph[curr]:
             if nxt.color == "W" or nxt.distance > curr.distance + 1:    # Allow revisiting vertices if the new path to them is shorter thatn previously.
-                nxt.color = "G"
+                nxt.color = "B"
                 nxt.distance = curr.distance + 1
                 nxt.parent = curr
                 distances[nxt.data] = nxt.distance
                 Q.append(nxt)
-        curr.color = "B"  # current Vertex Queue out
 
     if distances[target.data] == float('inf'):
         print("No path found between {} and {}".format(start.data, target.data))
@@ -58,11 +55,11 @@ G = dict()
 G[A] = [D, C, B]
 G[B] = [A]
 G[C] = [A]
-G[D] = [A]
-#G[E] = [D, F]
-#G[F] = [D, E]
+G[D] = [A, E, F]
+G[E] = [D, F]
+G[F] = [D, E]
 
-start_vertex = A
-target_vertex = D
+start_vertex = B
+target_vertex = F
 
 BFS_shortest_path(G, start_vertex, target_vertex)
