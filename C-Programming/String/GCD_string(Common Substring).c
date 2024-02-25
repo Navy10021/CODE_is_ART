@@ -2,9 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 
+// 두 문자열에서 최소 길이의 공통된 문자열(Common Substring) 구하기.
 // 1071. Greatest Common Divior of Strings : return the largest string x that x divided both str1 and str2
-
-
 
 // 문자열에서 특정 substr을 삭제하는 함수
 int can_remove_sub(char* str, const char * substr){
