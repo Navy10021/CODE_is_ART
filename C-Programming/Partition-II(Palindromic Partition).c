@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 주어진 string의 substring이 팰린드롬으로 구성된 파티션
 // Check Palindrome.
 int isPalindrome(const char *str, int start, int end) {
     while (start < end) {
