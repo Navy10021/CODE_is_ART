@@ -3,7 +3,7 @@
 #include<stdlib.h>
 
 // 316. Remove Duplicate Letters : return the smallest in lexicographical order among all possible results.
-// 중복문자를 제거하되, 사전순으로 정렬된 결과 리턴. "bcabc" -> "abc" / "cbadcbc" -> "acbc"
+// 중복문자를 제거하되, 사전순으로 정렬된 결과 리턴. "bcabc" -> "abc" / "cbacdcbc" -> "acdb"
 void removeDuplicates(char * str){
     int seen[256] = {0};
     int newIdx = 0;
