@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// 주어진 order 순서데로 s를 정렬하는 함수
 void custom_sort(char* order, char* s){
     // 1. Build s-hash table 
     int hash[256] = {0};
