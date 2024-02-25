@@ -3,6 +3,8 @@
 #include <string.h>
 #include <ctype.h>
 
+// String +, -, = 계산결과 리턴
+
 double evaluate(const char *expression){
     double res = 0;
     double currNum = 0;
