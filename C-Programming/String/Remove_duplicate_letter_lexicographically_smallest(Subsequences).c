@@ -45,7 +45,7 @@ void RemoveDuplicateLetters(char * str){
     removeDuplicates(newStr);
     int maxLen = strlen(newStr);
     int strLen = strlen(str);
-    char * maxSubstr = (char*)malloc(sizeof(char)*(strLen+1));
+    char * maxSubstr = (char*)malloc(sizeof(char)*(maxLen+1));
     char * subseq = (char*)malloc(sizeof(char)*(strLen+1));
     subseq[0] = '\0';
 
@@ -66,7 +66,3 @@ int main(void){
     RemoveDuplicateLetters(input);
     return 0;
 }
-
-
-
-
