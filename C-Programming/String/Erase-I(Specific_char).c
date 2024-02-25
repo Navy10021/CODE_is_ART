@@ -1,4 +1,4 @@
-// 특정 문자를 삭제하는 함수
+// ㅈ특정 문자를 삭제하는 함수
 void remove_char(char* str, char target) {
     int i, j = 0
     int length = strlen(str);
