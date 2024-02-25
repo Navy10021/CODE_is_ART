@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
+// 주어진 두개의 문자열이 Subsequence 인지 확인하는 함수
 int isSubseq(const char *s, const char *t){
 	int len1 = strlen(s);
 	int len2 = strlen(t);
