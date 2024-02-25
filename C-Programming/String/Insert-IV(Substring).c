@@ -1,4 +1,8 @@
-//// 지정된 위치에 다른 문자열을 삽입
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+// 지정된 위치에 다른 문자열(substring)을 삽입
 void insert(char* s, int index, const char* substring) {
     /* Inserts the substring into the string at the specified index. */
     int original_length = strlen(s);
@@ -11,8 +15,8 @@ void insert(char* s, int index, const char* substring) {
 
 int main() {
 // Test bw_insert // 문자열 삽입
-    char ins[50] = "Hello world!";
-    bw_insert(ins, 5, ", ");
-    printf("bw_insert: %s\n", ins);
+    char ins[50] = "Helloworld!";
+    insert(ins, 5, ", ");
+    printf("insert: %s\n", ins);
     return 0;
 }
