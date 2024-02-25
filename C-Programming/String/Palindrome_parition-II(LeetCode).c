@@ -3,6 +3,7 @@
 #include <string.h>
 
 // 132. Palindrome Partitioning II : return minimum cuts for a palindrome patitions of str
+// 최소로 자르는 값 리턴
 
 int isPalindrome(char *str, int st, int en) {
     while (st < en) {
