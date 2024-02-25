@@ -1,4 +1,4 @@
-// 1.특정 위치의 문자 삭제처리 후 반환
+// 1.특정 위치 의 문자 삭제처리 후 반환
 
 void erase(char* str, int position){
     int length = strlen(str);
