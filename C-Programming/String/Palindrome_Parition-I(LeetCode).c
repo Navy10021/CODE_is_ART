@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 주어진 문자열에서 팰린드롬별 substring을 구분
 int isPalindrome(char *str, int st, int en) {
     while (st < en) {
         if (str[st] != str[en]) {
