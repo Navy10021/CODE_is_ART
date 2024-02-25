@@ -1,4 +1,4 @@
-// 지정된 범위의 문자를 제거 : start index ~ length길이 만큼 삭제
+// 지정된 범위(Window)의 문자를 제거 : start index ~ length길이 만큼 삭제
 void erase(char* s, int start, int length) {
     /* Erases length characters from the string, starting at the given index. */
     int i = start;
