@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// 문자열 내 특정 문자(target)에 해당하는 인덱스 찾는 함수
 int findCharIdx(const char * str, char target, int * arr){
     const char * pos = str;
     int idx = 0;
@@ -14,9 +15,9 @@ int findCharIdx(const char * str, char target, int * arr){
     return idx;
 }
 
-int main(){
-    char input[20] = "Lee Yoon Seop";
-    char target = ' ';
+int main(void){
+    char input[20] = "Lee#Yoon#Seop";
+    char target = '#';
     int arr[20];
     
     int count = findCharIdx(input, target, arr);
