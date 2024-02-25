@@ -1,4 +1,4 @@
-// 문자열을 삭제하는 함수
+// 문자열내 substring을 삭제하는 함수
 
 #include <stdio.h>
 #include <string.h>
