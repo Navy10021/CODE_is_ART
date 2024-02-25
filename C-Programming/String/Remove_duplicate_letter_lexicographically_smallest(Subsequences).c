@@ -16,53 +16,71 @@ void removeDuplicates(char * str){
     str[newIdx] = '\0';
 }
 
-void genSubseq(char *str, int index, char *subseq, int* maxLen, char* resSubstr){
-    if (str[index] == '\0'){
-        char * subseqDup = strdup(subseq);
-        removeDuplicates(subseqDup);
-        if ((*maxLen) == strlen(subseqDup)){
-            // subseq is smaller in lexicographical order than res, Update.
-            if (strcmp(resSubstr, subseqDup) > 0 || resSubstr[0] == '\0'){
-                strcpy(resSubstr, subseqDup);
+int is_anagram(char* str1, char* str2){
+    int hash[256] = {0};
+    for (int i = 0; i < strlen(str1); i++){
+        hash[str1[i]]++;
+    }
+
+    for (int i = 0; i < strlen(str2); i++){
+        hash[str2[i]]--;
+    }
+
+    for (int i = 0; i < 256; i++){
+        if (hash[i] != 0){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void partition(char* str, int l, int r, char* path, int path_idx, char* removed_str, char ** res_str){
+    if (l == r){
+        path[path_idx] = '\0';
+        // 중복 제거된 문자열과 아나그램 && 빠른 사전순이면 저장
+        if (is_anagram(removed_str, path)){
+            if (strcmp(path, *res_str) < 0 || strcmp(*res_str, "") == 0){
+                free(*res_str);
+                *res_str = strdup(path);
             }
         }
-        free(subseqDup);
         return;
     }
-    // Exclude the current char
-    genSubseq(str, index+1, subseq, maxLen, resSubstr);
     // Include
-    subseq[strlen(subseq)] = str[index];
-    subseq[strlen(subseq)+1] = '\0';
-    genSubseq(str, index+1, subseq, maxLen, resSubstr);
-    // Backtrak
-    subseq[strlen(subseq)-1] = '\0';
+    path[path_idx] = str[l];
+    partition(str, l + 1, r, path, path_idx + 1, removed_str, res_str);
+    // Exclude
+    partition(str, l + 1, r, path, path_idx, removed_str, res_str);
 }
 
 void RemoveDuplicateLetters(char * str){
     // 1. 중복 제거된 길이(Max lenght)를 구한다.
     char * newStr = strdup(str);
     removeDuplicates(newStr);
-    int maxLen = strlen(newStr);
+    int resLen = strlen(newStr);
     int strLen = strlen(str);
-    char * maxSubstr = (char*)malloc(sizeof(char)*(maxLen+1));
-    char * subseq = (char*)malloc(sizeof(char)*(strLen+1));
-    subseq[0] = '\0';
+    char * res = strdup("");
+    char * path = (char*)malloc(sizeof(char)*(strLen+1));
 
-    // 2. Subsequnce를 생성하며, 중복제거시 Max length이면서 사전보다 빠르면 
-    genSubseq(str, 0, subseq, &maxLen, maxSubstr);
+    // 2. Subsequnce를 생성
+    partition(str, 0, strLen, path, 0, newStr, &res);
     
-    printf("Remove Duplicate Letters : %s\n", maxSubstr);
+    printf("Remove Duplicate Letters : %s\n", res);
 
     free(newStr);
-    free(subseq);
-    free(maxSubstr);    
+    free(path);
+    free(res);    
 }
 
 
 int main(void){
-    char input[100];
-    scanf("%s", input);
+    //char input[50] = "bcabc";
+    char input[50] = "cbacdcbc";
     RemoveDuplicateLetters(input);
+
     return 0;
 }
+
+
+
+
