@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Array에서 중복된 elements를 찾는 함수(해쉬 이용)
+
 void findDuplicates(int *arr, int numSize, int *resArr, int *resIdx) {
     // Max number == numSize + 1 to accommodate 0-based indexing
     int hash[numSize + 1];
