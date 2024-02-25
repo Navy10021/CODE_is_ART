@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-# 주어진 string에 char 1개를 뒤에 추가하는 함수.
+// 주어진 string에 char 1개를 뒤에 추가하는 함수.
 
 void Append(char * str, char oneChar){
     size_t length = strlen(str);
