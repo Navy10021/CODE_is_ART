@@ -2,6 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 
+// 연속된 같은 문자를 카운트해서 압축하는 함수
 // 443. String Compression : If group's length is 1, append the characters to s. Otherwise, append character to s + lengths
 /*
 **`sprintf`** 함수는 지정된 버퍼에 문자열을 저장하면서 동시에 저장된 문자열의 길이를 반환합니다. 이 길이에는 널 종료 문자('\0')가 포함되지 않습니다.
