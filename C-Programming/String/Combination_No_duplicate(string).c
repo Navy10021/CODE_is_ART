@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 중복을 제외하는 Combinations 결과값 저장
+
 int seen(char ** arr, int arr_idx, char * target){
     for(int i=0; i<arr_idx; i++){
         if(strcmp(arr[i], target)==0){
