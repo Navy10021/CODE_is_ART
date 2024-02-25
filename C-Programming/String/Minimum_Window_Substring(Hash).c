@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 주어진 문자열의 Substring 중에 target의 모든 characters를 포함하는 최소 길이의 Substring
 // 76. Minimum Window Substring
 // given two string s and t -> return minimum window substring of s 
 // such that every character in t(including duplicates) is included.
