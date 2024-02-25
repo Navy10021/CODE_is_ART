@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 // Minimum Remove To Make Valid Parentheses
-
+// Find the Longest Subseqence in Parentheses
 int isValid(char *s) {
     int len = strlen(s);
     char stack[len];
