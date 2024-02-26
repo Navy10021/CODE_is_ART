@@ -3,6 +3,7 @@
 #include <string.h>
 
 // Function to check if two strings are anagrams
+// 주어진 두개의 문자열이 아나그램인지 확인하는 함수. hash table로도 접근 가능
 int areAnagrams(char *str1, char *str2) {
     int len1 = strlen(str1);
     int len2 = strlen(str2);
