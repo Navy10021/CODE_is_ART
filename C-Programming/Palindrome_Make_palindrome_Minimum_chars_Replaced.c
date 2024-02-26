@@ -28,8 +28,10 @@ int replace_palindrome(char str[]){
 int main(void){
     char input[50];
     scanf("%s", input);
-    int res = replace_palindrome(input);
+    char* new_input = strdup(input);
+    int res = replace_palindrome(new_input);
 
+    printf("%s", input);
+    free(new_input);
     return 0;
 }
-
