@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 // Mininum Cost Convert to string Palindrome.
 
@@ -14,7 +15,8 @@ int minCost_palindrome(char str[]){
 
     while (st < en){
         if (str[st] != str[en]){
-            cost += min(str[st], str[en]) - 'a' + 1;
+            //cost += min(str[st] - 'a', str[en] - 'a') + 1;
+            cost += abs(str[st] - str[en]);
             if (str[st] > str[en])
                 str[en] = str[st];
             else 
@@ -35,4 +37,3 @@ int main(void){
 
     return 0;
 }
-
