@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// 2진 -> 10진으로 변경하는 함수
 int binaryToDecimal(char* binaryString) {
     int decimalNumber = 0;
     int i = 0;
@@ -16,6 +17,7 @@ int binaryToDecimal(char* binaryString) {
 // Assuming a maximum number of combinations for simplicity
 #define MAX_COMBINATIONS 100
 
+// Bits combinations. n진수로 가능한 비트 생성
 void generateCombinations(int n, int r, int* outputArray, int* outputSize) {
     *outputSize = 0; // Initialize the size of output array
     for (int i = 0; i < (1 << n); i++) {
