@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+// 주어진 string을 Split했을 때 최장길이의 팰린드롬 찾기
 // 1147. Longest Chunked Palindrome Decomposition
 // Function to check if a substring is a palindrome.
 int isPartitionPalindrome(int n, char arr[][n+1], int depth) {
