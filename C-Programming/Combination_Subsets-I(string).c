@@ -84,7 +84,7 @@ void anagramSubsets(char *arr) {
 }
 
 int main(void){
-    char input[] = "Arr";
+    char input[] = "ABCD";
     anagramSubsets(input);
 
     return 0;
