@@ -1,4 +1,4 @@
-// ~by YS
+
 #include <stdio.h>
 #include <string.h>
 
