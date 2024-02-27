@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+// Permutation을 이용하여 사전순 가장 작은 팰린드롬과 사전순 가장 큰 팰린드롬을 리턴하는 함수.
 // 팰린드롬 함수
 int isPalindrome(char * str){
     int st = 0;
@@ -37,7 +37,6 @@ int shoudSwap(char * str, int start, int end){
 
 void genPerm(char * str, int start, int lenght, char ** result, int * count){
     if (start == lenght - 1 && isPalindrome(str)){
-        //printf("%s\n", str);
         // Allocate memory for the result(string) and copy the permutation
         result[*count] = malloc((lenght + 1) * sizeof(char));   // length + '\0'
         strcpy(result[*count], str);
@@ -79,9 +78,10 @@ int main(){
     qsort(permutations, count, sizeof(permutations[0]), compareStr);
 
     
-    // Use the stored permutations
+    // Use the stored permutations. 정렬을 통해 사전순 가장 작은 것을 리턴
     if (count > 0) {
-        printf("%s\n", permutations[0]);
+        printf("Lexicograpically smallest : %s\n", permutations[0]);
+        printf("Lexicograpically largest : %s\n", permutations[count-1]);
     } else {
         printf("Sorry ! No palindromic permutations\n");
     }
