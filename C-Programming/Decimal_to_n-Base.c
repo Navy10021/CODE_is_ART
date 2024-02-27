@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// 숫자와 문자를 변환하는 함수
+// int -> string으로 변환 함수
 char reVal(int num) {
     if (num >= 0 && num <= 9)
         return (char)(num + '0');
@@ -10,8 +10,8 @@ char reVal(int num) {
         return (char)(num - 10 + 'A'); // A부터 Z까지 10진수 이상을 표현
 }
 
-// 10진수를 n진수로 변환하는 함수
-void strev(char *str) {
+// string reverse 함수
+void reverse(char *str) {
     int len = strlen(str);
     int i;
     for (i = 0; i < len / 2; i++) {
@@ -34,7 +34,7 @@ char* fromDeci(char res[], int base, int inputNum) {
     res[index] = '\0';
 
     // 결과 문자열을 뒤집어 정확한 순서로 만듦
-    strev(res);
+    reverse(res);
 
     return res;
 }
