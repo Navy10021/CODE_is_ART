@@ -36,6 +36,7 @@ String::String(const char *s){
     strcpy(str, s);
 }
 
+// Deep Copy Constructor
 String::String(const String& s){
     len = s.len;
     str = new char[len];
@@ -51,6 +52,7 @@ int String::length(){
     return len;
 }
 
+// Deep Copy = operator
 String& String::operator= (const String& s){
     if (str != NULL)
         delete []str;
