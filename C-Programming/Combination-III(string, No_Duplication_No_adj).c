@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 중복 없이, 인접된 알파벳 없이
 // is palindrome
 int isPalindrome(char * str){
     int st = 0;
