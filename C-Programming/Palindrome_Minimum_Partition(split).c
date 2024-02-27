@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 // Function to check if a substring is a palindrome.
 int isPalindrome(const char *str, int start, int end) {
     while (start < end) {
