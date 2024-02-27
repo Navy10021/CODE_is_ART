@@ -19,7 +19,7 @@ int isPalindrome(char str[], int start, int end){
 
 // Special Check in Substring
 int isSpecial(char str[], int start, int end){
-    // 알파벳 개수가 2개 보다 많으면 홀수길이어야함.
+    // 알파벳 개수가 2개 보다 많을 수 없고, 2개이면, 홀수길이어야함.
     int hash[26] = {0};
     for (int i = start; i < end; i++){
         if (hash[str[i] - 'a'] == 0)
