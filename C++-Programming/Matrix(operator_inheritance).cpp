@@ -10,6 +10,18 @@ class Matrix{
     public:
         Matrix(const vector<vector<int>>& matrix)
             : data(matrix) {}
+		
+		// Deep Copy Constructor
+		Matrix(const Matrix& other)
+			: data(other.data) {} 
+
+		// Operator for Deep Copy 
+		Matrix& operator=(const Matrix& other){
+			if (this != &other){
+				data = other.data;
+			}
+			return *this;
+		}
 
         virtual void ShowMatrix() const{
             for (const auto& row : data){
