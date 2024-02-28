@@ -1,0 +1,27 @@
+
+문자열 처리 함수들
+
+1. ‘strlen()`
+- 기능 : 문자열의 길이를 반환합니다. 널 종료 문자(`'\0'`)는 길이에 포함되지 않습니다.
+- 사용법: `size_t strlen(const char *s);`
+- 예시: `strlen("hello")`는 `5`를 반환합니다.
+
+   2.`strcat()`
+-  기능: 두 문자열을 연결합니다. 첫 번째 문자열의 끝에 두 번째 문자열을 추가합니다.
+- 사용법: `char *strcat(char *dest, const char *src);`
+-  예시: `strcat("hello, ", "world")`는 `"hello, world"`를 `dest`에 저장합니다.
+
+   3. `strncat()`
+- 기능: `strcat()`과 유사하지만, 지정된 최대 길이까지만 두 번째 문자열의 일부를 첫 번째 문자열에 추가합니다.
+- 사용법: `char *strncat(char *dest, const char *src, size_t n);`
+- 예시: `strncat("hello", "worldwide", 3)`는 `"hello, wor"`를 `dest`에 저장합니다.
+
+   4. `strcmp()`
+- 기능 : 두 문자열을 비교합니다. 문자열이 같으면 `0`을, 첫 번째 문자열이 두 번째 문자열보다 사전적으로 앞서면 음수, 뒤쳐지면 양수를 반환합니다.
+- 사용법 : `int strcmp(const char *s1, const char *s2);`
+- 예시 : `strcmp("hello", "hello")`는 `0`을 반환합니다.
+
+   5. `strncmp()`
+- 기능 : `strcmp()`와 유사하지만, 지정된 최대 길이까지만 두 문자열을 비교합니다.
+- 사용법 : `int strncmp(const char *s1, const char *s2, size_t n);`
+- 예시 : `strncmp("hello", "helicopter", 3)`는 `0`을 반환합니다.
