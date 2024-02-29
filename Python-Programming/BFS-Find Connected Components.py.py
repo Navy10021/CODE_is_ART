@@ -8,7 +8,7 @@ class GNode:
         self.distance = d
         self.parent = p
     
-def BFS_connected_components(graph):
+def BFS_connected_components(G):
     components = []
     
     for node in G:
