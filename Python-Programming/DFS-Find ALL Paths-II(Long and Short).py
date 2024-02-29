@@ -58,6 +58,6 @@ Graph[H] = []
 
 st = A 
 en = G
-longest_shortest_path(Graph, A, G)
+longest_shortest_path(Graph, st, en)
     
     
