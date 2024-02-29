@@ -1,0 +1,43 @@
+C++에서 `std::map`을 사용하려면 다음과 같이 할 수 있습니다:
+
+1. **헤더 파일 포함**: `#include <map>`을 추가합니다.
+
+2. **맵 선언**: 키와 값을 가지는 맵을 선언합니다. 예를 들면:
+   ```cpp
+   std::map<KeyType, ValueType> myMap;
+   ```
+
+3. **요소 추가**: `insert()` 함수를 사용하여 새로운 요소를 추가합니다.
+   ```cpp
+   myMap.insert(std::make_pair(key, value));
+   ```
+
+4. **요소 삭제**: `erase()` 함수를 사용하여 요소를 삭제합니다.
+   ```cpp
+   myMap.erase(key);
+   ```
+
+5. **값 가져오기**: `find()` 함수나 `[]` 연산자를 사용하여 값을 가져옵니다.
+   ```cpp
+   auto it = myMap.find(key);
+   if (it != myMap.end()) {
+       // 키가 존재할 때의 작업
+       ValueType value = it->second;
+   }
+   ```
+
+6. **맵 반복**: `begin()`과 `end()` 함수를 사용하여 맵을 반복합니다.
+   ```cpp
+   for (auto it = myMap.begin(); it != myMap.end(); ++it) {
+       KeyType key = it->first;
+       ValueType value = it->second;
+       // key와 value를 사용하여 작업
+   }
+   ```
+
+7. **크기 확인**: `size()` 함수를 사용하여 맵의 크기를 확인합니다.
+   ```cpp
+   size_t size = myMap.size();
+   ```
+
+이러한 기본적인 사용법을 통해 C++에서 `std::map`을 활용할 수 있습니다.
