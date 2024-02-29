@@ -1,0 +1,50 @@
+C++에서 `std::vector`는 동적 배열을 나타내는 표준 라이브러리 컨테이너입니다. 크기가 동적으로 조절되며 연속된 메모리 공간에 요소를 저장합니다.
+
+1. **헤더 파일 포함**: `<vector>` 헤더 파일을 포함합니다.
+
+2. **벡터 선언**: 원하는 데이터 유형의 벡터를 선언합니다.
+   ```cpp
+   std::vector<DataType> myVector;
+   ```
+
+3. **요소 추가**: `push_back()` 함수를 사용하여 요소를 벡터에 추가합니다.
+   ```cpp
+   myVector.push_back(data);
+   ```
+
+4. **요소 접근**: `[]` 연산자나 `at()` 함수를 사용하여 요소에 접근합니다.
+   ```cpp
+   DataType element = myVector[index]; // 또는
+   DataType element = myVector.at(index);
+   ```
+
+5. **요소 삭제**: `pop_back()` 함수를 사용하여 마지막 요소를 삭제합니다.
+   ```cpp
+   myVector.pop_back();
+   ```
+
+6. **크기 확인**: `size()` 함수를 사용하여 벡터의 크기를 확인합니다.
+   ```cpp
+   size_t size = myVector.size();
+   ```
+
+7. **범위 기반 반복**: 범위 기반 for 루프를 사용하여 벡터를 반복합니다.
+   ```cpp
+   for (const auto& element : myVector) {
+       // element를 사용하여 작업
+   }
+   ```
+
+8. **반복자 사용**: `begin()`과 `end()` 함수를 사용하여 반복자를 얻어 벡터를 반복할 수 있습니다.
+   ```cpp
+   for (auto it = myVector.begin(); it != myVector.end(); ++it) {
+       // *it을 사용하여 요소에 접근
+   }
+   ```
+
+9. **특정 위치에 요소 삽입**: `insert()` 함수를 사용하여 특정 위치에 요소를 삽입합니다.
+   ```cpp
+   myVector.insert(myVector.begin() + index, data);
+   ```
+
+`std::vector`는 동적 크기 조정, 빠른 임의 접근, 데이터 저장 등의 장점을 제공하여 많은 상황에서 유용하게 사용됩니다.
