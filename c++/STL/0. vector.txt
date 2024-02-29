@@ -46,5 +46,25 @@ C++에서 `std::vector`는 동적 배열을 나타내는 표준 라이브러리 
    ```cpp
    myVector.insert(myVector.begin() + index, data);
    ```
+10. 특정 요소 삭제
 
+int main() {
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+
+    // Find the iterator pointing to the element you want to erase
+    auto it = std::find(vec.begin(), vec.end(), 3);
+
+    // Check if the element was found before erasing
+    if (it != vec.end()) {
+        vec.erase(it);  // Erase the element
+    }
+
+    // Print the elements after erasing
+    for (int num : vec) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
 `std::vector`는 동적 크기 조정, 빠른 임의 접근, 데이터 저장 등의 장점을 제공하여 많은 상황에서 유용하게 사용됩니다.
