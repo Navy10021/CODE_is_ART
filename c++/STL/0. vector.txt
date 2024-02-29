@@ -51,7 +51,7 @@ C++에서 `std::vector`는 동적 배열을 나타내는 표준 라이브러리 
 int main() {
     std::vector<int> vec = {1, 2, 3, 4, 5};
 
-    // Find the iterator pointing to the element you want to erase
+    // Find the iterator pointing to the element you want to erase. need to #include <algorithm>
     auto it = std::find(vec.begin(), vec.end(), 3);
 
     // Check if the element was found before erasing
