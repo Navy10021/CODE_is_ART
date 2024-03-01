@@ -72,13 +72,11 @@ def permutation_LinkedList(linked_list):
     return all_permutations
 
 # Example usage
-
 string = "ABB"
 my_LL = string_to_LinkedList(string)
-#my_LL.swap(my_LL.head, my_LL.head.next.next)
-#my_LL.display()
 
+# Permutations
 permutations = permutation_LinkedList(my_LL)
 
-for perm in permutations:
-    perm.display()
+for ll in permutations:
+    ll.display()
