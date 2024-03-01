@@ -96,6 +96,11 @@ int main() {
         item->calculateHitRatio();
         item->printStatus();
     }
-
+    // Cleanup dynamically allocated objects
+    for (Storage* item : storage) {
+        delete item;
+    }
+    storage.clear();
+    
     return 0;
 }
