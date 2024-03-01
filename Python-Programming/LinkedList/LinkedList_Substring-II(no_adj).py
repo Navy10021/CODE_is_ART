@@ -55,12 +55,11 @@ def copy_linked_list(start, end):
 # Special Conditions-I
 def is_adj(linkedList):
     slow = linkedList.head 
-    while slow:
-        fast = slow.next 
-        while fast:
-            if abs(ord(slow.val) - ord(fast.val)) == 1:
-                return True 
-            fast = fast.next 
+    fast = slow.next 
+    while fast:
+        if abs(ord(slow.val) - ord(fast.val)) == 1:
+            return True 
+        fast = fast.next 
         slow = slow.next 
     return False 
 
