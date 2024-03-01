@@ -45,7 +45,7 @@ def all_substrings(head):
         
     return result
 
-# Help function    
+# Help function(Copy function)
 def copy_linked_list(head):
     copy_list = LinkedList()
     currNode = head 
