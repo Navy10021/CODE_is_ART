@@ -54,8 +54,8 @@ def copy_linked_list(head):
         currNode = currNode.next 
     return copy_list
         
-
-input = "ABCDE"
+input = ['A','B','C','D','E']
+#input = "ABCDE"  # same
 LL = LinkedList()
 LL.strToList(input)
 #LL.display()
