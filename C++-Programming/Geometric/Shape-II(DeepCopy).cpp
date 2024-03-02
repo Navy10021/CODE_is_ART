@@ -2,8 +2,9 @@
 #include <cmath>
 #include <vector>
 #include <memory>
+#define M_PI 3.1415
+
 using namespace std;
-# define M_PI 3.1415
 
 class Shape {
 public:
