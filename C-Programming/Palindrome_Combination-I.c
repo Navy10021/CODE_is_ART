@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// 팰린드롬을 만들수 있는 모든 조합
 int isPalindrome(char * str){
     int st = 0;
     int en = strlen(str) - 1;
